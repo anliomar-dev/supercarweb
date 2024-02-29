@@ -1,0 +1,28 @@
+.col{
+    max-width: 250px;
+    background-color: white;
+    border-radius: 5px;
+}
+.container-fluid{
+    height: 60vh;
+    background-color: rgb(68, 26, 98);
+}
+
+input[type="submit"]{
+    background-color: rgb(68, 26, 98);
+    color: white;
+    border-radius: 5px;
+}
+
+img{
+    max-width: 150px;
+    max-height: 130px;
+}
+
+input[type="text"], input[type="password"]{
+    border-radius: 5px;
+    outline: none;
+}
+h5{
+    color: rgb(68, 26, 98);
+}
