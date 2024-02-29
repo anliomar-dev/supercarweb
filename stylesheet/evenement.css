@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique+B1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
+
+/* Toute la page */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box ;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body */
+body{
+    letter-spacing: 0.3px;
+
+}
+
+/* Le bar de menu */
+nav{
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px 20px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+nav .navbar ul{
+    display: inline-flex;
+    gap: 25px;
+}
+
+nav .navbar ul li{
+    list-style: none;
+}
+
+nav .navbar ul li a{
+    text-decoration: none;
+    color: #000;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav .navbar ul li a:hover{
+    color: #a6ff00;
+}
+
+nav .navbar .links::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: #a6ff00;
+    transition: all 0.3s ease;
+}
+
+nav .navbar .links:hover::after{
+    width: 100%;
+}
+
+nav .buttons{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 212px;
+}
+
+nav .buttons button{
+    width: 100px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 2px solid #000;
+    transition: all 0.5s ease;
+}
+
+nav .buttons .inscrire{
+    margin-right: 10px;
+}
+
+nav .buttons .inscrire button:hover, nav .buttons .connexion button:hover{
+    background-color: #a6ff00;
+    padding: 12px;
+    width: 118px;
+}
+
+input, label{
+    display: none;
+}
+
+label i{
+    position: absolute;
+    top: 32px;
+    right: 20px;
+    font-size: 30px;
+    display: none;
+}
+
+nav .navbar ul .menubuttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80px;
+    display: none;
+}
+
+nav .navbar ul .menubuttons button{
+    padding: 5px;
+    width: 100px;
+    border-radius: 5px;
+    border: 1px solid;
+    transition: all 0.5s ease;
+    margin-bottom: 13px;
+}
+
+nav .navbar ul .menubuttons button:hover{
+    background-color: #000;
+    color: #fff;
+    padding: 12px;
+    width: 118px;
+}
+
+@media(max-width:970px){
+    nav .navbar ul{
+        gap: 18px;
+        transition: all 0.5s ease;
+    }
+    nav .buttons{
+        width: 160px;
+        transition: all 0.5s ease;
+    }
+    nav .buttons button{
+        padding: 5px;
+        width: 80px;
+        transition: all 0.5s ease;
+    }
+    nav .buttons .inscrire button:hover{
+        padding: 10px;
+        width: 90px;
+    }
+    
+    nav .buttons .connexion button:hover{
+        padding: 10px;
+        width: 90px;
+    }
+}
+
+@media(max-width:900px){
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    nav .buttons, nav .buttons button{
+        display: none;
+    }
+    nav .navbar ul{
+        position: absolute;
+        width: 100%;
+        right: -100%;
+        top: 97px;
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: all 0.8s ease;
+        z-index: 1000;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 15px 10px -15px #111;
+    }
+    nav .navbar ul li:first-child{
+        margin-top: 9px;
+    }
+    nav .navbar ul .menubuttons{
+        display: flex;
+    }
+    input:checked ~ ul{
+        right: 0;
+    }
+    label, label i{
+        display: block;
+    }
+}
+
+
+.events{
+    width: 100%;
+    margin-top: 80px;
+}
+
+/* Titre */
+.events h2{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-bottom: 50px;
+    font-family: "Shippori Antique B1", sans-serif;
+    font-weight: 500;
+}
+
+/* Card dans une ligne droite */
+.events .wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5rem 0;
+    position: relative;
+}
+
+/* 3 cardres pour actualité de porsche, ferrari et jeep */
+.events .wrapper .cards{
+    width: auto;
+    height: auto;
+    position: relative;
+    border: 1px solid;
+    background: #262626;
+    color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: 1px solid red;
+}
+
+.events .wrapper .cards p{
+    text-transform: uppercase;
+    font-size: small;
+    color: #db0000;
+    text-align: right;
+}
+
+.events .wrapper .cards h1{
+    font-weight: 500;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.events .wrapper .cards h2{
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: medium;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.events .wrapper .cards h3{
+    margin-right: 10px;
+    font-weight: 300;
+    font-size: x-large;
+    text-align: right;
+}
+
+#participation{
+    margin-right: 30px;
+    margin-top: 0;
+    color: #db0000;
+    text-align: right;
+    text-decoration: 1px underline;
+}
+
+/* Image dans la cardre */
+.events .wrapper .cards .eventsimg{
+    overflow: hidden;
+    width: 524px;
+}
+
+.events .wrapper .cards .eventsimg img{
+    position: relative;
+    width: auto;
+    height: 350px;
+    transition: transform 1s;
+    vertical-align: middle;
+}
+
+/* L'image agradi en peu quand on hover */
+.events .wrapper .cards .eventsimg img:hover{
+    transform: scale(1.1);
+}
+
+/* Description dans la cardre */
+.events .wrapper .cards p{
+    margin: 20px 13px;
+}
+
+.events .wrapper a{
+    text-decoration: none;
+    color: #000;
+}
+
+#space{
+    margin: 0 5rem 0 5rem;
+}
+
+.events .wrapper .cards p {
+    text-align: center;
+}
+
+
+/* Responsive */
+@media(max-width:1590px){
+    #space{
+        margin: 0 0 0 5rem;
+        transition: all 0.3s ease;
+    }
+}
+
+@media(max-width:1180px){
+    #space{
+        margin: 0;
+    }
+}
+
+
+/* Pied de la page */
+footer{
+    background-color: #000;
+    color: #fff;
+    margin-top: 100px;
+}
+
+footer .box{
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem 10rem;
+    flex-wrap: wrap;
+    color: #fff;
+    width: 100%;
+}
+
+/* Liens */
+footer .box a{
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 7px;
+    position: relative;
+}
+
+/* Underline animation */
+footer .box .links::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+footer .box .links:hover::after{
+    width: 100%;
+}
+
+/* Titre pour chaque colonne */
+footer .box h4{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+/* Half-underline */
+footer .box h4::before{
+    content: "";
+    position: absolute;
+    width: 50%;
+    bottom: 0;
+    border-bottom: 2px solid #fff;
+}
+
+/* Direction de chaque colonne  */
+footer .box .aboutus{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* footer .box .contact{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer .box .contact p{
+    margin-bottom: 6px;
+} */
+/* Horizontal line */
+footer .copyright hr:not(:last-child){
+    width: 92%;
+    margin: 0 0 10px 0;
+}
+
+footer .copyright hr:not(:first-child){
+    width: 92%;
+    margin: 10px 0 0 0;
+}
+
+/* Copyright */
+footer .copyright{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    padding: 15px 0;
+    width: 100%;
+}

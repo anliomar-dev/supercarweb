@@ -1,0 +1,55 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    /*background-image: url("../images/bg-ferrari.jpg");*/
+    background-color: rgb(45, 45, 45);
+}
+
+#formulaire{
+    max-width: 500px;
+}
+
+#form_icons{
+    display: flex;
+    justify-content: center;
+}
+
+form a{
+    text-decoration: none;
+}
+form{
+    display: flex;
+    align-items: center;
+    height: auto;
+    border: solid 1px white;
+    margin-top: 8%;
+    padding: 20px 16px;
+    border-radius: 6px;
+    box-shadow: 10px 10px 18px white, -10px -10px 18px rgb(42, 42, 214);
+
+}
+@media (max-width: 334px){
+    input[type="submit"], #pass-oublie{
+        font-size: 13px;
+    }
+}
+
+input[type="text"], input[type="password"]{
+    margin: 7px;
+}
+
+button[type="submit"], #span{
+    width: 90%;
+    margin-left: 6%;
+}
+
+#icons-form{
+    background-color: white;
+    margin: 0 6px;
+    border-radius: 8px;
+}

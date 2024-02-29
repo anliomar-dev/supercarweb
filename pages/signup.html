@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Inscription</title>
+        <!--lien bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <!--lien plugin indicateurs telephonique-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/css/intlTelInput.css">
+
+        <!--lien font awsome-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!--lien feuille de style de la page-->
+        <link rel="stylesheet" href="../stylesheet/signup.css">
+        <style>
+            @media screen and (max-width: 992px){
+            .navmenu{
+                display: block;
+        
+            }
+        }
+        </style>
+    </head>
+    <body style="height: auto; overflow-x: hidden;">
+        <div class="container-fluid" id="haut">
+            <div class="row">
+                <div class="col p-3">Supercar : ........ une experience unique</div>
+                <div class="col d-flex justify-content-end">
+                    <a href=""><i class="fa-brands fa-facebook-f p-3" id="facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram p-3"></i></a>
+                    <a href=""><i class="fa-brands fa-x-twitter p-3"></i></a>
+                    <a href=""><i class="fa-brands fa-linkedin-in p-3"></i></a>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
+            <div class="container-fluid">
+                <div class="navbar-brand">
+                    <img src="../images/logo.png" alt="">
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Acceuille</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="voitures.html">voitures</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="essai.html">demande essai</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="evenement.html">Evenement</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact1.html">contactesz nous</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="signup.html" style="color: rgb(214, 155, 7); border-bottom: solid 2px rgb(214, 155, 7);">s'inscrire</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.html">se connecter</a>
+                            </li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <h6 align="center" style="color: red;" class="mt-5">
+            <i class="fa-solid fa-triangle-exclamation" style="color: rgb(169, 135, 2);"></i> 
+            avant de soumettre le formualire d'inscription, veuillez lire le texte a votre droite et cocher la case a la fin du texte si vous acceptez les conditions.
+        </h6>
+        <div class="container-fluid" id="form">
+            <div class="row"> 
+                <form class="col-sm-12 col-md-12 col-lg-8" action="../database/signup.php" method="POST">
+                    <div class="row">
+                        <h1 align="center">Inscription</h1>
+                        <div class="col-md-6 mt-3 position-relative">
+                            <label for="nom" class="form-label">Nom</label><i class="fa-solid fa-user" id="nom-icon"></i>
+                            <input type="text" class="form-control ps-2" name="nom" required> 
+                        </div>
+                        <div class="col-md-6 mt-3 position-relative">
+                            <label for="prenom" class="form-label">Prenom</label> <i class="fa-solid fa-user" id="prenom-icon"></i>
+                            <input type="text" class="form-control ps-2" name="prenom" required>
+                        </div>
+                        <div class="col-12 mt-3 position-relative" id="adress">
+                            <label for="adress" class="form-label">Adress</label><i class="fa-solid fa-location-dot" id="adress-icon"></i>
+                            <input type="text" class="form-control ps-2" name="adresse" required>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 mt-3 position-relative">
+                            <label for="telephone" class="form-label">Telephone</label><br>
+                            <input type="text" class="form-control ps-5" id="phone" value="+1" name="telephone" minlength="8" required>
+                        </div><br>
+                            <div class="col-md-6 col-sm-12 col-lg-4 mt-3 position-relative" id="email">
+                            <label for="email" class="form-label">email</label> <i class="fa-solid fa-envelope" id="email-icon"></i>
+                            <input type="email" class="form-control ps-2" name="email" id="email" required>
+                        </div>
+                        <div class="col-md-6 col-lg-4 mt-3 position-relative">
+                            <label for="identifiant" class="form-label">Nom d'utilisateur</label> <i class="fa-solid fa-circle-user" id="user-icon"></i>
+                            <input type="text" class="form-control ps-2" name="identifiant" id="identifiant" required>        
+                        </div>
+                            <div class="col-md-6 mt-3 position-relative">
+                            <label for="mot de passe" class="form-label">Mot de passe</label><i class="fa-solid fa-lock" id="pass"></i>
+                            <input type="password" class="form-control ps-2" name="mot_de_passe" required>
+                        </div>
+                        <div class="col-md-6 mt-3 position-relative">
+                            <label for="adress" class="form-label">Confirmer le mot de passe</label> <i class="fa-solid fa-lock" id="pass"></i>
+                            <input type="password" class="form-control ps-2" id="pwr" name="confirme_pass" required>
+                        </div>
+                            <div class="col-md-12 col-sm- 12 d-flex justify-content-around">
+                            <input class="btn btn-primary mt-5 mb-3 col-3" type="submit" value="S'inscrire" name="submit" id="submit">
+                            <input class="btn btn-primary mt-5 mb-3 col-3" type="reset" value="Reinitialiser" id="reset">
+                        </div>
+                    </div>
+                </form>
+                <div class="col-sm-12 col-md-12 col-lg-4" id="droite">
+                    <div class="row">
+                        <p class="col-12" style="color: white">
+                            En soumettant ce formulaire sur notre site, 
+                            vous acceptez de nous fournir les informations (« données personnelles ») nécessaires pour beneficier de tous les fonctionalité de notre site. 
+                            Ces informations sont essentielles pour assurer une expérience d'essai personnalisée et sécurisée.
+                            Vos données personnelles peuvent être partagées avec des partenaires logistiques pour l'organisation de l'essai et conformément à la législation en vigueur.
+                            Toute question ou préoccupation concernant la collecte, l'utilisation, 
+                            le partage ou la protection de vos données personnelles dans le cadre des essais doit être adressée à notre responsable de la confidentialité à [adresse e-mail]
+                            En soumettant votre demande, vous consentez à la collecte, à l'utilisation et au partage de vos données personnelles conformément à notre politique de confidentialité spécifique aux essais, 
+                            et vous acceptez de participer à cette expérience automobile. A noter que vos données seront effacer 1 mois après votre essai
+                        </p>
+                        <div class="col-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckIndeterminate">
+                                <label class="form-check-label" for="flexCheckIndeterminate" style="color: white">
+                                    J'ai lu, compris et accepté toutes les déclarations ci-dessus.
+                                </label>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+            </div>
+        </div>
+        <footer class="container-fluid footer mt-5 text-center p-3">
+            <div class="row">
+                <div class="col-12 mt-3"><a href=""><a href="">A PROPOS DE NOUS</a></a></div>
+                <div class="col-12 mt-3"><a href="">Arborescence</a></div>
+                <div class="col-12 mt-3"><a href="">Politique de confidentialité</a></div>
+                <div class="col-12 copy mt-3" style="border-bottom: solid 1px white; border-top: solid 1px white;;"><a href="">&copy;2024 SUPERCAR</a></div> 
+            </div>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Sélectionnez la case à cocher et les boutons
+                var choseCheckbox = document.getElementById('flexCheckIndeterminate');
+                var bouton_submit = document.getElementById('submit');
+                var bouton_reset = document.getElementById('reset');
+                bouton_submit.disabled = true;
+                bouton_reset.disabled = true;
+                // Ajoutez un écouteur d'événements pour le changement de la case à cocher
+                choseCheckbox.addEventListener('change', function() {
+                    // Modifiez l'attribut disabled des boutons en fonction de l'état de la case à cocher
+                    bouton_submit.disabled = !choseCheckbox.checked;
+                    bouton_reset.disabled = !choseCheckbox.checked;
+                });
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
+        <script>
+            const input = document.querySelector("#phone");
+                window.intlTelInput(input, {
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/utils.js",
+                });
+        </script>
+    </body>
+</html>

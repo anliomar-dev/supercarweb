@@ -1,0 +1,112 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-image: url("../images/ferrari.jpg");
+    width: auto;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+#form{
+    
+    padding: 4px 4% 10px 5%;
+    padding-bottom: 4%;
+}
+
+form{
+    background-image: linear-gradient(rgba(71, 71, 201, 0.588), rgba(184, 180, 180, 0.773));
+    border: dashed 1px black;
+    border-radius: 10px;
+    box-shadow: 18px 18px 15px rgba(49, 47, 47, 0.553);
+}
+
+#droite{
+    background-color: rgb(39, 39, 39);
+    padding: 5px 3% 10px ;
+    border-radius: 10px;
+    max-height: 499px;
+    overflow: scroll;
+}
+/*
+#email-icon{
+    position: absolute;
+    top: 62%;
+    right: 6%;
+    color: blueviolet;
+}*/
+
+#haut{
+    background-color: rgba(67, 67, 67, 0.723);
+}
+
+.align-text-top{
+    border-radius: 6px;
+}
+
+#header{
+    background-color: white;
+    filter: initial;
+}
+
+/*
+.footer-container{
+    height: 150px;
+    width: auto;
+    margin-top: 20px;
+    background-color: rgb(0, 0, 152);
+}*/
+
+#footer-ul :is(li){
+    list-style-type: none;
+}
+
+#footer{
+    background-color: #211f1f;
+    /*padding: 10px 25px;*/
+    box-sizing: border-box;
+}
+
+#footer-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#footer-icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer-icons i{
+    margin: 4px 20px;
+    color: whitesmoke;
+    font-size: 18px;
+}
+#footer-link{
+    height: auto;
+    margin: 3px 0;
+}
+#copy-and-icons{
+    background-color: rgb(51, 51, 51);
+    max-height: auto;
+}
+
+#h5{
+    color: greenyellow;
+    font-size: 17px;
+    margin-top: 2%;
+}
+
+form i{
+    margin-left: 4px;
+}
+
+.footer{
+    background-color: rgb(48, 48, 48);
+}
+
+.footer a{
+    color: white;
+}

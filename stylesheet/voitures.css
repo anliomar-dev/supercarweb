@@ -1,0 +1,214 @@
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("../images/ferrari.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+/*les types de moteurs*/
+#moteurs{
+    width: 40%; 
+    height: auto;
+    background-color: white;
+    padding: 5%;
+    border-radius: 10px;
+    box-shadow: 4px 4px 4px black;
+    transition: transform 0.5s, opacity 0.5s, box-shadow 0.5s;
+}
+.container-types-moteurs{
+    border-radius: 10px;
+    background-color: rgb(225, 225, 225);
+    overflow-x: hidden;
+}
+.container-types-moteurs img:hover{
+    transform: scale(1.05, 1.05) translateY(15px);
+    opacity: 1;
+    box-shadow: 8px 8px 6px black;
+}
+.container-types-moteurs img{
+    opacity: 0.6;
+}
+
+
+
+/* h1 h2*/
+.ferrari, .porsche, .jeep{
+    font-weight: bold;
+    
+    overflow-x: hidden;
+}
+h2{
+    color: rgb(0, 76, 84); 
+    text-decoration: underline;
+}
+/*h1 ferrari*/
+.ferrari{
+    font-size: 5em;
+    color: rgb(222, 201, 77);
+    text-shadow: 3px 3px 3px rgb(21, 21, 21), -3px -3px rgb(185, 3, 0);
+    font-family:'Courier New', Courier, monospace;
+    border-radius: 0 40px 0 40px;
+}
+
+/*h1 jeep*/
+.jeep{
+    font-size: 5em;
+    color: rgb(18, 154, 36);
+    text-shadow: 3px 3px 3px rgb(21, 21, 21), -3px -3px 3px rgb(255, 255, 255);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 0 40px 0 40px;
+    font-weight: bold;
+}
+
+/*h1 jeep*/
+.porsche{
+    font-size: 5em;
+    color: rgb(192, 6, 6);
+    text-shadow: 3px 3px 3px rgb(21, 21, 21), -3px -3px 3px rgb(255, 255, 255);
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 0 40px 0 40px;
+    font-weight: bold;
+}
+
+
+/*images ferrari*/
+.img-voiture{
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+}
+.img-voiture img{
+    object-fit: contain;
+    opacity: 0.8;
+    transition: transform 0.8s, opacity 0.5s;
+}
+.img-voiture img:hover{
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+.row-topv{
+    display: grid;
+    grid-template-columns: 2;
+}
+
+/*container voitures*/
+.container-voitures{
+    padding: 5% 8%;
+    background-color: white;
+}
+@media screen and (min-width: 800px){
+    .container-voitures{
+        padding: 5% 0;
+    }
+}
+
+
+/*voir la marque*/
+.voir-marque{
+    background-color: rgb(35, 35, 35);
+    border-radius: 10px;
+    overflow-x: hidden;
+}
+.voir-marque a {
+    background-color: rgb(8, 0, 255);
+    padding: 3px 10px;
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    opacity: 0.5;
+    transition: opacity 1s, color 1s, font-size 0.5s; /* Applique la transition au proprièté opacity */
+}
+.voir-marque a:hover {
+    opacity: 0.8;
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+
+
+/*card top 4 de nos ventes*/
+.cardm{
+    margin-left: 6%;
+    margin-right: 0;
+}
+.cardm2, .cardm4{
+    margin-left: 3%;
+    margin-right: 1%;
+}
+
+/*resposive h4 and voir la marque*/
+@media screen and (max-width: 418px){
+    h4{
+        font-size: 13px;
+    }
+    .voir-marque a:hover {
+        opacity: 0.8;
+        color: rgb(0, 0, 0);
+        font-size: 19px;
+    }
+}
+
+
+/*responsive voir la marque bouton*/
+@media screen and (max-width: 576px){
+    .voir-marque a, h2 {
+        font-size: 18px;
+    }
+}
+
+/*marque*/
+@media screen and (max-width: 768px) and (min-width: 500px) {
+    .ferrari, .jeep, .porsche{
+        font-size: 65px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width: 499px) {
+    .ferrari, .jeep, .porsche{
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(255, 255, 255);
+        text-shadow: none;
+        background-color: rgb(32, 32, 32);
+    }
+}
+
+/*top 4 de nos ventes*/
+@media screen and (max-width: 768px) {
+    .cardm2, .cardm4, .cardm{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.footer{
+    background-color: rgb(48, 48, 48);
+}
+
+.footer a{
+    color: white;
+}
+
+#Nos-marques{
+    height: 100vh;
+    background-image: url('../images/Ferrari_F430_Montreal_Exotic_2000x.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#Nos-marques h1{
+    color: rgb(255, 255, 255);
+    background-color: black;
+    padding: 6px;
+    border-radius: 5px;
+}

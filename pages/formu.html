@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>formulaire</title>
+    <link rel="stylesheet" href="formu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="contactez-nous">
+        <h1>Contactez-nous</h1>
+        <p>Un problème, une question, envie de nous envoyer un message ? N’hésitez pas à utiliser ce formulaire pour prendre contact avec nous !</p>
+        <form action="/page-traitement-donnees" method="post">
+          <div>
+            <label for="nom">Votre Nom</label>
+            <input type="text" id="nom" name="Nom" placeholder="super" required>
+          </div>
+          <div>
+            <label for="Prenom">Votre Prenom</label>
+            <input type="text" id="prenom" name="Prenom" placeholder="Car" required>
+          </div>
+          <div>
+            <label for="Numeros">Votre Numeros Telephone</label>
+            <input type="text" id="Numeros" name="Numeros Telephone" placeholder="54515064" required>
+          </div>
+          <div>
+            <label for="email">Votre e-mail</label>
+            <input type="email" id="email" name="email" placeholder="supercar@mail.com" required>
+          </div>
+          <div>
+            <label for="sujet">Quel est le sujet de votre message ?</label>
+            <select name="sujet" id="sujet" required>
+                <option value="" disabled selected hidden>Choisissez le sujet de votre message</option>
+                <option value="probleme-voiture">Problème avec ma voiture</option>
+                <option value="question-sur l'achat">Question à propos de l'achat</option>
+                <option value="suivi-commande">Suivi de ma commande</option>
+                <option value="autre">Autre...</option>
+            </select>
+          </div>
+          <div>
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" placeholder="" required></textarea>
+          </div>
+          <div>
+            <button type="submit">Envoyer mon message</button>
+          </div>
+        </form>
+      </div>
+      <div class="container">
+        <div class="headline">
+          <h1>REJOIGNEZ NOUS SUR LES RESEAU SOCIAUX</h1>
+        </div>
+        <div class="social-buttons">
+                <!--facebook  Button-->
+                <a href="http://www.facebook.com" target="blank" class="social-margin"> 
+                  <div class="social-icon facebook">
+                    <i class="fa fa-facebook" aria-hidden="true"></i> 
+                  </div>
+                </a>
+                <!-- LinkedIn Button -->
+                <a href="http://linkedin.com/" class="social-margin" target="blank">
+                  <div class="social-icon linkedin">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i>
+                  </div> 
+                </a>
+                <!-- Youtube Button -->
+                <a href="http://youtube.com/" target="blank"  class="social-margin">
+                  <div class="social-icon youtube">
+                    <i class="fa fa-youtube" aria-hidden="true"></i>
+                  </div> 
+                
+                </a>
+                <!-- Soundcloud Button -->
+                <a href="http://soundcloud.com/" target="blank" class="social-margin">
+                  <div class="social-icon soundcloud">
+                    <i class="fa fa-soundcloud" aria-hidden="true"></i>
+                  </div> 
+                </a>
+
+                <!-- TwitterButton -->
+                <a href="http://twitter.com/" target="blank" class="social-margin">
+                  <div class="social-icon twitter">
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                  </div> 
+                </a>
+        </div>
+        </div>
+</body>
+</html>

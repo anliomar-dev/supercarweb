@@ -1,0 +1,38 @@
+*{
+    box-sizing: border-box;
+}
+
+body, html{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url("../images/812_Competizione.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.footer{
+    background-color: rgb(48, 48, 48);
+}
+
+.footer a{
+    color: white;
+}
+#haut{
+    background-color: rgb(54, 54, 54);
+}
+#haut #slogan{
+    color: blue;
+}
+
+.form{
+    background-color: white;
+    border-radius: 8px;
+}
+
+#header{
+    background-color: white;
+}

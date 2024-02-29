@@ -1,0 +1,12 @@
+@media screen and (max-width:991px){
+    .navmenu{
+        display: block;
+    }
+    #margin2{
+        margin-top: 50px;
+    }
+}
+
+.margin{
+    margin-right: 50px;
+}
