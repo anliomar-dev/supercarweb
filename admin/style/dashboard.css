@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+:root{
+    --background-entete: #4A7696;
+}
+
+.left{
+    background-color: rgb(255, 255, 255);
+}
+
+.col-2, .col-10{
+    height: 100vh;
+}
+.col-md-5{
+    background-color: white;
+    border-radius: 8px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.table, .users{
+    font-size: 15px;
+}
+
+.table a{
+    margin-left: 1%;
+}
+
+.titre-h4{
+    background-color: var(--background-entete);
+    padding: 4px 8px;
+}
+.entete{
+    background: var(--background-entete);
+    padding: 10px;
+}
+
+h4{
+    color: white;
+    font-size: 20px;
+}
+
+.right{
+    background-color: rgb(171, 133, 198);
+}
