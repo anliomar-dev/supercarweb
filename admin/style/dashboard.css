@@ -39,12 +39,34 @@ a{
     background: var(--background-entete);
     padding: 10px;
 }
+.entete p{
+    font-size: 22px;
+    color: white;
+}
 
 h4{
     color: white;
     font-size: 20px;
 }
 
-.right{
-    background-color: rgb(171, 133, 198);
+.right-links a{
+    color: white;
+    background-color: var(--background-entete);
+    padding: 6px 10px;
+    border-radius: 6px;
+}
+
+.features{
+    background-color: rgb(207, 207, 207);
+}
+
+.bienvenue{
+    background-color: #9fa3a6;
+    color: white;
+}
+
+.view-site-users p{
+    background-color: aquamarine;
+    padding: 10px;
+    border-radius: 6px;
 }

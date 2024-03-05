@@ -13,10 +13,9 @@
         <link rel="stylesheet" href="../style/dashboard.css">
     </head>
     <body>
-        <div class="container-fluid entete">
+        <div class="container-fluid text-center entete sticky-top">
             <div class="row">
-                <div class="col-6"><p>Supercar administration</p></div>
-                <div class="col-3">Bienvenue user</div>
+                <div class="col"><p>Supercar administration</p></div>
             </div>
         </div>
         <div class="container-fluid mt-3">
@@ -67,12 +66,43 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border text-center pt-5 px-5 right">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border text-center pt-3 px-5 right">
                     <div class="row">
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3">1</div>
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3">2</div>
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3">3</div>
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3">4</div>
+                        <div class="col-12 mb-5 mt-3">
+                            <div class="row right-links">
+                                <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue User</h3></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="../../pages/index.html" target="_blank">Voir le site</a></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Changer le mot de passe</a></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Deconnexion</a></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3 features">
+                            <div class="row view-site-users">
+                                <div class="col-12 pt-3">Utiliateurs du site</div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3 features">
+                            <div class="row view-site-users">
+                                <div class="col-12 pt-3">marques et voitures</div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div> 
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
+                            </div>
+                        </div>
+                        <div class="col-11 m-3 features">
+                            <div class="row">
+                                <div class="col-12">Statistiques</div>
+                                <div class="col-12 p-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                                    Hic soluta suscipit eaque cumque neque voluptatem voluptatum 
+                                    ab quis sint labore consequuntur sequi eius nihil alias ut totam, ad at temporibus!
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
