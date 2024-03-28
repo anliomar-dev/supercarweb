@@ -1,0 +1,53 @@
+
+body{
+    background-color: #ffffff;
+}
+
+h3, h4{
+    background-color: #4A7696;
+    padding: 5px;
+    color: white;
+}
+
+.marque{
+    border-radius: 6px;
+}
+input[type="submit"]{
+    background-color: #4A7696;
+    border: solid 1px #4A7696;
+    border-radius: 2px;
+    color: white;
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px black;
+    transition: border-radius 0.5s, opacity 0.5s;
+}
+
+input[type="submit"]:hover{
+    border-radius: 6px;
+    opacity: 1;
+}
+input[type="text"]{
+    border: solid 2px black;
+    border-radius: 4px;
+    background-color: #d5d5d5;
+}
+input[type="text"]:focus{
+    background-color: white;
+}
+a{
+    padding: 1% 2%;
+    margin-left: 1%;
+    color: white;
+    background-color: #4A7696;
+    border-radius: 6px;
+    
+}
+a:hover{
+    color: white;
+    background-color: #4A7696;
+    border-radius: 6px;
+}
+
+.supprimer{
+    font-size: 10px;
+}

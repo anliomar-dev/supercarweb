@@ -2,7 +2,7 @@
     include("../database/connexion.php");
 
     // Définir le temps d'expiration de session à 30 minutes
-    $tempsExpiration = 1 * 60; // 30 minutes en secondes
+    $tempsExpiration = 1 * 60; // 1 minutes en secondes
 
     // Définir la durée maximale de vie d'une session (en secondes)
     ini_set('session.gc_maxlifetime', $tempsExpiration);

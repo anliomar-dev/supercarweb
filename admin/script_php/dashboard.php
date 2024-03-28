@@ -46,11 +46,11 @@
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Modèles</p>
-                                            <a href="">➕add</a>
+                                            <a href="modele_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Marques</p>
-                                            <a href="">➕add</a>
+                                            <a href="marque_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Inscriptions</p>
@@ -70,7 +70,7 @@
                     <div class="row">
                         <div class="col-12 mb-5 mt-3">
                             <div class="row right-links">
-                                <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue User</h3></div>
+                                <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue Super User</h3></div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="../../pages/index.html" target="_blank">Voir le site</a></div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Changer le mot de passe</a></div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Deconnexion</a></div>

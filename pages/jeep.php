@@ -14,6 +14,21 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body>
+        <?php
+            include("server.php");
+            $infos = [];
+            $selection = "SELECT * FROM  modele order by IdModele";
+            $curseur = mysqli_query($dbd, $selection);
+            while($row = mysqli_fetch_array($curseur)){
+                $IdModele = $row["IdModele"];
+                $NomModele = $row["NomMarque"];
+                $prix = $row["Prix"];
+                //echo "<tr><td class='col-3 border'>$IdMarque.</td><td class='col-6 border'>$NomMarque.</td></tr></br>";
+            }
+            mysqli_free_result($curseur);
+            // fermeture de la connexion avec la base de données
+            mysqli_close($dbd);
+        ?>
         <div class="container-fluid" id="haut" style="background-color: rgb(35, 35, 35);">
             <div class="row">
                 <div class="col p-3">Supercar : Une experience unique</div>
