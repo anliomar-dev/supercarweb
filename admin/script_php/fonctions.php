@@ -15,7 +15,6 @@
             echo "<p>Erreur lors de l'ajout de la marque</p>";
         }
     }
-
     function supprimer(){
         include("server.php");
         if(isset($_POST["supprimer_marque"])){

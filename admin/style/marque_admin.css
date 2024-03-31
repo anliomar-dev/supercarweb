@@ -51,3 +51,7 @@ a:hover{
 .supprimer{
     font-size: 10px;
 }
+
+body{
+    background-color: #ff0000;
+}

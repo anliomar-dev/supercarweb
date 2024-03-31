@@ -89,7 +89,7 @@
                                     <div class="col-12 text-center">
                                         <form action="" method="POST">
                                             <h4 class="col-12">
-                                                <input type="submit" value="supprimer" name="supprimer_marque" style="background-color: red; color: white;">
+                                                <button value="supprimer" name="supprimer_marque" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button>
                                             </h4>
                                             <?php
                                                 foreach($id as $x){

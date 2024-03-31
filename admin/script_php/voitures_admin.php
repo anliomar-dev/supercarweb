@@ -13,7 +13,7 @@
         $IdVoiture = $row["IdVoiture"];
         array_push($id, $IdVoiture);
         $Couleur = $row["Couleur"];
-        array_push($modele_noms, $Couleur);
+        array_push($couleur, $Couleur);
         $typemoteur = $row["TypeMoteur"];
         array_push($TypeMoteur, $typemoteur);
     }
