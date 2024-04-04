@@ -41,7 +41,7 @@
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <label for="nom-marque"><h4 class="marque">Nom de la marque</h4></label><br><br>
-                            <input class="col-6" type="text" name="nom-marque" required>
+                            <input class="col-6" type="text" name="NomMarque" required>
                             <input type="submit" name="ajouter_marque" value="ajouter">
                         </form>
                         <div class="col-12 ps-5 pt-5">
@@ -85,7 +85,7 @@
                                             </h4>
                                             <?php
                                                 foreach($id as $x){
-                                                    echo "<input type='checkbox' name='idmarque[]' value=$x><hr>";
+                                                    echo "<input type='checkbox' name='IdMarque[]' value=$x><hr>";
                                                 }
                                             ?>
                                         </form>
@@ -100,9 +100,9 @@
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if(isset($_POST['ajouter_marque'])) {
-                    inserer();
+                    inserer('marque', ['NomMarque',]);
                 } elseif(isset($_POST['supprimer_marque'])) {
-                    supprimer();
+                    supprimer('marque', 'IdMarque');
                 }
             }
         ?>

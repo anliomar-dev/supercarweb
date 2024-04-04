@@ -20,7 +20,7 @@
                         <div class="col-12"><h5>Espace administrateur</h5></div>
                         <div class="col-12"><img src="../images/logo_adminb.png" alt="" class="img-fluid"></div>
                         <form action="" class="col-12">
-                            <input type="text" class="text-center mt-3" placeholder="Identifiant">
+                            <input autofocus type="text" class="text-center mt-3" placeholder="Identifiant">
                             <input type="password" name="" id="" class="text-center mt-3" placeholder="Mot de passe">
                             <input type="submit" class="mt-3">
                         </form>

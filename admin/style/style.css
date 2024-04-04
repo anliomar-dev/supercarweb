@@ -19,7 +19,7 @@ img{
     max-height: 130px;
 }
 
-input[type="text"], input[type="password"]{
+input[type="text"], input[type="password"], input[type="number"]{
     border-radius: 5px;
     outline: none;
 }

@@ -26,10 +26,10 @@ input[type="submit"]:hover{
     border-radius: 6px;
     opacity: 1;
 }
-input[type="text"]{
+input[type="text"], input[type="number"] {
     border: solid 2px black;
     border-radius: 4px;
-    background-color: #d5d5d5;
+    background-color: #ffffff;
 }
 input[type="text"]:focus{
     background-color: white;
@@ -50,8 +50,4 @@ a:hover{
 
 .supprimer{
     font-size: 10px;
-}
-
-body{
-    background-color: #ff0000;
 }

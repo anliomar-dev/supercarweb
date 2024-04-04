@@ -1,23 +1,3 @@
-<?php
-    include("fonctions.php");
-    include("server.php");
-    $id = [];
-    $modele_noms = [];
-    $prix_modele = [];
-    $selection = "SELECT * FROM modele order by IdModele";
-    $curseur = mysqli_query($dbd, $selection);
-    while($row = mysqli_fetch_array($curseur)){
-        $IdModele = $row["IdModele"];
-        array_push($id, $IdModele);
-        $NomModele = $row["NomModele"];
-        array_push($modele_noms, $NomModele);
-        $prix = $row["Prix"];
-        array_push($prix_modele, $prix);
-    }
-    mysqli_free_result($curseur);
-    // fermeture de la connexion avec la base de données
-    mysqli_close($dbd);
-?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -31,24 +11,44 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/marque_admin.css">
+        <style>
+            .formulaire_modele{
+                position: sticky;
+                top: 0;
+            }
+            @media screen and (max-width: 991px){
+                .formulaire_modele{
+                position: static;
+            }
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid border">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border formulaire_modele" style="height: 100vh">
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
-                            <div class="row p-3">
+                            <div class="row p-3 border bg-primary">
                                 <div class="col-12">
                                     <label for="nom-marque">Nom du modele</label>
-                                    <input class="col-12" type="text" name="nom-marque" required>
+                                    <input class="col-12" type="text" name="NomModele" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="nom-marque">Prix</label>
-                                    <input class="col-12" type="number" name="nom-marque" required>
+                                    <input class="col-12" type="number" name="Prix" min=1 required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="nom-marque">Marque</label>
+                                    <select class="col-12" name="IdMarque" id="">
+                                        <?php
+                                            include("test.php");
+                                            option_marques();
+                                        ?>
+                                    </select>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <input type="submit" name="ajouter_marque" value="ajouter">
+                                    <input type="submit" name="ajouter_modele" value="ajouter">
                                 </div>
                             </div>
                         </form>
@@ -57,60 +57,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border pt-5">
-                    <div class="row">
-                        <div class="col-4 border">
+                <div class='col-12 col-sm-12 col-md-12 col-lg-8 border mt-3'>
+                    <form class='row' action='' method='post'>
+                        <div class="col-12 mb-3 sticky-top" style='background-color: #4A7696;'>
                             <div class="row">
-                                <div class="col-12">
-                                    <h3 class="col-12">Modele</h3>
-                                    <?php
-                                        foreach($modele_noms as $modele){
-                                            echo "<h5>$modele</h5><hr>";
-                                        }
-                                    ?>
-                                </div>
+                                <div class="col-4 border">(ID)_Modele</div>
+                                <div class="col-6 border">Prix</div>
+                                <div class="col-2 border text-center"><button value="supprimer" name="supprimer_modele" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
-                        <div class="col-4 border">
-                            <div class="row">
-                                <div class="col-12">
-                                    <h3 class="col-12">Prix</h3>
-                                    <?php
-                                        foreach($prix_modele as $prix){
-                                            echo "<h5>$prix</h5><hr>";
-                                        }
-                                    ?>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 border">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="col-12 text-center">
-                                        <form action="" method="POST">
-                                            <h4 class="col-12">
-                                                <button value="supprimer" name="supprimer_marque" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button>
-                                            </h4>
-                                            <?php
-                                                foreach($id as $x){
-                                                    echo "<input type='checkbox' name='idmarque[]' value=$x><hr>";
-                                                }
-                                            ?>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>
+                        <?php
+                            afficher_infos_modeles();
+                        ?>
+                    </form>
                 </div>
             </div>
         </div>
         <?php
+            include("fonctions.php");
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_marque'])) {
-                    inserer();
-                } elseif(isset($_POST['supprimer_marque'])) {
-                    supprimer();
+                if(isset($_POST['ajouter_modele'])) {
+                    inserer('modele', ['NomModele', 'Prix', 'IdMarque']);
+                } elseif(isset($_POST['supprimer_modele'])) {
+                    supprimer('modele', 'IdModele');
                 }
             }
         ?>

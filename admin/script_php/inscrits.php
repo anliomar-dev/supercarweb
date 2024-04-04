@@ -20,27 +20,15 @@
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
                                 <div class="col-12">
-                                    <label for="nom-marque">Couleur:</label>
-                                    <input class="col-12" type="text" name="Couleur" required>
+                                    <label for="nom-marque">Nom du modele</label>
+                                    <input class="col-12" type="text" name="nom-marque" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="nom-marque">Moteur:</label>
-                                    <input class="col-12" type="text" name="Moteur" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="nom-marque">Carburant:</label>
-                                    <input class="col-12" type="text" name="Carburant" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="nom-marque">Km:</label>
-                                    <input class="col-12" type="number" name="Km" required>
-                                </div>
-                                <div class="col-12">
-                                    <label for="nom-marque">Boite vitesse:</label>
-                                    <input class="col-12" type="text" name="" required>
+                                    <label for="nom-marque">Prix</label>
+                                    <input class="col-12" type="number" name="nom-marque" required>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <input type="submit" name="ajouter_voiture" value="ajouter">
+                                    <input type="submit" name="ajouter_marque" value="ajouter">
                                 </div>
                             </div>
                         </form>
@@ -53,17 +41,17 @@
                     <form class='row' action='' method='post'>
                         <div class="col-12 mb-3 sticky-top" style='background-color: #4A7696;'>
                             <div class="row">
-                                <div class="col-2 border">Couleur</div>
-                                <div class="col-3 border">Moteur</div>
-                                <div class="col-2 border">Carburant</div>
-                                <div class="col-1 border">Km</div>
-                                <div class="col-3 border">Boite vitesse</div>
-                                <div class="col-1 border text-center"><button value="supprimer" name="supprimer_voiture" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-2 border">Prenom</div>
+                                <div class="col-3 border">Nom</div>
+                                <div class="col-2 border">Adresse</div>
+                                <div class="col-1 border">Telephone</div>
+                                <div class="col-3 border">Email</div>
+                                <div class="col-1 border text-center"><button value="supprimer" name="supprimer_Modele" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
                             include("test.php");
-                            afficher_infos_voitures();
+                            afficher_infos_inscrits();
                         ?>
                     </form>
                 </div>
@@ -71,10 +59,10 @@
         </div>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_voiture'])) {
-                    inserer('voiture', ['']);
-                } elseif(isset($_POST['supprimer_voiture'])) {
-                    supprimer('voiture', 'IdVoiture');
+                if(isset($_POST['ajouter_marque'])) {
+                    inserer();
+                } elseif(isset($_POST['supprimer_marque'])) {
+                    supprimer();
                 }
             }
         ?>

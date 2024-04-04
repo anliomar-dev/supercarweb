@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">voitures</p>
-                                            <a href="">➕add</a>
+                                            <a href="voitures_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Modèles</p>
@@ -54,11 +54,11 @@
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Inscriptions</p>
-                                            <a href="">➕add</a>
+                                            <a href="inscrits.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Contacts</p>
-                                            <a href="">➕add</a>
+                                            <a href="contacts.php">➕add</a>
                                         </div>
                                     </div>
                                 </div>
