@@ -10,14 +10,12 @@
         include("connexion.php");
         //si le bouton [submit] est pressé, on affect les valeurs remplient sur le formulaire aux variables correpondants
         if (isset($_POST["submit"])){
-            $nom = $_POST["nom"];
-            $prenom = $_POST["prenom"];
-            $adresse = $_POST["adresse"];
-            $telephone = $_POST["telephone"];
-            $email = $_POST["email"];
-            $identifiant = $_POST["identifiant"];
-            $mot_de_passe = $_POST["mot_de_passe"];
-            $confirme_pass = $_POST["confirme_pass"];
+            $nom = mysqli_real_escape_string($dbd, $_POST["nom"]);
+            $prenom = mysqli_real_escape_string($dbd, $_POST["prenom"]);
+            $adresse = mysqli_real_escape_string($dbd, $_POST["adresse"]);
+            $telephone = mysqli_real_escape_string($dbd, $_POST["telephone"]);
+            $mot_de_passe = mysqli_real_escape_string($dbd, $_POST["mot_de_passe"]);
+            $confirme_pass = mysqli_real_escape_string($dbd, $_POST["confirme_pass"]);
             // Supposons que l'identifiant soit stocké dans une variable $identifiant
             $identifiant = mysqli_real_escape_string($dbd, $_POST['identifiant']);
             // Supposons que l'adresse email soit stocké dans une variable $Email

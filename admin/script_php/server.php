@@ -12,7 +12,7 @@
         //echo "connexion a MySql réussi <br>";
     }
     else{
-        echo "connexion a MySql non réussi:" . mysqli_connect_error();
+        die("La connexion à la base de données a échoué: " . mysqli_connect_error());
     }
     mysqli_set_charset($dbd, "utf8");
 ?>

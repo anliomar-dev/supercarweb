@@ -1,3 +1,7 @@
+<?php
+    include("fonctions.php");
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,24 +16,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/marque_admin.css">
         <style>
-            .formulaire_modele{
+            .formulaire-gauche{
                 position: sticky;
                 top: 0;
             }
             @media screen and (max-width: 991px){
-                .formulaire_modele{
+                .formulaire-gauche{
                 position: static;
             }
             }
         </style>
     </head>
     <body>
-        <div class="container-fluid border">
+        <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border formulaire_modele" style="height: 100vh">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 text-bg-info formulaire-gauche" style="height: 100vh">
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
-                            <div class="row p-3 border bg-primary">
+                            <div class="row p-3">
                                 <div class="col-12">
                                     <label for="nom-marque">Nom du modele</label>
                                     <input class="col-12" type="text" name="NomModele" required>
@@ -42,13 +46,13 @@
                                     <label for="nom-marque">Marque</label>
                                     <select class="col-12" name="IdMarque" id="">
                                         <?php
-                                            include("test.php");
-                                            option_marques();
+                                            $options_marques = option_marques();
+                                            echo $options_marques; 
                                         ?>
                                     </select>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <input type="submit" name="ajouter_modele" value="ajouter">
+                                    <input type="submit" name="ajouter_modele" value="ajouter" class="btn btn-primary">
                                 </div>
                             </div>
                         </form>
@@ -57,13 +61,13 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12 col-lg-8 border mt-3'>
+                <div class='col-12 col-sm-12 col-md-12 col-lg-8'>
                     <form class='row' action='' method='post'>
-                        <div class="col-12 mb-3 sticky-top" style='background-color: #4A7696;'>
+                        <div class="col-12 mb-3 sticky-top text-bg-info">
                             <div class="row">
-                                <div class="col-4 border">(ID)_Modele</div>
-                                <div class="col-6 border">Prix</div>
-                                <div class="col-2 border text-center"><button value="supprimer" name="supprimer_modele" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-4 p-3 border">(ID)_Modele</div>
+                                <div class="col-6 p-3 border">Prix</div>
+                                <div class="col-2 p-3 border text-center"><button class="text-bg-info" value="supprimer_modele" name="supprimer_modele" style="border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
@@ -74,7 +78,6 @@
             </div>
         </div>
         <?php
-            include("fonctions.php");
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if(isset($_POST['ajouter_modele'])) {
                     inserer('modele', ['NomModele', 'Prix', 'IdMarque']);

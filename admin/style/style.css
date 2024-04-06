@@ -12,6 +12,7 @@ input[type="submit"]{
     background-color: rgb(68, 26, 98);
     color: white;
     border-radius: 5px;
+    color: rgb(232, 232, 232);
 }
 
 img{

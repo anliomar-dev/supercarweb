@@ -1,6 +1,7 @@
 <?php
+    include("server.php");
     function option_marques(){
-        include("server.php");
+        global $dbd;
         $id = [];
         $selection = "SELECT * FROM marque order by IdMarque";
         $curseur = mysqli_query($dbd, $selection);
@@ -12,12 +13,23 @@
         }
         mysqli_free_result($curseur);
         // fermeture de la connexion avec la base de données
-        mysqli_close($dbd);
     }
-
-
+    function option_modeles(){
+        global $dbd;
+        $id = [];
+        $selection = "SELECT * FROM modele order by IdModele";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdModele = $row["IdModele"];
+            array_push($id, $IdModele);
+            $NomModele = $row["NomModele"];
+            echo"<option value='$IdModele'>$NomModele</option>";
+        }
+        mysqli_free_result($curseur);
+        // fermeture de la connexion avec la base de données
+    }
     function afficher_infos_modeles(){
-        include("server.php");
+        global $dbd;
         $selection = "SELECT * FROM modele order by IdModele";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
@@ -29,18 +41,16 @@
                     <div class='row'>
                         <div class='col-4 border'>($IdModele)_$NomModele</div>
                         <div class='col-6 border'>€ $prix</div>
-                        <div class='col-2 border text-center'><input type='checkbox' name='idModele[]' value=$IdModele></div>
+                        <div class='col-2 border text-center'><input type='checkbox' name='IdModele[]' value=$IdModele></div>
                     </div>
                 </div>
                 ";
         }
         mysqli_free_result($curseur);
         // fermeture de la connexion avec la base de données
-        mysqli_close($dbd);
     }
-
     function afficher_infos_voitures(){
-        include("server.php");
+        global $dbd;
         $selection = "SELECT * FROM voitures order by IdVoiture";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
@@ -58,17 +68,15 @@
                         <div class='col-2'>$Carburant</div>
                         <div class='col-1'>$Km</div>
                         <div class='col-3'>$BoiteVitesse</div>
-                        <div class='col-1 border text-center'><input type='checkbox' name='idVoiture[]' value=$IdVoiture></div>
+                        <div class='col-1 border text-center'><input type='checkbox' name='IdVoiture[]' value=$IdVoiture></div>
                     </div>
                 </div>";
         }
         mysqli_free_result($curseur);
         // fermeture de la connexion avec la base de données
-        mysqli_close($dbd);
     }
-
     function afficher_infos_inscrits(){
-        include("server.php");
+        global $dbd;
         $selection = "SELECT * FROM inscription order by IdInscription";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
@@ -86,12 +94,11 @@
                         <div class='col-2'>$adresse</div>
                         <div class='col-2'>$telephone</div>
                         <div class='col-3'>$email</div>
-                        <div class='col-1 border text-center'><input type='checkbox' name='idVoiture[]' value=$IdInscription></div>
+                        <div class='col-1 border text-center'><input type='checkbox' name='IdInscription[]' value=$IdInscription></div>
                     </div>
                 </div>";
         }
         mysqli_free_result($curseur);
         // fermeture de la connexion avec la base de données
-        mysqli_close($dbd);
     }
 ?>

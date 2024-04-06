@@ -9,7 +9,16 @@
 
 .left{
     background-color: rgb(255, 255, 255);
+    position: sticky;
+    top: 0;
 }
+
+@media screen and (max-width: 991px){
+    .left{
+    position: static;
+}
+}
+
 
 .col-2, .col-10{
     height: 100vh;
@@ -70,3 +79,4 @@ h4{
     padding: 10px;
     border-radius: 6px;
 }
+

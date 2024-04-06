@@ -31,31 +31,23 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 border text-bg-info formulaire-gauche" style="height: 100vh">
                     <div class="row">
-                        <form action="" method="POST" class="col-12 p-3 mt-5 mb-5" >
+                        <form action="" method="POST" class="col-12 p-3 mt-3 mb-5" >
                             <div class="row p-3">
-                                <div class="col-6">
-                                    <label for="nom-marque">Couleur:</label>
-                                    <input class="col-12 form-control" type="text" name="Couleur" required>
-                                </div>
-                                <div class="col-6">
-                                    <label for="nom-marque">Boite vitesse:</label>
-                                    <input class="col-12 form-control" type="text" name="BoiteVitesse" required>
-                                </div>
-                                <div class="col-12 pt-3">
-                                    <label for="nom-marque">Moteur:</label>
-                                    <input class="col-12 form-control" type="text" name="TypeMoteur" required>
+                                <div class="col-12">
+                                    <label for="nom-marque">email:</label>
+                                    <input class="col-12 form-control" type="email" name="email" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Carburant:</label>
-                                    <input class="col-12 form-control" type="text" name="Carburant">
+                                    <label for="nom-marque">Date de l'essai:</label>
+                                    <input class="col-12 form-control" type="date" name="DateEssaie" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Km:</label>
-                                    <input class="col-12 form-control" type="number" min="0" name="Km" required>
+                                    <label for="nom-marque">Heure:</label>
+                                    <input class="col-12 form-control" type="time" name="HeureEssaie" required>
                                 </div>
                                 <div class="col-6 pt-3">
                                     <label for="nom-marque">Marque</label>
-                                    <select class="col-12 form-select" name="IdMarque" id="">
+                                    <select class="col-12 form-select" name="Marque" id="">
                                         <?php
                                             $options_marques = option_marques();
                                             echo $options_marques; 
@@ -64,18 +56,33 @@
                                 </div>
                                 <div class="col-6 pt-3">
                                     <label for="nom-marque">Modele</label>
-                                    <select class="col-12 form-select" name="IdModele" id="">
+                                    <select class="col-12 form-select" name="Modele" id="">
                                         <?php
                                             $options_modeles = option_modeles();
                                             echo $options_modeles;
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-6 mt-3">
-                                    <input type="submit" name="ajouter_voitures" value="ajouter" class="btn btn-primary">
+                                <div class="mt-3">
+                                    <label for="marque_voiture" class="form-label">moteur:</label><br>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="moteur" id="thermique" value="thermique" checked>
+                                        <label class="form-check-label" for="thermique">thermique</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="moteur" id="electrique" value="electrique">
+                                        <label class="form-check-label" for="electrique">electrique</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="moteur" id="hybride" value="hybride">
+                                        <label class="form-check-label" for="hybride">Hybride</label>
+                                    </div>
                                 </div>
                                 <div class="col-6 mt-3">
-                                    <input type="reset"  value="reset" class="omar">
+                                    <input type="submit" name="ajouter_essaie" value="ajouter" class="btn btn-primary">
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="reset"  value="reset">
                                 </div>
                             </div>
                         </form>
@@ -88,17 +95,14 @@
                     <form class='row' action='' method='POST'>
                         <div class="col-12 mb-3 sticky-top text-bg-info">
                             <div class="row">
-                                <div class="col-2 border p-3">Couleur</div>
-                                <div class="col-3 border p-3">Moteur</div>
-                                <div class="col-2 border p-3">Carburant</div>
-                                <div class="col-1 border p-3">Km</div>
-                                <div class="col-3 border p-3">Boite vitesse</div>
-                                <div class="col-1 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_voitures" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-4 border p-3">Prenom</div>
+                                <div class="col-4 border p-3">Nom</div>
+                                <div class="col-2 border p-3">Date</div>
+                                <div class="col-2 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_demandeessaie" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
-                            $infos_voitures = afficher_infos_voitures();
-                            echo $infos_voitures;
+                            afficher_infos_essaies();
                         ?>
                     </form>
                 </div>
@@ -106,14 +110,10 @@
         </div>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_voitures'])) {
-                    inserer('voitures', ['Couleur', 'TypeMoteur', 'Carburant', 'Km', 'BoiteVitesse', 'IdModele', 'IdMarque']);
-                    header("Location: dashboard.php");
-                    exit;
-                } elseif(isset($_POST['supprimer_voitures'])) {
-                    supprimer('voitures', 'IdVoiture');
-                    header("Location: dashboard.php");
-                    exit;
+                if(isset($_POST['ajouter_essaie'])) {
+                    ajouter_DemandeEssaie();
+                } elseif(isset($_POST['supprimer_demandeessaie'])) {
+                    supprimer('demandeessaie', 'Ref_Essaie');
                 }
             }
         ?>

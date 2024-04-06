@@ -1,26 +1,11 @@
 <?php
-    /*function inserer(){
-        include("server.php");
-        if(isset($_POST["ajouter_marque"])){
-            $nom_marque = mysqli_real_escape_string($dbd, $_POST["nom-marque"]);
-            //requete de selection
-            $inserer_marque = "INSERT INTO marque (NomMarque) VALUE('$nom_marque')";
-            $executer = mysqli_query($dbd, $inserer_marque);
-            if($executer){
-                header("Location: ".$_SERVER['PHP_SELF']);
-                exit();
-            }
-            mysqli_close($dbd);
-        }else {
-            echo "<p>Erreur lors de l'ajout de la marque</p>";
-        }
-    }*/
+    ob_start();
+    include("server.php");
     function inserer($table, $colonnes) {
-        include("server.php");
+        global $dbd;
         $insertion = false;
-        // Créer une chaîne pour stocker les noms des colonnes
+        $erreur = ""; // Variable pour stocker les messages d'erreur
         $noms_colonnes = implode(",", $colonnes);
-        // Créer une chaîne pour stocker les valeurs des colonnes
         $valeurs = [];
         foreach ($colonnes as $colonne) {
             $valeurs[] = "'" . mysqli_real_escape_string($dbd, $_POST[$colonne]) . "'";
@@ -31,69 +16,208 @@
             $executer = mysqli_query($dbd, $inserer);
             if($executer){
                 $insertion = true;
-            }
-            if($insertion){
-                header("Location: ".$_SERVER['PHP_SELF']);
-                exit();
-            }
-            mysqli_close($dbd);
-        } else {
-            echo "<p>Erreur lors de l'ajout dans $table</p>";
-        }
-    }
-
-    /*function supprimer(){
-        include("server.php");
-        if(isset($_POST["supprimer_marque"])){
-            $suppression = false;
-            if(isset($_POST["idmarque"]) && is_array($_POST["idmarque"])){
-                foreach($_POST["idmarque"] as $identifiant){
-                    $supprimer_marques = "DELETE FROM marque WHERE IdMarque='$identifiant'";
-                    $suppression = mysqli_query($dbd, $supprimer_marques);
-                    if($suppression){
-                        $suppression = true;
-                    }
-                }
-                if($suppression){
-                    header("Location: ".$_SERVER['PHP_SELF']);
-                    exit();
-                } else {
-                    echo "<p align='center' class='pt-3' style='color: red'>Aucune marque sélectionnée pour la suppression.</p>";
-                }
             } else {
-                echo "<p align='center' class='pt-3' style='color: red'>Aucune marque sélectionnée pour la suppression.</p>";
+                $erreur = "<p>Erreur lors de l'insertion dans $table: " . mysqli_error($dbd) . "</p>";
             }
-            mysqli_close($dbd);
-        } else {
-            echo "<p>Aucune action de suppression demandée.</p>";
         }
-    }*/
-
+        mysqli_close($dbd);
+        return $erreur; // Retourne le message d'erreur
+    }
     function supprimer($table, $cle_primaire){
-        include("server.php");
+        global $dbd;
+        $erreur = ""; // Variable pour stocker les messages d'erreur
         if(isset($_POST["supprimer_$table"])){
             $suppression = false;
             if(isset($_POST[$cle_primaire]) && is_array($_POST[$cle_primaire])){
                 foreach($_POST[$cle_primaire] as $identifiant){
                     $supprimer = "DELETE FROM $table WHERE $cle_primaire='$identifiant'";
-                    $suppression = mysqli_query($dbd, $supprimer);
-                    if($suppression){
+                    $executer_suppression = mysqli_query($dbd, $supprimer);
+                    if($executer_suppression){
                         $suppression = true;
+                    } else {
+                        $erreur = "<p>Erreur lors de la suppression dans $table: " . mysqli_error($dbd) . "</p>";
                     }
                 }
-                if($suppression){
-                    header("Location: ".$_SERVER['PHP_SELF']);
-                    exit();
-                } else {
-                    echo "<p align='center' class='pt-3' style='color: red'>Aucune marque sélectionnée pour la suppression.</p>";
-                }
-            } else {
-                echo "<p align='center' class='pt-3' style='color: red'>Aucune marque sélectionnée pour la suppression.</p>";
             }
-            mysqli_close($dbd);
-        } else {
-            echo "<p>Aucune action de suppression demandée.</p>";
+        }
+        mysqli_close($dbd);
+        return $erreur; // Retourne le message d'erreur
+    }
+    function option_marques(){
+        global $dbd;
+        $options_marques = '';
+        $id = [];
+        $selection = "SELECT * FROM marque order by IdMarque";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdMarque = $row["IdMarque"];
+            array_push($id, $IdMarque);
+            $NomMarque = $row["NomMarque"];
+            $options_marques .= "<option value='$IdMarque'>$NomMarque</option>";
+        }
+        mysqli_free_result($curseur);
+        return $options_marques;
+    }
+    function option_modeles(){
+        global $dbd;
+        $options_modeles = '';
+        $id = [];
+        $selection = "SELECT * FROM modele order by IdModele";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdModele = $row["IdModele"];
+            array_push($id, $IdModele);
+            $NomModele = $row["NomModele"];
+            $options_modeles .= "<option value='$IdModele'>$NomModele</option>";
+        }
+        mysqli_free_result($curseur);
+        return $options_modeles;
+    }
+    function afficher_infos_modeles(){
+        global $dbd;
+        $selection = "SELECT * FROM modele order by IdModele";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdModele = $row["IdModele"];
+            $NomModele = $row["NomModele"];
+            $prix = $row["Prix"];
+            echo "
+                <div class='col-12 mt-3'>
+                    <div class='row'>
+                        <div class='col-4 p-3 border'>($IdModele)_$NomModele</div>
+                        <div class='col-6 p-3 border'>€ $prix</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdModele[]' value=$IdModele></div>
+                    </div>
+                </div>
+                ";
+        }
+        mysqli_free_result($curseur);
+        // fermeture de la connexion avec la base de données
+    }
+    function afficher_infos_voitures(){
+        global $dbd;
+        $infos_voitures = "";
+        $selection = "SELECT * FROM voitures order by IdVoiture";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdVoiture = $row["IdVoiture"];
+            $Couleur = $row["Couleur"];
+            $typemoteur = $row["TypeMoteur"];
+            $Carburant = $row["Carburant"];
+            $Km = $row["Km"];
+            $BoiteVitesse = $row["BoiteVitesse"];
+            $infos_voitures .= "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-2 p-3'>$Couleur</div>
+                        <div class='col-3 p-3'>$typemoteur</div>
+                        <div class='col-2 p-3'>$Carburant</div>
+                        <div class='col-1 p-3'>$Km</div>
+                        <div class='col-3 p-3'>$BoiteVitesse</div>
+                        <div class='col-1 p-3 border text-center'><input type='checkbox' name='IdVoiture[]' value=$IdVoiture></div>
+                    </div>
+                </div>";
+        }
+        mysqli_free_result($curseur);
+        return $infos_voitures;
+    }
+    function afficher_infos_inscrits(){
+        global $dbd;
+        $selection = "SELECT * FROM inscription order by IdInscription";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdInscription = $row["IdInscription"];
+            $nom= $row["Nom"];
+            $prenom = $row["Prenom"];
+            $adresse = $row["Adresse"];
+            $telephone = $row["NumTel"];
+            $email = $row["email"];
+            echo "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-3 p-3'><a href='test2.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
+                        <div class='col-3 p-3'>$nom</div>
+                        <div class='col-4 p-3'>$adresse</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdInscription[]' value=$IdInscription></div>
+                    </div>
+                </div>";
+        }
+        mysqli_free_result($curseur);
+    }
+
+    function afficher_infos_marques(){
+        global $dbd;
+        $selection = "SELECT * FROM marque order by IdMarque";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdMarque = $row["IdMarque"];
+            $NomMarque = $row["NomMarque"];
+            echo "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-4 p-3'>$IdMarque</div>
+                        <div class='col-6 p-3'>$NomMarque</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdMarque[]' value=$IdMarque></div>
+                    </div>
+                </div>
+            ";
+        }
+        mysqli_free_result($curseur);
+    }
+
+    function afficher_infos_essaies(){
+        global $dbd;
+        $selection = "SELECT demandeessaie.*, inscription.Nom, inscription.Prenom 
+        FROM demandeessaie 
+        INNER JOIN inscription ON demandeessaie.IdInscription = inscription.IdInscription
+        ORDER BY DateEssaie DESC;
+        ";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $Ref_Essaie = $row["Ref_Essaie"];
+            $IdInscription = $row["IdInscription"];
+            $DateEssaie= $row["DateEssaie"];
+            $HeureEssaie = $row["HeureEssaie"];
+            $Prenom = $row["Prenom"];
+            $Nom = $row["Nom"];
+            echo "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-4 p-3'>$Prenom</div>
+                        <div class='col-4 p-3'>$Nom</div>
+                        <div class='col-2 p-3'>$DateEssaie</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='Ref_Essaie[]' value=$Ref_Essaie></div>
+                    </div>
+                </div>";
+        }
+        mysqli_free_result($curseur);
+    }
+
+    function ajouter_DemandeEssaie(){
+        global $dbd;
+        if(isset($_POST["ajouter_essaie"])){
+            $email = mysqli_real_escape_string($dbd, $_POST["email"]);
+            $date = mysqli_real_escape_string($dbd, $_POST["DateEssaie"]);
+            $heure = mysqli_real_escape_string($dbd, $_POST["HeureEssaie"]);
+            $marque = mysqli_real_escape_string($dbd, $_POST["Marque"]);
+            $modele = mysqli_real_escape_string($dbd, $_POST["Modele"]);
+            $moteur = mysqli_real_escape_string($dbd, $_POST["moteur"]);
+             // Vérifier si l'adresse email existe déjà
+            $requete_email = "SELECT * FROM inscription WHERE email = '$email'";
+            $resultat_email = mysqli_query($dbd, $requete_email);
+            if (mysqli_num_rows($resultat_email) > 0) {
+                $row = mysqli_fetch_array($resultat_email);
+                //l'email existe dans la base de données
+                $IdInscription = $row["IdInscription"];
+                $inserer = "INSERT INTO demandeessaie (DateEssaie, HeureEssaie, Marque, Modele, Moteur, IdInscription)
+                        Values ('$date', '$heure', '$marque', '$modele', '$moteur', '$IdInscription')
+                ";
+                mysqli_query($dbd, $inserer);
+            }else{
+                //cas où l'email ne figure pas dans la base de donées
+                echo"l'email ne figure pas dans la base de données";
+            }
         }
     }
-    
+    ob_end_flush();
 ?>

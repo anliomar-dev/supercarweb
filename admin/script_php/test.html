@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste déroulante avec filtrage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #optionsFiltrees {
+            display: none;
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        #optionsFiltrees div {
+            cursor: pointer;
+            padding: 5px;
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <input type="" name="" id="">
+<h2>Recherche dans la liste déroulante</h2>
+<label for="mot">Entrez un mot :</label>
+<input type="text" id="mot" name="mot">
+<div id="optionsFiltrees"></div>
+<select id="liste" style="display: none; width: 150px;">
+    <option value="France">France</option>
+    <option value="Germany">Germany</option>
+    <option value="Spain">Spain</option>
+    <option value="Italy">Italy</option>
+    <option value="Mexico">Mexico</option>
+    <option value="Morocco">Morocco</option>
+    <option value="Malaysia">Malaysia</option>
+    <option value="Mali">Mali</option>
+    <option value="Maldives">Maldives</option>
+</select>
+
+<script>
+    document.getElementById('mot').addEventListener('input', function() {
+        filtrerListe();
+    });
+
+    function filtrerListe() {
+        var input = document.getElementById('mot').value.toLowerCase();
+        var select = document.getElementById('liste');
+        var options = select.getElementsByTagName('option');
+        var optionsFiltreesDiv = document.getElementById('optionsFiltrees');
+        optionsFiltreesDiv.innerHTML = '';
+        for (var i = 0; i < options.length; i++) {
+            var txtValue = options[i].text.toLowerCase();
+            if (txtValue.indexOf(input) > -1) {
+                var option = document.createElement('div');
+                option.textContent = options[i].text;
+                option.onclick = function() {
+                    document.getElementById('mot').value = this.textContent;
+                    optionsFiltreesDiv.innerHTML = '';
+                };
+                optionsFiltreesDiv.appendChild(option);
+            }
+        }
+        if (optionsFiltreesDiv.innerHTML !== '') {
+            optionsFiltreesDiv.style.display = 'block';
+        } else {
+            optionsFiltreesDiv.style.display = 'none';
+        }
+    }
+</script>
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            this.textContent = 'Masquer';
+        } else {
+            passwordInput.type = 'password';
+            this.textContent = 'Afficher';
+        }
+    });
+</script>
+</body>
+</html>
+

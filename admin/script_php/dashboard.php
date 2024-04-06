@@ -20,7 +20,7 @@
         </div>
         <div class="container-fluid mt-3">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border pt-5 px-5 left">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border pt-5 px-5 left" style="height: 100vh">
                     <div class="row">
                         <div class="col-12 p-3">
                             <div class="row">
@@ -58,7 +58,15 @@
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Contacts</p>
-                                            <a href="contacts.php">➕add</a>
+                                            <a href="contacts_admin.php">➕add</a>
+                                        </div>
+                                        <div class="col-12 pt-3 border d-flex justify-content-between px-3">
+                                            <p class="table">evenements</p>
+                                            <a href="evenements_admin.php">➕add</a>
+                                        </div>
+                                        <div class="col-12 pt-3 border d-flex justify-content-between px-3">
+                                            <p class="table">demandes d'essais</p>
+                                            <a href="essai_admin.php">➕add</a>
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border text-center pt-3 px-5 right">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border text-center pt-3 right text-bg-info">
                     <div class="row">
                         <div class="col-12 mb-5 mt-3">
                             <div class="row right-links">
@@ -76,31 +84,12 @@
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Deconnexion</a></div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3 features">
-                            <div class="row view-site-users">
-                                <div class="col-12 pt-3">Utiliateurs du site</div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 m-3 features">
-                            <div class="row view-site-users">
-                                <div class="col-12 pt-3">marques et voitures</div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div> 
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                                <div class="col-6 p-3"><p>Lorem ipsum dolor sit amet.</p></div>
-                            </div>
-                        </div>
-                        <div class="col-11 m-3 features">
+                        <div class="col-12 ">
                             <div class="row">
-                                <div class="col-12">Statistiques</div>
-                                <div class="col-12 p-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                                    Hic soluta suscipit eaque cumque neque voluptatem voluptatum 
-                                    ab quis sint labore consequuntur sequi eius nihil alias ut totam, ad at temporibus!
-                                </div>
+                                <div class="col-6 p-3"><button class="">button</button></div>
+                                <div class="col-6 p-3"><button class="">button</button></div>
+                                <div class="col-6 p-3"><button class="">button</button></div>
+                                <div class="col-6 p-3"><button class="">button</button></div>
                             </div>
                         </div>
                     </div>

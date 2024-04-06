@@ -21,7 +21,15 @@ input[type="submit"]{
     box-shadow: 2px 2px 5px black;
     transition: border-radius 0.5s, opacity 0.5s;
 }
-
+input[type="reset"]{
+    background-color: #966b4a;
+    border: solid 1px #966b4a;
+    border-radius: 2px;
+    color: white;
+    opacity: 0.9;
+    box-shadow: 2px 2px 5px black;
+    transition: border-radius 0.5s, opacity 0.5s;
+}
 input[type="submit"]:hover{
     border-radius: 6px;
     opacity: 1;
@@ -33,7 +41,7 @@ input[type="text"], input[type="number"] {
 input[type="text"]:focus{
     background-color: white;
 }
-a.retour{
+a{
     padding: 1% 2%;
     margin-left: 1%;
     color: white;
