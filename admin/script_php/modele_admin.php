@@ -35,29 +35,32 @@
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
                                 <div class="col-12">
-                                    <label for="nom-marque">Nom du modele</label>
-                                    <input class="col-12" type="text" name="NomModele" required>
+                                    <label for="modele">Nom du modele</label>
+                                    <input class="col-12 form-control" type="text" name="NomModele" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="nom-marque">Prix</label>
-                                    <input class="col-12" type="number" name="Prix" min=1 required>
+                                    <label for="Prix">Prix</label>
+                                    <input class="col-12 form-control" type="number" name="Prix" min=1 required>
                                 </div>
                                 <div class="col-12">
                                     <label for="nom-marque">Marque</label>
-                                    <select class="col-12" name="IdMarque" id="">
+                                    <select class="col-12 form-select" name="IdMarque" id="">
                                         <?php
                                             $options_marques = option_marques();
                                             echo $options_marques; 
                                         ?>
                                     </select>
                                 </div>
-                                <div class="col-12 mt-3">
+                                <div class="col-6 mt-3">
                                     <input type="submit" name="ajouter_modele" value="ajouter" class="btn btn-primary">
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php" class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

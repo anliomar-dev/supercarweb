@@ -25,32 +25,35 @@
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
                                 <div class="col-12">
-                                    <label for="nom-modele">Nom De Famille</label>
+                                    <label for="Nom">Nom De Famille</label>
                                     <input class="form-control" type="text" name="Nom" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="prix">Prenom</label>
+                                    <label for="prenom">Prenom</label>
                                     <input class="form-control" type="text" name="Prenom" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="nom-modele">Adresse</label>
+                                    <label for="adresse">Adresse</label>
                                     <input class="form-control" type="text" name="Adresse" required>
                                 </div>
                                 <div class="col-6">
-                                    <label for="nom-modele" class="col-12">NumTel</label>
+                                    <label for="telephone" class="col-12">NumTel</label>
                                     <input class="form-control" type="telephone" name="NumTel" id="phone" value="+1"  required>
                                 </div>
                                 <div class="col-6">
-                                    <label for="nom-modele">email</label>
+                                    <label for="email">email</label>
                                     <input class="form-control" type="email" name="email" required>
                                 </div>
-                                <div class="col-12 mt-3">
+                                <div class="col-6 mt-3">
                                     <input type="submit" name="ajouter_inscription" value="Valider" class="btn btn-primary">
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5 mb-3">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php" class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

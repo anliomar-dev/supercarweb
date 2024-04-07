@@ -1,104 +1,36 @@
-<?php
-    include("server.php");
-    function option_marques(){
-        global $dbd;
-        $id = [];
-        $selection = "SELECT * FROM marque order by IdMarque";
-        $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdMarque = $row["IdMarque"];
-            array_push($id, $IdMarque);
-            $NomMarque = $row["NomMarque"];
-            echo"<option value='$IdMarque'>$NomMarque</option>";
-        }
-        mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
-    }
-    function option_modeles(){
-        global $dbd;
-        $id = [];
-        $selection = "SELECT * FROM modele order by IdModele";
-        $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdModele = $row["IdModele"];
-            array_push($id, $IdModele);
-            $NomModele = $row["NomModele"];
-            echo"<option value='$IdModele'>$NomModele</option>";
-        }
-        mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
-    }
-    function afficher_infos_modeles(){
-        global $dbd;
-        $selection = "SELECT * FROM modele order by IdModele";
-        $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdModele = $row["IdModele"];
-            $NomModele = $row["NomModele"];
-            $prix = $row["Prix"];
-            echo "
-                <div class='col-12 mt-3'>
-                    <div class='row'>
-                        <div class='col-4 border'>($IdModele)_$NomModele</div>
-                        <div class='col-6 border'>€ $prix</div>
-                        <div class='col-2 border text-center'><input type='checkbox' name='IdModele[]' value=$IdModele></div>
-                    </div>
-                </div>
-                ";
-        }
-        mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
-    }
-    function afficher_infos_voitures(){
-        global $dbd;
-        $selection = "SELECT * FROM voitures order by IdVoiture";
-        $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdVoiture = $row["IdVoiture"];
-            $Couleur = $row["Couleur"];
-            $typemoteur = $row["TypeMoteur"];
-            $Carburant = $row["Carburant"];
-            $Km = $row["Km"];
-            $BoiteVitesse = $row["BoiteVitesse"];
-            echo "
-                <div class='col-12 border mt-3'>
-                    <div class='row'>
-                        <div class='col-2'>$Couleur</div>
-                        <div class='col-3'>$typemoteur</div>
-                        <div class='col-2'>$Carburant</div>
-                        <div class='col-1'>$Km</div>
-                        <div class='col-3'>$BoiteVitesse</div>
-                        <div class='col-1 border text-center'><input type='checkbox' name='IdVoiture[]' value=$IdVoiture></div>
-                    </div>
-                </div>";
-        }
-        mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
-    }
-    function afficher_infos_inscrits(){
-        global $dbd;
-        $selection = "SELECT * FROM inscription order by IdInscription";
-        $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdInscription = $row["IdInscription"];
-            $nom= $row["Nom"];
-            $prenom = $row["Prenom"];
-            $adresse = $row["Adresse"];
-            $telephone = $row["NumTel"];
-            $email = $row["email"];
-            echo "
-                <div class='col-12 border mt-3'>
-                    <div class='row'>
-                        <div class='col-2'>$prenom</div>
-                        <div class='col-2'>$nom</div>
-                        <div class='col-2'>$adresse</div>
-                        <div class='col-2'>$telephone</div>
-                        <div class='col-3'>$email</div>
-                        <div class='col-1 border text-center'><input type='checkbox' name='IdInscription[]' value=$IdInscription></div>
-                    </div>
-                </div>";
-        }
-        mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
-    }
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <?php
+            include("server.php");
+            if(isset($_GET["id"])){
+                $IdEvenement = $_GET["id"];
+                $selection = "SELECT * FROM evenement order by DateDebut DESC";
+                $curseur = mysqli_query($dbd, $selection);
+                while($row = mysqli_fetch_array($curseur)){
+                    $IdEvenement = $row["IdEvenement"];
+                    $theme = $row["théme"];
+                    $debut = $row["DateDebut"];
+                    $fin = $row["DateFin"];
+                    $image = $row["image"];
+                    $prix = $row["Prix"];
+                    echo "
+                        <div class='row'>
+                            <div class='col-12 p-3'>$theme</div>
+                            <div class='col-6 p-3'>$debut</div>
+                            <div class='col-6 p-3'>$fin</div>
+                            <div class='col-6'><img src='$image' alt='monimage' class='img-fluid'></div>
+                        </div>";
+                }
+                mysqli_free_result($curseur);
+            }
+        ?>
+    </div>
+</body>
+</html>

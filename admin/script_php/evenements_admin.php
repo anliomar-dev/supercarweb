@@ -33,54 +33,40 @@
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5" >
                             <div class="row p-3">
-                                <div class="col-6">
-                                    <label for="nom-marque">Couleur:</label>
-                                    <input class="col-12 form-control" type="text" name="Couleur" required>
+                                <div class="col-12">
+                                    <label for="theme">Théme:</label>
+                                    <input class="col-12 form-control" type="text" name="théme" required>
                                 </div>
-                                <div class="col-6">
-                                    <label for="nom-marque">Boite vitesse:</label>
-                                    <input class="col-12 form-control" type="text" name="BoiteVitesse" required>
+                                <div class="col-6 pt-3">
+                                    <label for="datedebut">Date du début:</label>
+                                    <input class="col-12 form-control" type="date" name="DateDebut" required>
+                                </div>
+                                <div class="col-6 pt-3">
+                                    <label for="datefin">Fin:</label>
+                                    <input class="col-12 form-control" type="date" name="DateFin" required>
+                                </div>
+                                <div class="col-6 pt-3">
+                                    <label for="image">Image:</label>
+                                    <input class="col-12 form-control" type="file"  name="image" required>
+                                </div>
+                                <div class="col-6 pt-3">
+                                    <label for="prix">Prix:</label>
+                                    <input class="col-12 form-control" type="number"  min=1 name="Prix" required>
                                 </div>
                                 <div class="col-12 pt-3">
-                                    <label for="nom-marque">Moteur:</label>
-                                    <input class="col-12 form-control" type="text" name="TypeMoteur" required>
-                                </div>
-                                <div class="col-6 pt-3">
-                                    <label for="nom-marque">Carburant:</label>
-                                    <input class="col-12 form-control" type="text" name="Carburant">
-                                </div>
-                                <div class="col-6 pt-3">
-                                    <label for="nom-marque">Km:</label>
-                                    <input class="col-12 form-control" type="number" min="0" name="Km" required>
-                                </div>
-                                <div class="col-6 pt-3">
-                                    <label for="nom-marque">Marque</label>
-                                    <select class="col-12 form-select" name="IdMarque" id="">
-                                        <?php
-                                            $options_marques = option_marques();
-                                            echo $options_marques; 
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-6 pt-3">
-                                    <label for="nom-marque">Modele</label>
-                                    <select class="col-12 form-select" name="IdModele" id="">
-                                        <?php
-                                            $options_modeles = option_modeles();
-                                            echo $options_modeles;
-                                        ?>
-                                    </select>
+                                    <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3"></textarea>
                                 </div>
                                 <div class="col-6 mt-3">
-                                    <input type="submit" name="ajouter_voitures" value="ajouter" class="btn btn-primary">
+                                    <input type="submit" name="ajouter_evenement" value="ajouter" class="btn btn-primary">
                                 </div>
                                 <div class="col-6 mt-3">
-                                    <input type="reset"  value="reset" class="omar">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php" class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>
@@ -88,17 +74,15 @@
                     <form class='row' action='' method='POST'>
                         <div class="col-12 mb-3 sticky-top text-bg-info">
                             <div class="row">
-                                <div class="col-2 border p-3">Couleur</div>
-                                <div class="col-3 border p-3">Moteur</div>
-                                <div class="col-2 border p-3">Carburant</div>
-                                <div class="col-1 border p-3">Km</div>
-                                <div class="col-3 border p-3">Boite vitesse</div>
-                                <div class="col-1 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_voitures" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-4 border p-3">Thème</div>
+                                <div class="col-3 border p-3">Debut</div>
+                                <div class="col-3 border p-3">Fin</div>
+                                <div class="col-2 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_evenement" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
-                            $infos_voitures = afficher_infos_voitures();
-                            echo $infos_voitures;
+                            $infos_evenements = afficher_infos_evenements();
+                            echo $infos_evenements;
                         ?>
                     </form>
                 </div>
@@ -106,12 +90,12 @@
         </div>
         <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_voitures'])) {
-                    inserer('voitures', ['Couleur', 'TypeMoteur', 'Carburant', 'Km', 'BoiteVitesse', 'IdModele', 'IdMarque']);
+                if(isset($_POST['ajouter_evenement'])) {
+                    inserer('voitures', ['théme', 'DateDebut', 'DateFin', 'Description', 'image', 'Prix']);
                     header("Location: dashboard.php");
                     exit;
-                } elseif(isset($_POST['supprimer_voitures'])) {
-                    supprimer('voitures', 'IdVoiture');
+                } elseif(isset($_POST['supprimer_evenement'])) {
+                    supprimer('evenement', 'IdEvenement');
                     header("Location: dashboard.php");
                     exit;
                 }

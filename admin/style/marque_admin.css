@@ -41,11 +41,7 @@ a.retour{
     border-radius: 6px;
     
 }
-a:hover{
-    color: white;
-    background-color: #4A7696;
-    border-radius: 6px;
-}
+
 
 .supprimer{
     font-size: 10px;

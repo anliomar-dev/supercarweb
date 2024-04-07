@@ -36,12 +36,21 @@
                 <div class="col-12 col-sm-12 col-md-12 col-lg-4 border formulaire-gauche text-bg-info" style="height: 100vh">
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
-                            <label for="nom-marque"><h4 class="marque">Nom de la marque</h4></label><br><br>
-                            <input class="col-6" type="text" name="NomMarque" required>
-                            <input type="submit" name="ajouter_marque" value="ajouter" class="btn btn-primary">
+                            <div class="row">
+                                <div class="col-12 mt-3">
+                                    <label for="nom-marque"><h4 class="marque">Nom de la marque</h4></label>
+                                    <input class="col-6 form-control" type="text" name="NomMarque" required>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="submit" name="ajouter_marque" value="ajouter" class="btn btn-primary">
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
+                                </div>
+                            </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php"class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

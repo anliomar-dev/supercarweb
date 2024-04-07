@@ -47,7 +47,7 @@
         global $dbd;
         $options_marques = '';
         $id = [];
-        $selection = "SELECT * FROM marque order by IdMarque";
+        $selection = "SELECT * FROM marque order by NomMarque";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
             $IdMarque = $row["IdMarque"];
@@ -62,7 +62,7 @@
         global $dbd;
         $options_modeles = '';
         $id = [];
-        $selection = "SELECT * FROM modele order by IdModele";
+        $selection = "SELECT * FROM modele order by NomModele";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
             $IdModele = $row["IdModele"];
@@ -86,7 +86,7 @@
                     <div class='row'>
                         <div class='col-4 p-3 border'>($IdModele)_$NomModele</div>
                         <div class='col-6 p-3 border'>€ $prix</div>
-                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdModele[]' value=$IdModele></div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdModele[]' value=$IdModele></div>
                     </div>
                 </div>
                 ";
@@ -97,24 +97,28 @@
     function afficher_infos_voitures(){
         global $dbd;
         $infos_voitures = "";
-        $selection = "SELECT * FROM voitures order by IdVoiture";
+        $selection = "SELECT voitures.*, NomModele 
+        FROM voitures
+        INNER JOIN modele ON voitures.IdModele = modele.IdModele
+        ORDER BY NomModele";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
             $IdVoiture = $row["IdVoiture"];
-            $Couleur = $row["Couleur"];
+            $NomModele = $row["NomModele"];
             $typemoteur = $row["TypeMoteur"];
-            $Carburant = $row["Carburant"];
-            $Km = $row["Km"];
             $BoiteVitesse = $row["BoiteVitesse"];
             $infos_voitures .= "
                 <div class='col-12 border mt-3'>
                     <div class='row'>
-                        <div class='col-2 p-3'>$Couleur</div>
+                        <div class='col-4 p-3'>
+                            <div class='row'>
+                                <a href='' class='col-10'>$NomModele</a>
+                                <div class='col-2'><a href='' style='font-size: 20px; text-decoration: none;'>📝</a></div>
+                            </div>
+                        </div>       
                         <div class='col-3 p-3'>$typemoteur</div>
-                        <div class='col-2 p-3'>$Carburant</div>
-                        <div class='col-1 p-3'>$Km</div>
-                        <div class='col-3 p-3'>$BoiteVitesse</div>
-                        <div class='col-1 p-3 border text-center'><input type='checkbox' name='IdVoiture[]' value=$IdVoiture></div>
+                        <div class='col-4 p-3'>$BoiteVitesse</div>
+                        <div class='col-1 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdVoiture[]' value=$IdVoiture></div>
                     </div>
                 </div>";
         }
@@ -138,7 +142,7 @@
                         <div class='col-3 p-3'><a href='test2.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
                         <div class='col-3 p-3'>$nom</div>
                         <div class='col-4 p-3'>$adresse</div>
-                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdInscription[]' value=$IdInscription></div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdInscription[]' value=$IdInscription></div>
                     </div>
                 </div>";
         }
@@ -157,7 +161,7 @@
                     <div class='row'>
                         <div class='col-4 p-3'>$IdMarque</div>
                         <div class='col-6 p-3'>$NomMarque</div>
-                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='IdMarque[]' value=$IdMarque></div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdMarque[]' value=$IdMarque></div>
                     </div>
                 </div>
             ";
@@ -186,7 +190,7 @@
                         <div class='col-4 p-3'>$Prenom</div>
                         <div class='col-4 p-3'>$Nom</div>
                         <div class='col-2 p-3'>$DateEssaie</div>
-                        <div class='col-2 p-3 border text-center'><input type='checkbox' name='Ref_Essaie[]' value=$Ref_Essaie></div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='Ref_Essaie[]' value=$Ref_Essaie></div>
                     </div>
                 </div>";
         }
@@ -218,6 +222,37 @@
                 echo"l'email ne figure pas dans la base de données";
             }
         }
+    }
+
+    function afficher_infos_evenements(){
+        global $dbd;
+        $infos_evenements = "";
+        $selection = "SELECT * FROM evenement order by DateDebut DESC";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdEvenement = $row["IdEvenement"];
+            $theme = $row["théme"];
+            $debut = $row["DateDebut"];
+            $fin = $row["DateFin"];
+            $image = $row["image"];
+            $prix = $row["Prix"];
+            $infos_evenements .= "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-4 p-3'>
+                            <div class='row'>
+                                <a href='test.php?id=$IdEvenement' class='col-10'>$theme</a>
+                                <div class='col-2'><a href='' style='font-size: 20px; text-decoration: none;'>📝</a></div>
+                            </div>
+                        </div>
+                        <div class='col-3 p-3'>$debut</div>
+                        <div class='col-3 p-3'>$fin</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdEvenement[]' value=$IdEvenement></div>
+                    </div>
+                </div>";
+        }
+        mysqli_free_result($curseur);
+        return $infos_evenements;
     }
     ob_end_flush();
 ?>

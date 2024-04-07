@@ -34,19 +34,19 @@
                         <form action="" method="POST" class="col-12 p-3 mt-3 mb-5" >
                             <div class="row p-3">
                                 <div class="col-12">
-                                    <label for="nom-marque">email:</label>
+                                    <label for="email">email:</label>
                                     <input class="col-12 form-control" type="email" name="email" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Date de l'essai:</label>
+                                    <label for="dateessai">Date de l'essai:</label>
                                     <input class="col-12 form-control" type="date" name="DateEssaie" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Heure:</label>
+                                    <label for="heure">Heure:</label>
                                     <input class="col-12 form-control" type="time" name="HeureEssaie" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Marque</label>
+                                    <label for="marque">Marque</label>
                                     <select class="col-12 form-select" name="Marque" id="">
                                         <?php
                                             $options_marques = option_marques();
@@ -55,7 +55,7 @@
                                     </select>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Modele</label>
+                                    <label for="modele">Modele</label>
                                     <select class="col-12 form-select" name="Modele" id="">
                                         <?php
                                             $options_modeles = option_modeles();
@@ -64,7 +64,7 @@
                                     </select>
                                 </div>
                                 <div class="mt-3">
-                                    <label for="marque_voiture" class="form-label">moteur:</label><br>
+                                    <label for="moteur" class="form-label">moteur:</label><br>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="moteur" id="thermique" value="thermique" checked>
                                         <label class="form-check-label" for="thermique">thermique</label>
@@ -82,7 +82,7 @@
                                     <input type="submit" name="ajouter_essaie" value="ajouter" class="btn btn-primary">
                                 </div>
                                 <div class="col-6 mt-3">
-                                    <input type="reset"  value="reset">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>

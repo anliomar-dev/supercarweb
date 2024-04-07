@@ -34,23 +34,23 @@
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5" >
                             <div class="row p-3">
                                 <div class="col-6">
-                                    <label for="nom-marque">Couleur:</label>
+                                    <label for="couleur">Couleur:</label>
                                     <input class="col-12 form-control" type="text" name="Couleur" required>
                                 </div>
                                 <div class="col-6">
-                                    <label for="nom-marque">Boite vitesse:</label>
+                                    <label for="vitesse">Boite vitesse:</label>
                                     <input class="col-12 form-control" type="text" name="BoiteVitesse" required>
                                 </div>
                                 <div class="col-12 pt-3">
-                                    <label for="nom-marque">Moteur:</label>
+                                    <label for="moteur">Moteur:</label>
                                     <input class="col-12 form-control" type="text" name="TypeMoteur" required>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Carburant:</label>
+                                    <label for="carburant">Carburant:</label>
                                     <input class="col-12 form-control" type="text" name="Carburant">
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Km:</label>
+                                    <label for="km">Km:</label>
                                     <input class="col-12 form-control" type="number" min="0" name="Km" required>
                                 </div>
                                 <div class="col-6 pt-3">
@@ -63,7 +63,7 @@
                                     </select>
                                 </div>
                                 <div class="col-6 pt-3">
-                                    <label for="nom-marque">Modele</label>
+                                    <label for="modele">Modele</label>
                                     <select class="col-12 form-select" name="IdModele" id="">
                                         <?php
                                             $options_modeles = option_modeles();
@@ -75,12 +75,12 @@
                                     <input type="submit" name="ajouter_voitures" value="ajouter" class="btn btn-primary">
                                 </div>
                                 <div class="col-6 mt-3">
-                                    <input type="reset"  value="reset" class="omar">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php" class="retour" class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>
@@ -88,11 +88,9 @@
                     <form class='row' action='' method='POST'>
                         <div class="col-12 mb-3 sticky-top text-bg-info">
                             <div class="row">
-                                <div class="col-2 border p-3">Couleur</div>
+                                <div class="col-4 border p-3">Modele</div>
                                 <div class="col-3 border p-3">Moteur</div>
-                                <div class="col-2 border p-3">Carburant</div>
-                                <div class="col-1 border p-3">Km</div>
-                                <div class="col-3 border p-3">Boite vitesse</div>
+                                <div class="col-4 border p-3">Boite vitesse</div>
                                 <div class="col-1 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_voitures" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>

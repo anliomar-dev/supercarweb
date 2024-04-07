@@ -18,9 +18,9 @@
                 <div class="col"><p>Supercar administration</p></div>
             </div>
         </div>
-        <div class="container-fluid mt-3">
+        <div class="container-fluid border mt-3">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border pt-5 px-5 left" style="height: 100vh">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border mb-5 pt-5 px-5 left" style="height: 100vh">
                     <div class="row">
                         <div class="col-12 p-3">
                             <div class="row">
@@ -74,22 +74,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-8 border text-center pt-3 right text-bg-info">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center right">
                     <div class="row">
-                        <div class="col-12 mb-5 mt-3">
+                        <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue Super User</h3></div>
+                        <div class="col-4 mb-5">
                             <div class="row right-links">
-                                <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue Super User</h3></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="../../pages/index.html" target="_blank">Voir le site</a></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Changer le mot de passe</a></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mt-3"><a href="">Deconnexion</a></div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 h4" style="background-color: #4A7696; color: white">voir le site</div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="../../pages/index.html" target="_blank">Voir le site</a></div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 h4" style="background-color: #4A7696; color: white;">Compte</div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="">Deconnexion</a></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="">modifier passe</a></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="">mes données</a></div>
                             </div>
                         </div>
-                        <div class="col-12 ">
+                        <div class="col-8 border">
                             <div class="row">
-                                <div class="col-6 p-3"><button class="">button</button></div>
-                                <div class="col-6 p-3"><button class="">button</button></div>
-                                <div class="col-6 p-3"><button class="">button</button></div>
-                                <div class="col-6 p-3"><button class="">button</button></div>
+                            <div class="col-12 border h4" style="background-color: #4A7696; color: white;">Visualisation</div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">demandes d'essais</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les evenements</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voitures</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
                         </div>
                     </div>
