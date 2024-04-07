@@ -1,5 +1,15 @@
 <?php
+    ob_start();
     include("fonctions.php");
+    // Redirection si nécessaire
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['ajouter_modele'])) {
+            inserer('modele', ['NomModele', 'Prix', 'IdMarque']);
+        } elseif(isset($_POST['supprimer_modele'])) {
+            supprimer('modele', 'IdModele');
+        }
+    }
+    ob_end_flush(); // Fin de la mise en mémoire tampon
 ?>
 
 <!doctype html>
@@ -70,7 +80,13 @@
                             <div class="row">
                                 <div class="col-4 p-3 border">(ID)_Modele</div>
                                 <div class="col-6 p-3 border">Prix</div>
-                                <div class="col-2 p-3 border text-center"><button class="text-bg-info" value="supprimer_modele" name="supprimer_modele" style="border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-2 p-3 border text-center">
+                                    <a href="">
+                                        <button class="text-bg-info" value="supprimer_modele" name="supprimer_modele" style="border: none">
+                                            <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                        </button>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                         <?php
@@ -80,15 +96,6 @@
                 </div>
             </div>
         </div>
-        <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_modele'])) {
-                    inserer('modele', ['NomModele', 'Prix', 'IdMarque']);
-                } elseif(isset($_POST['supprimer_modele'])) {
-                    supprimer('modele', 'IdModele');
-                }
-            }
-        ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>

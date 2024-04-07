@@ -68,7 +68,7 @@
                             </div>
                         </div>
                         <?php
-                            afficher_infos_inscrits();
+                            afficher_infos_inscrits();//fonction definie dans le fichier fonctions.php
                         ?>
                     </form>
                 </div>

@@ -1,21 +1,24 @@
 <?php
-    ob_start();
     include("server.php");
     function inserer($table, $colonnes) {
+        // cette fonction insere une nouvelle enregistrement dans une table dot le nom est en paramètre ainsi qeu les colonnes
         global $dbd;
+        //initialise la valeur de la varible inserer a faux
         $insertion = false;
         $erreur = ""; // Variable pour stocker les messages d'erreur
-        $noms_colonnes = implode(",", $colonnes);
-        $valeurs = [];
+        $noms_colonnes = implode(",", $colonnes); //on regroupe les noms des colonnes passées en paramètre en un tableau
+        $valeurs = []; // on declare un tableau vide dont on va stocker les valeur recupérés dans le formulaire 
         foreach ($colonnes as $colonne) {
-            $valeurs[] = "'" . mysqli_real_escape_string($dbd, $_POST[$colonne]) . "'";
+            $valeurs[] = "'" . mysqli_real_escape_string($dbd, $_POST[$colonne]) . "'";// on récupère les valeurs saisits dans le form 
         }
-        $valeurs_colonnes = implode(",", $valeurs);
+        $valeurs_colonnes = implode(",", $valeurs);  // on regroupe les valeurs dans un tableau
         if(isset($_POST["ajouter_$table"])){
             $inserer = "INSERT INTO $table ($noms_colonnes) VALUES ($valeurs_colonnes)";
             $executer = mysqli_query($dbd, $inserer);
             if($executer){
                 $insertion = true;
+                header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
+                exit(); // Terminer le script après la redirection
             } else {
                 $erreur = "<p>Erreur lors de l'insertion dans $table: " . mysqli_error($dbd) . "</p>";
             }
@@ -23,27 +26,39 @@
         mysqli_close($dbd);
         return $erreur; // Retourne le message d'erreur
     }
+
+
     function supprimer($table, $cle_primaire){
+        //cette fonction supprimer une ou plusieurs lignes cochés
         global $dbd;
+        $suppression = false;
         $erreur = ""; // Variable pour stocker les messages d'erreur
         if(isset($_POST["supprimer_$table"])){
-            $suppression = false;
-            if(isset($_POST[$cle_primaire]) && is_array($_POST[$cle_primaire])){
-                foreach($_POST[$cle_primaire] as $identifiant){
+            $suppression = false; // on initiallise la valeur de la varialbe $suppressin a faux
+            if(isset($_POST[$cle_primaire]) && is_array($_POST[$cle_primaire])){ // s'il y'a au moins une seule case qui est coché
+                // on supprime chaque ligne coché 1 par 1
+                foreach($_POST[$cle_primaire] as $identifiant){ 
                     $supprimer = "DELETE FROM $table WHERE $cle_primaire='$identifiant'";
                     $executer_suppression = mysqli_query($dbd, $supprimer);
                     if($executer_suppression){
-                        $suppression = true;
+                        $suppression = true; // à la fin de la suppression, la varible $suppression prend la vleur vrai
                     } else {
                         $erreur = "<p>Erreur lors de la suppression dans $table: " . mysqli_error($dbd) . "</p>";
                     }
+                }
+                if($suppression){
+                    header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
+                    exit(); // Terminer le script après la redirection
                 }
             }
         }
         mysqli_close($dbd);
         return $erreur; // Retourne le message d'erreur
     }
+
+
     function option_marques(){
+        //cette fonction selectionne tous les marque dans la base et les affiche dans une balise "select"
         global $dbd;
         $options_marques = '';
         $id = [];
@@ -58,22 +73,26 @@
         mysqli_free_result($curseur);
         return $options_marques;
     }
+
+
     function option_modeles(){
+        //cette selectionne tous les models de voitures et les affices dans une balise select
         global $dbd;
         $options_modeles = '';
-        $id = [];
         $selection = "SELECT * FROM modele order by NomModele";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
             $IdModele = $row["IdModele"];
-            array_push($id, $IdModele);
             $NomModele = $row["NomModele"];
             $options_modeles .= "<option value='$IdModele'>$NomModele</option>";
         }
         mysqli_free_result($curseur);
         return $options_modeles;
     }
+
+
     function afficher_infos_modeles(){
+        //affichage de tous les models
         global $dbd;
         $selection = "SELECT * FROM modele order by IdModele";
         $curseur = mysqli_query($dbd, $selection);
@@ -92,9 +111,11 @@
                 ";
         }
         mysqli_free_result($curseur);
-        // fermeture de la connexion avec la base de données
     }
+
+
     function afficher_infos_voitures(){
+        //affichage de tous les voitures
         global $dbd;
         $infos_voitures = "";
         $selection = "SELECT voitures.*, NomModele 
@@ -111,10 +132,10 @@
                 <div class='col-12 border mt-3'>
                     <div class='row'>
                         <div class='col-4 p-3'>
-                            <div class='row'>
-                                <a href='' class='col-10'>$NomModele</a>
-                                <div class='col-2'><a href='' style='font-size: 20px; text-decoration: none;'>📝</a></div>
-                            </div>
+                            <a href='' class='row' style='text-decoration: none;'>
+                                <div class='col-10'>$NomModele</div>
+                                <div class='col-2'>📝</div>
+                            </a>
                         </div>       
                         <div class='col-3 p-3'>$typemoteur</div>
                         <div class='col-4 p-3'>$BoiteVitesse</div>
@@ -125,7 +146,10 @@
         mysqli_free_result($curseur);
         return $infos_voitures;
     }
+
+
     function afficher_infos_inscrits(){
+        // affiche de tous les personne inscrits
         global $dbd;
         $selection = "SELECT * FROM inscription order by IdInscription";
         $curseur = mysqli_query($dbd, $selection);
@@ -149,7 +173,10 @@
         mysqli_free_result($curseur);
     }
 
+
+
     function afficher_infos_marques(){
+        //affichage de tous la marques
         global $dbd;
         $selection = "SELECT * FROM marque order by IdMarque";
         $curseur = mysqli_query($dbd, $selection);
@@ -169,7 +196,9 @@
         mysqli_free_result($curseur);
     }
 
+
     function afficher_infos_essaies(){
+        //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
         global $dbd;
         $selection = "SELECT demandeessaie.*, inscription.Nom, inscription.Prenom 
         FROM demandeessaie 
@@ -197,9 +226,12 @@
         mysqli_free_result($curseur);
     }
 
+
     function ajouter_DemandeEssaie(){
+        // insertion de demande d'essai
         global $dbd;
         if(isset($_POST["ajouter_essaie"])){
+            // onrécupère les valeur echapés pour éviter les injectins sql
             $email = mysqli_real_escape_string($dbd, $_POST["email"]);
             $date = mysqli_real_escape_string($dbd, $_POST["DateEssaie"]);
             $heure = mysqli_real_escape_string($dbd, $_POST["HeureEssaie"]);
@@ -225,6 +257,7 @@
     }
 
     function afficher_infos_evenements(){
+        // on affiche tous les évenements enregisgtré dans la base
         global $dbd;
         $infos_evenements = "";
         $selection = "SELECT * FROM evenement order by DateDebut DESC";
@@ -254,5 +287,4 @@
         mysqli_free_result($curseur);
         return $infos_evenements;
     }
-    ob_end_flush();
 ?>
