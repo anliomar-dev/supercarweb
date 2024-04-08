@@ -11,7 +11,7 @@
         foreach ($colonnes as $colonne) {
             $valeurs[] = "'" . mysqli_real_escape_string($dbd, $_POST[$colonne]) . "'";// on récupère les valeurs saisits dans le form 
         }
-        $valeurs_colonnes = implode(",", $valeurs);  // on regroupe les valeurs dans un tableau
+        $valeurs_colonnes = implode(",", $valeurs);  // on regroupe les valeurs dans un  tableau
         if(isset($_POST["ajouter_$table"])){
             $inserer = "INSERT INTO $table ($noms_colonnes) VALUES ($valeurs_colonnes)";
             $executer = mysqli_query($dbd, $inserer);

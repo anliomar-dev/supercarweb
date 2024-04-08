@@ -1,4 +1,8 @@
 
+<?php
+    include("fonctions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -106,26 +110,11 @@
                 </div>
                 <div class="mb-3">
                     <label for="model_voiture" class="form-label">Modèle de la voiture:</label>
-                    <select class="form-select" aria-label="Default select example"  id="model_voiture" name="model_voiture" required>
-                        <option selected>Open this select menu</option>
-                        <option value="Ferrari 488 GTB" name="model_voiture">Ferrari 488 GTB</option>
-                        <option value="Ferrari F8 Tributo" name="model_voiture">Ferrari F8 Tributo</option>
-                        <option value="Ferrari 812 Superfast" name="model_voiture">Ferrari 812 Superfast</option>
-                        <option value="Ferrari SF90 Stradale" name="model_voiture">Ferrari SF90 Stradale</option>
-                        <option value="Ferrari 296 GTB" name="model_voiture">Ferrari 296 GTB</option>
-                        <option value="Ferrari SF90 Spider" name="model_voiture">Ferrari SF90 Spider</option>
-                        <option value="Porsche 911 Carrera" name="model_voiture">Porsche 911 Carrera</option>
-                        <option value="Porsche Macan" name="model_voiture">Porsche Macan</option>
-                        <option value="Porsche Taycan" name="model_voiture">Porsche Taycan</option>
-                        <option value="Porsche Taycan Turbo S" name="model_voiture">Porsche Taycan Turbo S</option>
-                        <option value="Porsche Cayenne E-Hybrid" name="model_voiture">Porsche Cayenne E-Hybrid</option>
-                        <option value="Porsche Panamera Turbo E-Hybrid" name="model_voiture">Porsche Panamera Turbo E-Hybrid</option>
-                        <option value="Jeep Grand Cherokee" name="model_voiture">Jeep Grand Cherokee</option>
-                        <option value="Jeep Grand Cherokee Trackhawk" name="model_voiture">Jeep Grand Cherokee Trackhawk</option>
-                        <option value="Jeep Avenger Longitude" name="model_voiture">Jeep Avenger Longitude</option>
-                        <option value="Jeep Avenger Summit" name="model_voiture">Jeep Avenger Summit</option>
-                        <option value="Jeep Wagoneer" name="model_voiture">Jeep Wagoneer</option>
-                        <option value="Jeep Wrangler 4xe" name="model_voiture">Jeep Wrangler 4xe</option>
+                    <select class="col-12 form-select" name="IdModele" id="">
+                        <?php
+                            $options_modeles = option_modeles();
+                            echo $options_modeles;
+                        ?>
                     </select>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary">Envoyer</button>

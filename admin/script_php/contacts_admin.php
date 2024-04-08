@@ -1,3 +1,13 @@
+<?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['ajouter_marque'])) {
+            inserer();
+        } elseif(isset($_POST['supprimer_marque'])) {
+            supprimer();
+        }
+    }
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,15 +30,15 @@
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
                                 <div class="col-12">
-                                    <label for="nom-marque">Nom du modele</label>
-                                    <input class="col-12" type="text" name="nom-marque" required>
+                                    <label for="Nom">Nom</label>
+                                    <input class="col-12" type="text" name="Nom" required>
                                 </div>
                                 <div class="col-12">
-                                    <label for="nom-marque">Prix</label>
-                                    <input class="col-12" type="number" name="nom-marque" required>
+                                    <label for="Prenom">Prenom</label>
+                                    <input class="col-12" type="text" name="Prenom" required>
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <input type="submit" name="ajouter_marque" value="ajouter">
+                                    <input type="submit" name="ajouter_contacts" value="ajouter">
                                 </div>
                             </div>
                         </form>
@@ -46,26 +56,17 @@
                                 <div class="col-2 border">Carburant</div>
                                 <div class="col-1 border">Km</div>
                                 <div class="col-3 border">Boite vitesse</div>
-                                <div class="col-1 border text-center"><button value="supprimer" name="supprimer_Modele" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-1 border text-center"><button value="supprimer" name="supprimer_contacts" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
                             include("test.php");
-                            afficher_infos_voitures();
+                            afficher_infos_contacts();
                         ?>
                     </form>
                 </div>
             </div>
         </div>
-        <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_marque'])) {
-                    inserer();
-                } elseif(isset($_POST['supprimer_marque'])) {
-                    supprimer();
-                }
-            }
-        ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
