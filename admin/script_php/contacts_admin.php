@@ -7,7 +7,6 @@
         }
     }
 ?>
-
 <!doctype html>
 <html lang="en">
     <head>
@@ -16,6 +15,8 @@
         <title>Bootstrap demo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <!--lien plugin indicateurs telephonique-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/css/intlTelInput.css">
         <!--lien font awsome-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
@@ -29,16 +30,27 @@
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
-                                <div class="col-12">
+                                <div class="col-6 mt-3">
                                     <label for="Nom">Nom</label>
-                                    <input class="col-12" type="text" name="Nom" required>
+                                    <input class="form-control col-12" type="text" name="Nom" required>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-6 mt-3">
                                     <label for="Prenom">Prenom</label>
-                                    <input class="col-12" type="text" name="Prenom" required>
+                                    <input class="form-control col-12" type="text" name="Prenom" required>
                                 </div>
-                                <div class="col-12 mt-3">
-                                    <input type="submit" name="ajouter_contacts" value="ajouter">
+                                <div class="col-6 mt-3">
+                                    <label for="telephone" class="col-12">NumTel</label>
+                                    <input class="form-control" type="telephone" name="NumTel" id="phone" value="+1"  required>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <label for="email">email</label>
+                                    <input class="form-control col-12" type="text" name="email" required>
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="submit" name="ajouter_contacts" value="Valider" class="btn btn-primary">
+                                </div>
+                                <div class="col-6 mt-3">
+                                    <input type="reset" class="btn btn-secondary" value="reset">
                                 </div>
                             </div>
                         </form>
@@ -67,6 +79,14 @@
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
+        <script>
+            const input = document.querySelector("#phone");
+                window.intlTelInput(input, {
+                    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/utils.js",
+                });
+        </script>
     </body>
 </html>

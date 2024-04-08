@@ -1,6 +1,6 @@
 
 <?php
-    include("fonctions.php");
+    include("../admin/script_php/fonctions.php");
 ?>
 
 <!DOCTYPE html>
@@ -78,20 +78,14 @@
                     <label for="heure_essai" class="form-label">Heure d'essai</label>
                     <input type="time" class="form-control" id="heure_essai" name="heure_essai" required>
                 </div>
-                <div class="mb-3">
-                    <label for="marque_voiture" class="form-label">Marque de la voiture: </label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="marque_voiture" id="jeep" value="jeep" checked>
-                        <label class="form-check-label" for="jeep">Jeep</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="marque_voiture" id="porsche" value="porshce">
-                        <label class="form-check-label" for="opel">porsche</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="marque_voiture" id="ferrari" value="ferrari">
-                        <label class="form-check-label" for="ferrari">Ferrari</label>
-                    </div>
+                <div class="col-12 mb-3">
+                    <label for="nom-marque">Marque</label>
+                        <select class="col-12 form-select" name="IdMarque" id="">
+                            <?php
+                                $options_marques = option_marques();
+                                echo $options_marques; 
+                            ?>
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="marque_voiture" class="form-label">moteur:</label>
