@@ -1,5 +1,6 @@
 
 <?php
+    include("server.php");
     if(isset($_GET["id"])){
         $IdEvenement = $_GET["id"];
         $selection = "SELECT * FROM evenement order by DateDebut DESC";

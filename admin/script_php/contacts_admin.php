@@ -1,9 +1,10 @@
 <?php
+    include("fonctions.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(isset($_POST['ajouter_marque'])) {
-            inserer();
-        } elseif(isset($_POST['supprimer_marque'])) {
-            supprimer();
+        if(isset($_POST['ajouter_contacts'])) {
+            inserer('contacts', ['Nom', 'Prenom', 'email', 'NumTel']);
+        } elseif(isset($_POST['supprimer_contacts'])) {
+            supprimer('contacts', 'IdContact');
         }
     }
 ?>
@@ -22,11 +23,22 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/marque_admin.css">
+        <style>
+            .formulaire-gauche{
+                position: sticky;
+                top: 0;
+            }
+            @media screen and (max-width: 991px){
+                .formulaire-gauche{
+                position: static;
+            }
+            }
+        </style>
     </head>
     <body>
         <div class="container-fluid border">
             <div class="row">
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border text-bg-info formulaire-gauche" style="height: 100vh">
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5">
                             <div class="row p-3">
@@ -59,28 +71,23 @@
                         </div>
                     </div>
                 </div>
-                <div class='col-12 col-sm-12 col-md-12 col-lg-8 border mt-3'>
+                <div class='col-12 col-sm-12 col-md-12 col-lg-8 border text-bg-light'>
                     <form class='row' action='' method='post'>
-                        <div class="col-12 mb-3 sticky-top" style='background-color: #4A7696;'>
+                        <div class="col-12 mb-3 sticky-top text-bg-info" style='background-color: #4A7696;'>
                             <div class="row">
-                                <div class="col-2 border">Couleur</div>
-                                <div class="col-3 border">Moteur</div>
-                                <div class="col-2 border">Carburant</div>
-                                <div class="col-1 border">Km</div>
-                                <div class="col-3 border">Boite vitesse</div>
-                                <div class="col-1 border text-center"><button value="supprimer" name="supprimer_contacts" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
+                                <div class="col-4 p-3 border">Nom</div>
+                                <div class="col-6 p-3 border">Email</div>
+                                <div class="col-2 p-3 border text-center"><button class="text-bg-info"  style="color: white; border: none" value="supprimer" name="supprimer_contacts" style="background-color:  #4A7696; color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>
                         <?php
-                            include("test.php");
                             afficher_infos_contacts();
                         ?>
                     </form>
                 </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
         <script>
             const input = document.querySelector("#phone");

@@ -76,7 +76,7 @@
 
 
     function option_modeles(){
-        //cette selectionne tous les models de voitures et les affices dans une balise select
+        //cette fonction selectionne tous les models de voitures et les affices dans une balise select
         global $dbd;
         $options_modeles = '';
         $selection = "SELECT * FROM modele order by NomModele";
@@ -163,7 +163,7 @@
             echo "
                 <div class='col-12 border mt-3'>
                     <div class='row'>
-                        <div class='col-3 p-3'><a href='test2.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
+                        <div class='col-3 p-3'><a href='voir_inscrit.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
                         <div class='col-3 p-3'>$nom</div>
                         <div class='col-4 p-3'>$adresse</div>
                         <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdInscription[]' value=$IdInscription></div>
@@ -248,7 +248,12 @@
                 $inserer = "INSERT INTO demandeessaie (DateEssaie, HeureEssaie, Marque, Modele, Moteur, IdInscription)
                         Values ('$date', '$heure', '$marque', '$modele', '$moteur', '$IdInscription')
                 ";
-                mysqli_query($dbd, $inserer);
+                $ajout = mysqli_query($dbd, $inserer);
+                if($ajout){
+                    header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
+                    exit(); // Terminer le script après la redirection
+                }
+            mysqli_close($dbd);
             }else{
                 //cas où l'email ne figure pas dans la base de donées
                 echo"l'email ne figure pas dans la base de données";
@@ -273,10 +278,10 @@
                 <div class='col-12 border mt-3'>
                     <div class='row'>
                         <div class='col-4 p-3'>
-                            <div class='row'>
-                                <a href='test.php?id=$IdEvenement' class='col-10'>$theme</a>
-                                <div class='col-2'><a href='' style='font-size: 20px; text-decoration: none;'>📝</a></div>
-                            </div>
+                            <a href='voir_evenement.php?id=$IdEvenement' class='row' style='font-size: 20px; text-decoration: none;'>
+                                <div  class='col-10'>$theme</div>
+                                <div class='col-2'>📝</div>
+                            </a>
                         </div>
                         <div class='col-3 p-3'>$debut</div>
                         <div class='col-3 p-3'>$fin</div>
@@ -286,5 +291,33 @@
         }
         mysqli_free_result($curseur);
         return $infos_evenements;
+    }
+
+    function Nouveau(){
+
+    }
+
+    function afficher_infos_contacts(){
+        //affichage de tous les contacts
+        global $dbd;
+        $selection = "SELECT * FROM contacts order by IdContact";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdContact = $row["IdContact"];
+            $Nom = $row["Nom"];
+            $Prenom = $row["Prenom"];
+            $email= $row["email"];
+            $telephone = $row["NumTel"];
+            echo "
+                <div class='col-12 border mt-3'>
+                    <div class='row'>
+                        <div class='col-4 p-3'>$Nom</div>
+                        <div class='col-6 p-3'>$email</div>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdContact[]' value=$IdContact></div>
+                    </div>
+                </div>
+            ";
+        }
+        mysqli_free_result($curseur);
     }
 ?>

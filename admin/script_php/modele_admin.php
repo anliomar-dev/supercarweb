@@ -4,7 +4,7 @@
     // Redirection si nécessaire
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_modele'])) {
-            inserer('modele', ['NomModele', 'Prix', 'IdMarque']);
+            inserer('modele', ['NomModele', 'Prix', 'IdMarque', 'Annee']);
         } elseif(isset($_POST['supprimer_modele'])) {
             supprimer('modele', 'IdModele');
         }
@@ -47,6 +47,10 @@
                                 <div class="col-12">
                                     <label for="modele">Nom du modele</label>
                                     <input class="col-12 form-control" type="text" name="NomModele" required>
+                                </div>
+                                <div class="col-12 pt-3">
+                                    <label for="km">Année:</label>
+                                    <input class="col-12 form-control" type="number" min="0" name="Annee" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="Prix">Prix</label>

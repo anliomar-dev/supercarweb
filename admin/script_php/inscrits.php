@@ -1,5 +1,12 @@
 <?php
     include("fonctions.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['ajouter_inscription'])) {
+            inscrire();
+        } elseif(isset($_POST['supprimer_inscription'])) {
+            supprimer('inscription', 'IdInscription');
+        }
+    }
 ?>
 <!doctype html>
 <html lang="en">
@@ -74,15 +81,6 @@
                 </div>
             </div>
         </div>
-        <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                if(isset($_POST['ajouter_inscription'])) {
-                    inserer('inscription', ['Nom', 'Prenom', 'Adresse', 'NumTel', 'email']);
-                } elseif(isset($_POST['supprimer_inscription'])) {
-                    supprimer('inscription', 'IdInscription');
-                }
-            }
-        ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
         <script>
