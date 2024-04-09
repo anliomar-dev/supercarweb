@@ -6,12 +6,12 @@
         //initialise la valeur de la varible inserer a faux
         $insertion = false;
         $erreur = ""; // Variable pour stocker les messages d'erreur
-        $noms_colonnes = implode(",", $colonnes); //on regroupe les noms des colonnes passées en paramètre en un tableau
+        $noms_colonnes = implode(",", $colonnes); //on regroupe les noms des colonnes passées en paramètre en une chaine de caractère
         $valeurs = []; // on declare un tableau vide dont on va stocker les valeur recupérés dans le formulaire 
         foreach ($colonnes as $colonne) {
             $valeurs[] = "'" . mysqli_real_escape_string($dbd, $_POST[$colonne]) . "'";// on récupère les valeurs saisits dans le form 
         }
-        $valeurs_colonnes = implode(",", $valeurs);  // on regroupe les valeurs dans un  tableau
+        $valeurs_colonnes = implode(",", $valeurs);  // on regroupe les valeurs en une chaine 
         if(isset($_POST["ajouter_$table"])){
             $inserer = "INSERT INTO $table ($noms_colonnes) VALUES ($valeurs_colonnes)";
             $executer = mysqli_query($dbd, $inserer);
@@ -293,8 +293,27 @@
         return $infos_evenements;
     }
 
-    function Nouveau(){
-
+    function nouveau_evenement(){
+        global $dbd;
+        $chemin_image = "../images/evenements_images/";
+        if(isset($_POST["ajouter_evenement"])){
+            $theme = mysqli_real_escape_string($dbd, $_POST["théme"]);
+            $DateDebut = mysqli_real_escape_string($dbd, $_POST["DateDebut"]);
+            $DateFin = mysqli_real_escape_string($dbd, $_POST["DateFin"]);
+            $Description = mysqli_real_escape_string($dbd, $_POST["Description"]);
+            $image = mysqli_real_escape_string($dbd, $_POST["image"]);
+            $Prix = mysqli_real_escape_string($dbd, $_POST["Prix"]);
+            $chemin_image .= $image;
+            $insertion = "INSERT INTO evenement (théme, DateDebut, DateFin, Description, image, Prix)
+                        VALUES('$theme', '$DateDebut', '$DateFin', '$Description', '$chemin_image', '$Prix')";
+            if(mysqli_query($dbd, $insertion)) {
+                header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
+                exit(); // Terminer le script après la redirection
+            } else {
+                echo "<p>Erreur lors de l'insertion des données : " . mysqli_error($dbd) . "</p>";
+            }
+            mysqli_close($dbd);
+        }
     }
 
     function afficher_infos_contacts(){

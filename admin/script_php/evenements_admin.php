@@ -62,11 +62,11 @@
                                 </div>
                                 <div class="col-6 pt-3">
                                     <label for="prix">Prix:</label>
-                                    <input class="col-12 form-control" type="number"  min=1 name="Prix" required>
+                                    <input class="col-12 form-control" type="number"  min=0 name="Prix" >
                                 </div>
                                 <div class="col-12 pt-3">
                                     <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3" required></textarea>
                                 </div>
                                 <div class="col-6 mt-3">
                                     <input type="submit" name="ajouter_evenement" value="ajouter" class="btn btn-primary">

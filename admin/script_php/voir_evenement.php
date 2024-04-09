@@ -3,7 +3,7 @@
     include("server.php");
     if(isset($_GET["id"])){
         $IdEvenement = $_GET["id"];
-        $selection = "SELECT * FROM evenement order by DateDebut DESC";
+        $selection = "SELECT * FROM evenement WHERE IdEvenement = $IdEvenement order by DateDebut";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
             $IdEvenement = $row["IdEvenement"];
