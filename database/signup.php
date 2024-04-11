@@ -43,7 +43,7 @@
                 }else{
                     $hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
                     $inserer = "INSERT INTO inscription (Nom, Prenom, Adresse, NumTel, email, Identifiant, MotDePasse) 
-                    VALUES ('$nom', '$prenom', '$adresse', '$telephone', '$email', '$identifiant', '$hash')";
+                    VALUES ('$nom', '$prenom', '$adresse', '$telephone', '$Email', '$identifiant', '$hash')";
                     mysqli_query($dbd, $inserer);
                     // Vérifier si l'insertion a réussi
                     if(mysqli_affected_rows($dbd) > 0){

@@ -14,10 +14,8 @@
     }
     
     // Liste des caractères à mettre sur la liste noire
-    $blacklist = array('*', '&', '$', '#', '"', '\'', '--',);
+    $blacklist = array('*', '&', '$', '#', '"', '\'', '--', '/');
     
-    // Chaîne d'entrée à vérifier
-    $input = "Bonjour! Comment ça va?";
     
     // Si le bouton "submit" est pressé, on affecte les valeurs remplies sur le formulaire aux variables correspondantes
     if (isset($_POST["submit"])) {
@@ -44,8 +42,8 @@
                         session_start();
                         $_SESSION['idInscription'] = $idInscription;
                         $_SESSION['username'] = $identifiant;
-                        // Vous pouvez rediriger l'utilisateur vers une page sécurisée ici
-                        header("Location: ../pages/essai.html");
+                        // Vous pouvez rediriger l'utilisateur vers la page de demande d'essaie
+                        header("Location: ../pages/DemandeEssaie.php");
                         exit();
                     } else {
                         echo "<p>Mot de passe incorrect.</p>";

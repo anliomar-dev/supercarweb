@@ -93,7 +93,7 @@
                             <div class="col-12 border h4" style="background-color: #4A7696; color: white;">Visualisation</div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualiser_essaie.php">demandes d'essais</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les evenements</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voitures</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les modèles</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
                         </div>

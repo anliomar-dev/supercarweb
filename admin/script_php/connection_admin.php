@@ -1,11 +1,10 @@
 <?php
-
 include("server.php");
 
 // Fonction pour vérifier l'authentification de l'utilisateur
 function verifierAuthentification($dbd, $identifiant, $mot_de_passe) {
     // Requête préparée pour récupérer le mot de passe associé à l'identifiant
-    $requete = "SELECT MotDePasse, IdInscription FROM connection_admin WHERE Identifiant = ?";
+    $requete = "SELECT MotDePasse, IdAdmin FROM admin WHERE Identifiant = ?";
     $statement = mysqli_prepare($dbd, $requete);
     mysqli_stmt_bind_param($statement, "s", $identifiant);
     mysqli_stmt_execute($statement);
@@ -16,13 +15,13 @@ function verifierAuthentification($dbd, $identifiant, $mot_de_passe) {
         if (mysqli_num_rows($resultat) > 0) {
             $row = mysqli_fetch_assoc($resultat);
             $hash = $row['MotDePasse'];
-            $idInscription = $row['IdInscription'];
+            $idAdmin = $row['IdAdmin'];
 
             // Vérifie si le mot de passe correspond au hash stocké
             if (password_verify($mot_de_passe, $hash)) {
                 // Démarrer une session
                 session_start();
-                $_SESSION['idInscription'] = $idInscription;
+                $_SESSION['idIAdmin'] = $idAdmin;
                 $_SESSION['username'] = $identifiant;
                 return true; // Authentification réussie
             } else {
@@ -45,7 +44,7 @@ if (isset($_POST["submit"])) {
 
     if (verifierAuthentification($dbd, $identifiant, $mot_de_passe)) {
         echo "<p>Connexion réussie.</p>";
-        header("Location: ../pages/essai.html");
+        header("Location: dashboard.php");
         exit();
     } else {
         echo "<p>Identifiant ou mot de passe incorrect.</p>";
