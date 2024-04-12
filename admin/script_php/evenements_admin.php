@@ -44,9 +44,13 @@
                     <div class="row">
                         <form action="" method="POST" class="col-12 p-3 mt-5 mb-5" >
                             <div class="row p-3">
-                                <div class="col-12">
+                                <div class="col-6">
                                     <label for="theme">Théme:</label>
                                     <input class="col-12 form-control" type="text" name="théme" required>
+                                </div>
+                                <div class="col-6">
+                                    <label for="theme">location:</label>
+                                    <input class="col-12 form-control" type="text" name="location" required>
                                 </div>
                                 <div class="col-6 pt-3">
                                     <label for="datedebut">Date du début:</label>

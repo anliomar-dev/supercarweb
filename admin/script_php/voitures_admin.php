@@ -2,7 +2,7 @@
     include("fonctions.php");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_voitures'])) {
-            inserer('voitures', ['Couleur', 'TypeMoteur', 'Carburant', 'Km', 'BoiteVitesse', 'IdModele', 'IdMarque']);
+            nouvelle_voiture();
         } elseif(isset($_POST['supprimer_voitures'])) {
             supprimer('voitures', 'IdVoiture');
         }
@@ -48,7 +48,11 @@
                                     <label for="vitesse">Boite vitesse:</label>
                                     <input class="col-12 form-control" type="text" name="BoiteVitesse" required>
                                 </div>
-                                <div class="col-12 pt-3">
+                                <div class="col-6 pt-3">
+                                    <label for="image">Image:</label>
+                                    <input class="col-12 form-control" type="file"  name="image" required>
+                                </div>
+                                <div class="col-6 pt-3">
                                     <label for="moteur">Moteur:</label>
                                     <input class="col-12 form-control" type="text" name="TypeMoteur" required>
                                 </div>

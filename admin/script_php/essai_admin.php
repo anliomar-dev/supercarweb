@@ -1,6 +1,6 @@
 <?php
     include("fonctions.php");
-    verifierAuthentification();
+    verifierAuthentification("connnection_admin.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_essaie'])) {
             ajouter_DemandeEssaie();
@@ -105,7 +105,7 @@
                             <div class="row">
                                 <div class="col-4 border p-3">Prenom</div>
                                 <div class="col-4 border p-3">Nom</div>
-                                <div class="col-2 border p-3">Date</div>
+                                <div class="col-2 border p-3">Date de l'essaie</div>
                                 <div class="col-2 border p-3 text-center text-bg-info"><button class="text-bg-info" value="supprimer" name="supprimer_demandeessaie" style="color: white; border: none"><i class="fa-solid fa-trash" style="color: #ff0000;"></i></button></div>
                             </div>
                         </div>

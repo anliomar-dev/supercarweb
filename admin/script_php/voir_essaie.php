@@ -1,5 +1,6 @@
 <?php
-    include("server.php");
+    include("fonctions.php");
+    verifierAuthentification("dashboard.php");
     if(isset($_GET["Ref"])){
         $Ref_Essaie = $_GET["Ref"];
         //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
@@ -61,7 +62,7 @@
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
                         <li class="nav-item">
-                            <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: Admin</div>
+                            <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="dashboard.php">Dashboard</a>
@@ -80,7 +81,7 @@
                 </div>
             </div>
         </nav>
-        <h1 class="text-center">Essaie de <?php echo"$Prenom $Nom";?></h1>
+        <h1 class="text-center">Demande d'essaie pour <?php echo"$Prenom $Nom";?></h1>
         <div class="container">
             <div class="row border">
                 <div class="col-12 col-md-12 col-lg-6 mt-3 p-5">

@@ -45,11 +45,11 @@
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-4 border p-3">Prenom</div>
-                <div class="col-12 col-md-4 col-lg-4 border p-3">Nom</div>
-                <div class="col-12 col-md-4 col-lg-4 border p-3">Date de l'essaie</div>
+                <div class="col-12 col-md-4 col-lg-4 border p-3">théme</div>
+                <div class="col-12 col-md-4 col-lg-4 border p-3">Date du debut</div>
+                <div class="col-12 col-md-4 col-lg-4 border p-3">Locatins</div>
                 <?php
-                    visualiser_essaie();
+                    visualiser_evenements();
                 ?>
             </div>
         </div>

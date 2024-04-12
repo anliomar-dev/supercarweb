@@ -103,7 +103,12 @@
             echo "
                 <div class='col-12 mt-3'>
                     <div class='row'>
-                        <div class='col-4 p-3 border'>($IdModele)_$NomModele</div>
+                        <div class='col-4 border p-3'>
+                            <div class='row' style='text-decoration: none;'>
+                                <div class='col-10'><a href=''>($IdModele)_$NomModele</a></div>
+                                <div class='col-2'><a href=''>📝</a></div>
+                            </div>
+                        </div> 
                         <div class='col-6 p-3 border'>€ $prix</div>
                         <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdModele[]' value=$IdModele></div>
                     </div>
@@ -126,6 +131,7 @@
         while($row = mysqli_fetch_array($curseur)){
             $IdVoiture = $row["IdVoiture"];
             $Idmodele = $row["IdModele"];
+            $IdMarque = $row["IdMarque"];
             $NomModele = $row["NomModele"];
             $typemoteur = $row["TypeMoteur"];
             $BoiteVitesse = $row["BoiteVitesse"];
@@ -148,7 +154,30 @@
         mysqli_free_result($curseur);
         return $infos_voitures;
     }
-
+    function nouvelle_voiture(){
+        global $dbd;
+        $chemin_image = "../../images/images";
+        if(isset($_POST["ajouter_voitures"])){
+            $couleur = mysqli_real_escape_string($dbd, $_POST["Couleur"]);
+            $BoiteVitesse = mysqli_real_escape_string($dbd, $_POST["BoiteVitesse"]);
+            $image = mysqli_real_escape_string($dbd, $_POST["image"]);
+            $TypeMoteur = mysqli_real_escape_string($dbd, $_POST["TypeMoteur"]);
+            $Carburant = mysqli_real_escape_string($dbd, $_POST["Carburant"]);
+            $km = mysqli_real_escape_string($dbd, $_POST["Km"]);
+            $IdMarque = mysqli_real_escape_string($dbd, $_POST["IdMarque"]);
+            $IdModele = mysqli_real_escape_string($dbd, $_POST["IdModele"]);
+            $chemin_image .= $IdMarque. '/'.$image;
+            $insertion = "INSERT INTO voitures (Couleur, TypeMoteur, Carburant, Km, BoiteVitesse, IdModele, IdMarque, image)
+                        VALUES('$couleur', '$TypeMoteur', '$Carburant', '$km', '$BoiteVitesse', '$IdModele', '$IdMarque', '$chemin_image')";
+            if(mysqli_query($dbd, $insertion)) {
+                header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
+                exit(); // Terminer le script après la redirection
+            } else {
+                echo "<p>Erreur lors de l'insertion des données : " . mysqli_error($dbd) . "</p>";
+            }
+            mysqli_close($dbd);
+        }
+    }
 
     function afficher_infos_inscrits(){
         // affiche de tous les personne inscrits
@@ -199,6 +228,7 @@
     }
 
 
+// ici commence tous les fonctions concernant la table demandeessaie
     function afficher_infos_essaies(){
         //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
         global $dbd;
@@ -216,19 +246,19 @@
             $Prenom = $row["Prenom"];
             $Nom = $row["Nom"];
             echo "
-                <div class='col-12 border mt-3'>
+                <a href='voir_essaie.php?Ref=$Ref_Essaie' class='col-12 border mt-3'>
                     <div class='row'>
                         <div class='col-4 p-3'>$Prenom</div>
                         <div class='col-4 p-3'>$Nom</div>
                         <div class='col-2 p-3'>$DateEssaie</div>
                         <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='Ref_Essaie[]' value=$Ref_Essaie></div>
                     </div>
-                </div>";
+                </a>";
         }
         mysqli_free_result($curseur);
     }
 
-
+    //fonction pour ajouter une demande d'essaie
     function ajouter_DemandeEssaie(){
         // insertion de demande d'essai
         global $dbd;
@@ -263,6 +293,38 @@
         }
     }
 
+    //fonction pout voir seulement tous les demande d'essaie
+    function visualiser_essaie(){
+        //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
+        global $dbd;
+        $selection = "SELECT demandeessaie.*, inscription.Nom, inscription.Prenom 
+        FROM demandeessaie 
+        INNER JOIN inscription ON demandeessaie.IdInscription = inscription.IdInscription
+        ORDER BY DateEssaie DESC;
+        ";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $Ref_Essaie = $row["Ref_Essaie"];
+            $IdInscription = $row["IdInscription"];
+            $DateEssaie= $row["DateEssaie"];
+            $HeureEssaie = $row["HeureEssaie"];
+            $Prenom = $row["Prenom"];
+            $Nom = $row["Nom"];
+            echo "
+                <a href='voir_essaie.php?Ref=$Ref_Essaie'>
+                    <div class='row'>
+                        <div class='col-12 col-md-4 sm-text-center col-lg-4 p-3 border'>$Prenom</div>
+                        <div class='col-12 col-md-4 col-lg-4 p-3 border'>$Nom</div>
+                        <div class='col-12 col-md-4 col-lg-4 p-3 border'>$DateEssaie</div>
+                    </div>
+                </a>";
+        }
+        mysqli_free_result($curseur);
+    }
+// c'est ici que ce termine les fonctions conernant la table "demandeessaie"
+
+
+// Tous les fonctions qui traite les donnée de la table evement
     function afficher_infos_evenements(){
         // on affiche tous les évenements enregisgtré dans la base
         global $dbd;
@@ -280,10 +342,10 @@
                 <div class='col-12 border mt-3'>
                     <div class='row'>
                         <div class='col-4 p-3'>
-                            <a href='voir_evenement.php?id=$IdEvenement' class='row' style='font-size: 20px; text-decoration: none;'>
-                                <div  class='col-10'>$theme</div>
-                                <div class='col-2'>📝</div>
-                            </a>
+                            <div class='row' style='text-decoration: none;'>
+                                <div class='col-10'><a href='voir_evenement.php?IdEvenement=$IdEvenement'>$theme</a></div>
+                                <div class='col-2'><a href=''>📝</a></div>
+                            </div>
                         </div>
                         <div class='col-3 p-3'>$debut</div>
                         <div class='col-3 p-3'>$fin</div>
@@ -302,12 +364,13 @@
             $theme = mysqli_real_escape_string($dbd, $_POST["théme"]);
             $DateDebut = mysqli_real_escape_string($dbd, $_POST["DateDebut"]);
             $DateFin = mysqli_real_escape_string($dbd, $_POST["DateFin"]);
+            $location= mysqli_real_escape_string($dbd, $_POST["location"]);
             $Description = mysqli_real_escape_string($dbd, $_POST["Description"]);
             $image = mysqli_real_escape_string($dbd, $_POST["image"]);
             $Prix = mysqli_real_escape_string($dbd, $_POST["Prix"]);
             $chemin_image .= $image;
-            $insertion = "INSERT INTO evenement (théme, DateDebut, DateFin, Description, image, Prix)
-                        VALUES('$theme', '$DateDebut', '$DateFin', '$Description', '$chemin_image', '$Prix')";
+            $insertion = "INSERT INTO evenement (théme, DateDebut, DateFin, location, Description, image, Prix)
+                        VALUES('$theme', '$DateDebut', '$DateFin', '$location', '$Description', '$chemin_image', '$Prix')";
             if(mysqli_query($dbd, $insertion)) {
                 header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
                 exit(); // Terminer le script après la redirection
@@ -317,6 +380,35 @@
             mysqli_close($dbd);
         }
     }
+
+    // fonction pour visualier les evenements 
+    function visualiser_evenements(){
+        //affichage de tous les evenemenets de la table evenemnt
+        global $dbd;
+        $selection = "SELECT * FROM evenement ORDER BY DateDebut;";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdEvenement = $row["IdEvenement"];
+            $theme = $row["théme"];
+            $DateDebut = $row["DateDebut"];
+            $DateFin = $row["DateFin"];
+            $Description = $row["Description"];
+            $image = $row["image"];
+            $Prix = $row["Prix"];
+            $location = $row["location"];
+            echo "
+                <a href='voir_evenement.php?IdEvenement=$IdEvenement'>
+                    <div class='row'>
+                        <div class='col-12 col-md-4 sm-text-center col-lg-4 p-3 border'>$theme</div>
+                        <div class='col-12 col-md-4 col-lg-4 p-3 border'>$DateDebut</div>
+                        <div class='col-12 col-md-4 col-lg-4 p-3 border'>$location</div>
+                    </div>
+                </a>";
+        }
+        mysqli_free_result($curseur);
+    }
+// c"est ici que se termine tous les fonctions pour la table evenement
+
 
     function afficher_infos_contacts(){
         //affichage de tous les contacts
@@ -346,7 +438,7 @@
     }
 
 
-    function verifierAuthentification() {
+    function verifierAuthentification($location) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
         $tempsExpiration = 30 * 60; // 30 minutes en secondes
 
@@ -361,17 +453,16 @@
             session_unset();
             session_destroy();
             // Rediriger l'utilisateur vers une autre page
-            header("Location: connection_admin.php");
+            header("Location: $location");
             exit();
         }
 
         // Vérifier si l'utilisateur est connecté
         if (!isset($_SESSION['username'])) {
             // L'utilisateur n'est pas connecté, rediriger vers une autre page
-            header("Location: connection_admin.php");
+            header("Location: $location");
             exit();
         }
-
         // Mettre à jour le timestamp de la dernière activité
         $_SESSION['last_activity'] = time();
     }
