@@ -1,6 +1,11 @@
 <?php
     include("fonctions.php");
-    verifierAuthentification("dashboard.php");
+    verifierAuthentification("index.php");
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if(isset($_POST['deconnexion'])) {
+            se_deconnecter();
+        }
+    }
     if(isset($_GET["IdVoiture"])){
         $IdVoiture = $_GET["IdVoiture"];
         $selection = "SELECT voitures.*, NomModele
@@ -51,16 +56,18 @@
                             <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dashboard.php">Dashboard</a>
+                            <a class="nav-link" href="index.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="visualier_evenement.php">Tous les voitures</a>
+                            <a class="nav-link" href="visualiser_voitures.php">Tous les voitures</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
                             <li class="nav-item">
-                                <a class="nav-link" href="login.html">Se Deconnecter</a>
+                                <form action="" method="POST">
+                                    <button class="btn btn-primary" name="deconnexion" type="submit">Se deconnecter</button></
+                                </form>
                             </li>
                         </ul>
                     </span>

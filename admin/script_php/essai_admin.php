@@ -95,7 +95,7 @@
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="dashboard.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="index.php">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

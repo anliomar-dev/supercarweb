@@ -485,14 +485,11 @@
         }
         mysqli_free_result($curseur);
     }
-    function est_connecte(){
-        
-    }
 
 
     function verifierAuthentification($location) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 30 * 60; // 30 minutes en secondes
+        $tempsExpiration = 5 * 60; // 30 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
@@ -519,4 +516,13 @@
         $_SESSION['last_activity'] = time();
     }
 
+    function se_deconnecter(){
+        if (isset($_POST["deconnexion"])){
+            session_unset();
+            session_destroy();
+            // Rediriger l'utilisateur vers la page de connection
+            header("Location: connection_admin.html");
+            exit();
+        }
+    }
 ?>
