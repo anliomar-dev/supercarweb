@@ -1,19 +1,22 @@
 <?php
     include("fonctions.php");
     verifierAuthentification("dashboard.php");
-    if(isset($_GET["IdEvenement"])){
-        $IdEvenement = $_GET["IdEvenement"];
-        $selection = "SELECT * FROM evenement WHERE IdEvenement = $IdEvenement";
+    if(isset($_GET["IdVoiture"])){
+        $IdVoiture = $_GET["IdVoiture"];
+        $selection = "SELECT voitures.*, NomModele
+        FROM voitures
+        INNER JOIN modele ON voitures.IdModele = modele.IdModele
+        WHERE IdVoiture = $IdVoiture;";
         $curseur = mysqli_query($dbd, $selection);
-        while($row = mysqli_fetch_array($curseur)){
-            $IdEvenement = $row["IdEvenement"];
-            $theme = $row["théme"];
-            $debut = $row["DateDebut"];
-            $fin = $row["DateFin"];
-            $Description = $row["Description"];
-            $image = $row["image"];
-            $prix = $row["Prix"];
-            $location = $row["location"];
+        if($row = mysqli_fetch_array($curseur)){
+            $IdVoiture = $row["IdVoiture"];
+            $Couleur = $row["Couleur"];
+            $TypeMoteur = $row["TypeMoteur"];
+            $Carburant = $row["Carburant"];
+            $Km = $row["Km"];
+            $BoiteVitesse = $row["BoiteVitesse"];
+            $image = $row["Image"];
+            $NomModele = $row["NomModele"];
         }
         mysqli_free_result($curseur);
     }
@@ -31,7 +34,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/dashboard.css">
-        <title><?php echo"Evenement n°$IdEvenement";?></title>
+        <title><?php echo"Voiture n°$IdVoitures";?></title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
@@ -51,7 +54,7 @@
                             <a class="nav-link" href="dashboard.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="visualier_evenement.php">Tous les evenements</a>
+                            <a class="nav-link" href="visualier_evenement.php">Tous les voitures</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -75,50 +78,39 @@
                 </div>
                 <div class="col-12 col-sm-12 col-lg-7 mt-3">
                     <div class="row">
-                        <div class="col-12 mt-3"><h3><?php echo $theme; ?></h3></div>
-                        <div class="col-12"><hr></div>
-                        <div class="col-12 my-3"><u>Description:</u></div>
-                        <div class="col-12"><p><?php echo $Description; ?></p></div>
-                        <div class="col-6 mt-3">
+                        <div class="col-12 mt-3"><h3><?php echo $NomModele; ?></h3></div>
+                        <div class="col-12 mt-5"><hr></div>
                             <div class="row">
-                                <div class="col-12">
+                            <div class="col-12 p-3">
                                     <div class="row">
-                                        <div class="col-5">Debute le:</div>
-                                        <div class="col-7"><strong><?php echo $debut; ?></strong></div>
+                                        <div class="col-5">Couleur:</div>
+                                        <div class="col-7"><strong><?php echo $Couleur; ?></strong></div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 p-3">
                                     <div class="row">
-                                        <div class="col-5">Fini le:</div>
-                                        <div class="col-7"><strong><?php echo $fin; ?></strong></div>
+                                        <div class="col-5">Moteur:</div>
+                                        <div class="col-7"><strong><?php echo $TypeMoteur; ?></strong></div>
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 p-3">
                                     <div class="row">
-                                        <div class="col-5">Location:</div>
-                                        <div class="col-7"><strong><?php echo $location; ?></strong></div>
+                                        <div class="col-5">Carburant:</div>
+                                        <div class="col-7"><strong><?php echo $Carburant; ?></strong></div>
                                     </div>
                                 </div>
-                                <?php
-                                    if($prix == 0){
-                                        echo "
-                                        <div class='col-12'>
-                                            <div class='row'>
-                                                <div class='col-12'><strong>Gratuit</strong></div>
-                                            </div>
-                                        </div>
-                                        ";
-                                    }else{
-                                        echo "
-                                        <div class='col-12'>
-                                            <div class='row'>
-                                                <div class='col-5'>Prix:</div>
-                                                <div class='col-7'><strong>€ $prix</strong></div>
-                                            </div>
-                                        </div>
-                                        ";
-                                    }
-                                ?>
+                                <div class="col-12 p-3">
+                                    <div class="row">
+                                        <div class="col-5">Kilometrage:</div>
+                                        <div class="col-7"><strong><?php echo $Km; ?></strong></div>
+                                    </div>
+                                </div>
+                                <div class="col-12 p-3">
+                                    <div class="row">
+                                        <div class="col-5">Boite vitesse:</div>
+                                        <div class="col-7"><strong><?php echo $BoiteVitesse; ?></strong></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

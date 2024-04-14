@@ -1,7 +1,7 @@
 <?php
     include("server.php");
     function inserer($table, $colonnes) {
-        // cette fonction insere une nouvelle enregistrement dans une table dot le nom est en paramètre ainsi qeu les colonnes
+        // cette fonction insere une nouvelle enregistrement dans une table dont le nom est en paramètre ainsi que les colonnes
         global $dbd;
         //initialise la valeur de la varible inserer a faux
         $insertion = false;
@@ -29,7 +29,7 @@
 
 
     function supprimer($table, $cle_primaire){
-        //cette fonction supprimer une ou plusieurs lignes cochés
+        //cette fonction supprimer une ou plusieurs lignes cochés: ele est utilisé par tous les tables
         global $dbd;
         $suppression = false;
         $erreur = ""; // Variable pour stocker les messages d'erreur
@@ -118,7 +118,7 @@
         mysqli_free_result($curseur);
     }
 
-
+//ici debute les fonctions qui traitent les données des voitures
     function afficher_infos_voitures(){
         //affichage de tous les voitures
         global $dbd;
@@ -141,7 +141,7 @@
                     <div class='row'>
                         <div class='col-4 p-3'>
                             <div class='row' style='text-decoration: none;'>
-                                <div class='col-10'><a href=''>$NomModele</a></div>
+                                <div class='col-10'><a href='voir_voiture.php?IdVoiture=$IdVoiture'>$NomModele</a></div>
                                 <div class='col-2'><a href='modele2.php?id=$Idmodele&modele_noms=$NomModele&prix_modele=$Prix_modele'>📝</a></div>
                             </div>
                         </div>       
@@ -178,6 +178,44 @@
             mysqli_close($dbd);
         }
     }
+
+    function visualier_voitures(){
+        global $dbd;
+        $couleur_ligne = "";
+        $infos_voitures = "";
+        $selection = "SELECT voitures.*, NomModele
+        FROM voitures
+        INNER JOIN modele ON voitures.IdModele = modele.IdModele
+        ORDER BY NomModele";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdVoiture = $row["IdVoiture"];
+            $Couleur = $row["Couleur"];
+            $Idmodele = $row["IdModele"];
+            $IdMarque = $row["IdMarque"];
+            $NomModele = $row["NomModele"];
+            $typemoteur = $row["TypeMoteur"];
+            $BoiteVitesse = $row["BoiteVitesse"];
+            // Alternez les couleurs de fond entre rouge et bleu
+            if ($couleur_ligne == "rgb(163, 163, 163);") {
+                $couleur_ligne = "rgb(253, 239, 220);";
+            } else {
+                $couleur_ligne = "rgb(163, 163, 163);";
+            }
+            echo "
+                <a href='voir_voiture.php?IdVoiture=$IdVoiture' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
+                    <div class='row'>
+                        <div class='col-12 col-lg-3 p-3'>$NomModele</div>
+                        <div class='col-12 col-lg-3 p-3'>$Couleur</div>
+                        <div class='col-12 col-lg-3 p-3'>$typemoteur</div>
+                        <div class='col-12 col-lg-3 p-3'>$BoiteVitesse</div>
+                    </div>
+                </a>";
+        }
+        mysqli_free_result($curseur);
+    }
+// ici se termine les fonctions qui traitent les données des voitures
+
 
     function afficher_infos_inscrits(){
         // affiche de tous les personne inscrits
@@ -297,6 +335,7 @@
     function visualiser_essaie(){
         //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
         global $dbd;
+        $couleur_ligne = "";
         $selection = "SELECT demandeessaie.*, inscription.Nom, inscription.Prenom 
         FROM demandeessaie 
         INNER JOIN inscription ON demandeessaie.IdInscription = inscription.IdInscription
@@ -310,8 +349,14 @@
             $HeureEssaie = $row["HeureEssaie"];
             $Prenom = $row["Prenom"];
             $Nom = $row["Nom"];
+            // Alternez les couleurs de fond entre rouge et bleu
+            if ($couleur_ligne == "rgb(163, 163, 163);") {
+                $couleur_ligne = "rgb(253, 239, 220);";
+            } else {
+                $couleur_ligne = "rgb(163, 163, 163);";
+            }
             echo "
-                <a href='voir_essaie.php?Ref=$Ref_Essaie'>
+                <a href='voir_essaie.php?Ref=$Ref_Essaie' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
                     <div class='row'>
                         <div class='col-12 col-md-4 sm-text-center col-lg-4 p-3 border'>$Prenom</div>
                         <div class='col-12 col-md-4 col-lg-4 p-3 border'>$Nom</div>
@@ -385,6 +430,7 @@
     function visualiser_evenements(){
         //affichage de tous les evenemenets de la table evenemnt
         global $dbd;
+        $couleur_ligne = "";
         $selection = "SELECT * FROM evenement ORDER BY DateDebut;";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)){
@@ -396,8 +442,14 @@
             $image = $row["image"];
             $Prix = $row["Prix"];
             $location = $row["location"];
+            // Alternez les couleurs de fond entre rouge et bleu
+            if ($couleur_ligne == "rgb(163, 163, 163);") {
+                $couleur_ligne = "rgb(253, 239, 220);";
+            } else {
+                $couleur_ligne = "rgb(163, 163, 163);";
+            }
             echo "
-                <a href='voir_evenement.php?IdEvenement=$IdEvenement'>
+                <a href='voir_evenement.php?IdEvenement=$IdEvenement' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
                     <div class='row'>
                         <div class='col-12 col-md-4 sm-text-center col-lg-4 p-3 border'>$theme</div>
                         <div class='col-12 col-md-4 col-lg-4 p-3 border'>$DateDebut</div>

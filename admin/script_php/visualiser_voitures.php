@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
+        <title>visualiser_voitures</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <!--lien font awsome-->
@@ -46,11 +46,12 @@
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Prenom</div>
-                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Nom</div>
-                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Date de l'essaie</div>
+                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Modele</div>
+                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">couleur</div>
+                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Moteur</div>
+                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Boite vitesse</div>
                 <?php
-                    visualiser_essaie();
+                    visualier_voitures();
                 ?>
             </div>
         </div>

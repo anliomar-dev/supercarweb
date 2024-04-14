@@ -14,6 +14,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/marque_admin.css">
+        <link rel="stylesheet" href="../style/visualiser.css">
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
@@ -45,9 +46,9 @@
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12 col-md-4 col-lg-4 border p-3">théme</div>
-                <div class="col-12 col-md-4 col-lg-4 border p-3">Date du debut</div>
-                <div class="col-12 col-md-4 col-lg-4 border p-3">Locatins</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">théme</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Date du debut</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Locatins</div>
                 <?php
                     visualiser_evenements();
                 ?>

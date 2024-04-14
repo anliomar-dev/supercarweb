@@ -45,7 +45,7 @@
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualiser_essaie.php">demandes d'essais</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualier_evenement.php">voir les evenements</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les modèles</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les voitures</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualiser_voitures.php">voir les voitures</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
                         </div>
