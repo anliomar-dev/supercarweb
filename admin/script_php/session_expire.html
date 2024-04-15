@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>session expirer</title>
+    <style>
+        /*centrer les deux éléments dans body*/
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h4{
+            margin-left: 30%;
+        }
+        @media screen and (max-width: 244px){
+            h2{
+                font-size: 17px;
+            }
+            h4{
+                margin-left: 18%;
+            }
+        }
+        /*lien vers la page de connexion*/
+        a{
+            text-decoration: none;
+            border: solid 1px black;
+            background-color: rgb(73, 73, 190);
+            padding: 5px 10px;
+            border-radius: 3px;
+            color: white;
+            transition: border-radius 0.5s, background-color 0.5s, box-shadow 0.5s;
+        }
+        a:hover{
+            border-radius: 10px;
+            background-color: rgb(56, 56, 249);
+            box-shadow: 3px 3px 10px black;
+        }
+    </style>
+</head>
+<body>
+    <div class="session-expirer">
+        <h2>votre session a expiré.</h2>
+        <h4><a href="connection_admin.html">se connecter</a></h4>
+    </div>
+</body>
+</html>

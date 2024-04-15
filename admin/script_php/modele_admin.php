@@ -1,6 +1,7 @@
 <?php
     ob_start();
     include("fonctions.php");
+    verifierAuthentification("index.php", "session_expire.html"); 
     // Redirection si nécessaire
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_modele'])) {

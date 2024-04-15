@@ -27,7 +27,7 @@
         return $erreur; // Retourne le message d'erreur
     }
 
-
+    $suppression = false;
     function supprimer($table, $cle_primaire){
         //cette fonction supprimer une ou plusieurs lignes cochés: ele est utilisé par tous les tables
         global $dbd;
@@ -487,9 +487,9 @@
     }
 
 
-    function verifierAuthentification($location) {
+    function verifierAuthentification($location1, $location2) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 5 * 60; // 30 minutes en secondes
+        $tempsExpiration = 1 * 60; // 30 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
@@ -502,14 +502,14 @@
             session_unset();
             session_destroy();
             // Rediriger l'utilisateur vers une autre page
-            header("Location: $location");
+            header("Location: $location2");
             exit();
         }
 
         // Vérifier si l'utilisateur est connecté
         if (!isset($_SESSION['username'])) {
             // L'utilisateur n'est pas connecté, rediriger vers une autre page
-            header("Location: $location");
+            header("Location: $location1");
             exit();
         }
         // Mettre à jour le timestamp de la dernière activité

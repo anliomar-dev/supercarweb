@@ -1,6 +1,6 @@
 <?php
     include("fonctions.php");
-    verifierAuthentification("connection_admin.html");
+    verifierAuthentification("connection_admin.html", "session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
             se_deconnecter();

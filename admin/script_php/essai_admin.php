@@ -1,6 +1,6 @@
 <?php
     include("fonctions.php");
-    verifierAuthentification("connnection_admin.html");
+    verifierAuthentification("index.html", "session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_essaie'])) {
             ajouter_DemandeEssaie();
