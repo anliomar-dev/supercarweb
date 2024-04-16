@@ -476,12 +476,15 @@
             echo "
                 <div class='col-12 border mt-3'>
                     <div class='row'>
-                        <div class='col-4 p-3'>$Nom</div>
-                        <div class='col-6 p-3'>$email</div>
-                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdContact[]' value=$IdContact></div>
+                        <a href='voir_contact.php?id=$IdContact' class='col-10'>
+                            <div class='row'>
+                                <div class='col-5 p-3'>$Nom</div>
+                                <div class='col-7 p-3'>$email</div>
+                            </div>
+                        </a>
+                        <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdContact[]' value='$IdContact'></div>
                     </div>
-                </div>
-            ";
+                </div>";
         }
         mysqli_free_result($curseur);
     }

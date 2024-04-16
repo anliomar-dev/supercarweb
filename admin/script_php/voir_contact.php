@@ -7,16 +7,15 @@
         }
     }
     if(isset($_GET["id"])){
-        $IdInscription = $_GET["id"];
+        $IdContact = $_GET["id"];
         //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
         global $dbd;
-        $selection = "SELECT * FROM inscription WHERE IdInscription = $IdInscription;";
+        $selection = "SELECT * FROM contacts WHERE IdContact = $IdContact;";
         $curseur = mysqli_query($dbd, $selection);
         if($row = mysqli_fetch_array($curseur)){
-            $IdInscription = $row["IdInscription"];
+            $IdContact = $row["IdContact"];
             $Nom = $row["Nom"];
             $Prenom = $row["Prenom"];
-            $Adresse = $row["Adresse"];
             $NumTel = $row["NumTel"];
             $email = $row["email"];
         }
@@ -36,7 +35,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/dashboard.css">
-        <title><?php echo"Essaie n°$IdInscription";?></title>
+        <title><?php echo"Essaie n°$IdContact";?></title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
@@ -56,7 +55,7 @@
                             <a class="nav-link" href="index.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="inscrits.php">Tous les inscriptions</a>
+                            <a class="nav-link" href="contacts_admin.php">Tous les contacts</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -75,13 +74,11 @@
             <div class="row border">
                 <div class="col-12 mt-3 p-5">
                     <div class="row">
-                        <div class=" mb-5 text-center"><h3><u>informations</u></h3></div>
+                        <div class=" mb-5 text-center"><h3><u>informations sur le contact</u></h3></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Prenom:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Prenom;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Nom:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Nom;?></strong></div>
-                        <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Adresse:</div>
-                        <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Adresse;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Téléphone:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $NumTel;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Email:</div>
