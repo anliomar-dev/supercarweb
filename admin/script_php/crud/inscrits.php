@@ -1,6 +1,6 @@
 <?php
-    include("fonctions.php");
-    verifierAuthentification("index.php", "session_expire.html"); 
+    include("../fonctions.php");
+    verifierAuthentification("../index.html", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_inscription'])) {
             inscrire();
@@ -61,7 +61,7 @@
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5 mb-3">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="index.php" class="retour">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="../index.php" class="retour">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

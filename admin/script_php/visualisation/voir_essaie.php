@@ -1,6 +1,6 @@
 <?php
-    include("fonctions.php");
-    verifierAuthentification("index.php", "session_expire.html");
+    include("../fonctions.php");
+    verifierAuthentification("../index.php", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
             se_deconnecter();
@@ -70,7 +70,7 @@
                             <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Dashboard</a>
+                            <a class="nav-link" href="../index.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="visualiser_essaie.php">Tous les essaies</a>

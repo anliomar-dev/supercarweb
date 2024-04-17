@@ -47,10 +47,10 @@
                         <div class="col-12 col-lg-8 border">
                             <div class="row">
                             <div class="col-12 border h4" style="background-color: #4A7696; color: white;">Visualisation</div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualiser_essaie.php">demandes d'essais</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualier_evenement.php">voir les evenements</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_essaie.php">demandes d'essais</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualier_evenement.php">voir les evenements</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les modèles</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualiser_voitures.php">voir les voitures</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_voitures.php">voir les voitures</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
                         </div>
@@ -78,31 +78,31 @@
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">voitures</p>
-                                            <a href="voitures_admin.php">➕add</a>
+                                            <a href="crud/voitures_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Modèles</p>
-                                            <a href="modele_admin.php">➕add</a>
+                                            <a href="crud/modele_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Marques</p>
-                                            <a href="marque_admin.php">➕add</a>
+                                            <a href="crud/marque_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Inscriptions</p>
-                                            <a href="inscrits.php">➕add</a>
+                                            <a href="crud/inscrits.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">Contacts</p>
-                                            <a href="contacts_admin.php">➕add</a>
+                                            <a href="crud/contacts_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">evenements</p>
-                                            <a href="evenements_admin.php">➕add</a>
+                                            <a href="crud/evenements_admin.php">➕add</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">demandes d'essais</p>
-                                            <a href="essai_admin.php">➕add</a>
+                                            <a href="crud/essai_admin.php">➕add</a>
                                         </div>
                                     </div>
                                 </div>

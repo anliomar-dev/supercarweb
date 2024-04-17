@@ -1,6 +1,6 @@
 <?php
-    include("fonctions.php");
-    verifierAuthentification("index.php", "session_expire.html");
+    include("../fonctions.php");
+    verifierAuthentification("../index.php", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
             se_deconnecter();
@@ -8,9 +8,10 @@
     }
     if(isset($_GET["IdVoiture"])){
         $IdVoiture = $_GET["IdVoiture"];
-        $selection = "SELECT voitures.*, NomModele
+        $selection = "SELECT voitures.*, NomModele, NomMarque
         FROM voitures
         INNER JOIN modele ON voitures.IdModele = modele.IdModele
+        INNER JOIN marque ON voitures.IdMarque = marque.IdMarque
         WHERE IdVoiture = $IdVoiture;";
         $curseur = mysqli_query($dbd, $selection);
         if($row = mysqli_fetch_array($curseur)){
@@ -22,6 +23,7 @@
             $BoiteVitesse = $row["BoiteVitesse"];
             $image = $row["Image"];
             $NomModele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
         }
         mysqli_free_result($curseur);
     }
@@ -39,7 +41,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/dashboard.css">
-        <title><?php echo"Voiture n°$IdVoitures";?></title>
+        <title><?php echo"Voiture n° $IdVoiture"?></title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
@@ -56,7 +58,7 @@
                             <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Dashboard</a>
+                            <a class="nav-link" href="../index.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="visualiser_voitures.php">Tous les voitures</a>
@@ -78,15 +80,15 @@
             <div class="row">
                 <div class="col-12 col-sm-12 col-lg-5">
                     <div class="row p-3">
-                        <div class="col-12 mt-3">
-                            <img src="<?php echo $image; ?>" alt="" class="img-fluid">
+                        <div class="col-12 mt-5">
+                            <img src="<?php echo "../../../images/$NomMarque/$image";?>" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-12 col-lg-7 mt-3">
                     <div class="row">
-                        <div class="col-12 mt-3"><h3><?php echo $NomModele; ?></h3></div>
-                        <div class="col-12 mt-5"><hr></div>
+                        <div class="col-12"><h3><?php echo $NomModele; ?></h3></div>
+                        <div class="col-12"><hr></div>
                             <div class="row">
                             <div class="col-12 p-3">
                                     <div class="row">

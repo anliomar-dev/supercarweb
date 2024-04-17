@@ -1,6 +1,6 @@
 <?php
-    include("fonctions.php");
-    verifierAuthentification("index.html", "session_expire.html");
+    include("../fonctions.php");
+    verifierAuthentification("../index.html", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['ajouter_essaie'])) {
             ajouter_DemandeEssaie();
@@ -95,7 +95,7 @@
                             </div>
                         </form>
                         <div class="col-12 ps-5 pt-5">
-                            <h5><i class="fa-solid fa-arrow-left"></i><a href="index.php">RETOUR</a></h5>
+                            <h5><i class="fa-solid fa-arrow-left"></i><a href="../index.php">RETOUR</a></h5>
                         </div>
                     </div>
                 </div>

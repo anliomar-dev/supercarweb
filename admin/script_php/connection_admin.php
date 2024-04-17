@@ -3,7 +3,7 @@ include("server.php");
     $_SESSION['idIAdmin'] = '';
     $_SESSION['username'] = '';
     // Fonction pour vérifier l'authentification de l'utilisateur
-    function verifierAuthentification($dbd, $identifiant, $mot_de_passe) {
+    function Authentification($dbd, $identifiant, $mot_de_passe) {
         // Requête préparée pour récupérer le mot de passe associé à l'identifiant
         $requete = "SELECT MotDePasse, IdAdmin FROM admin WHERE Identifiant = ?";
         $statement = mysqli_prepare($dbd, $requete);
@@ -16,7 +16,6 @@ include("server.php");
                 $row = mysqli_fetch_assoc($resultat);
                 $hash = $row['MotDePasse'];
                 $idAdmin = $row['IdAdmin'];
-
                 // Vérifie si le mot de passe correspond au hash stocké
                 if (password_verify($mot_de_passe, $hash)) {
                     // Démarrer une session
@@ -40,9 +39,9 @@ include("server.php");
 // Vérifie si le formulaire a été soumis
 if (isset($_POST["submit"])) {
     $identifiant = mysqli_real_escape_string($dbd, $_POST["identifiant"]);
-    $mot_de_passe = $_POST["mot_de_passe"];
+    $mot_de_passe = mysqli_real_escape_string($dbd, $_POST["mot_de_passe"]);;
 
-    if (verifierAuthentification($dbd, $identifiant, $mot_de_passe)) {
+    if (Authentification($dbd, $identifiant, $mot_de_passe)) {
         session_start();
         header("Location: index.php");
         exit();
@@ -50,7 +49,6 @@ if (isset($_POST["submit"])) {
         echo "<p>Identifiant ou mot de passe incorrect.</p>";
     }
 }
-
 // Fermeture de la connexion
 mysqli_close($dbd);
 

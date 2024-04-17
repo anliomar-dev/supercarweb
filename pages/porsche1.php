@@ -89,11 +89,14 @@
         </div>
         <?php
             include ("../database/connexion.php");
-            $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 7 AND 8;";
+            $selection = "SELECT voitures.*, modele.IdModele, modele.NomModele, modele.Prix
+                        FROM voitures
+                        INNER JOIN modele ON voitures.IdModele = modele.IdModele
+                        WHERE NomModele = 'Porsche'";
             $curseur = mysqli_query($dbd, $selection);
-            while($row = mysqli_fetch_array($curseur)) {
+            while ($row = mysqli_fetch_array($curseur)) {
                 $nommodele = $row["NomModele"];
-                $annee= $row["Annee"];
+                $annee = $row["Annee"];
                 $prix = $row["Prix"];
                 $idvoiture = $row["IdVoiture"];
                 $couleur = $row["Couleur"];
@@ -101,30 +104,31 @@
                 $carburant = $row["Carburant"];
                 $km = $row["Km"];
                 $boitevitesse = $row["BoiteVitesse"];
-                $image = $row["Image"]
+                $image = $row["Image"];
+
+                echo "
+                <div class='col-12 mt-5'>
+                    <div class='row'>
+                        <div class='col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center'>
+                            <div class='row text-center'>
+                                <div class='col-12 pt-3'><h4><u>$nommodele</u></h4></div>
+                                <div class='col-12 text-center'><p>Année: $annee</p></div>
+                                <div class='col-12 text-center'><p>Prix: $prix €</p></div>
+                                <div class='col-12 text-center'><p>KM: $km km/h</p></div>
+                                <div class='col-12 text-center'><p>Type moteur: $boitevitesse</p></div>
+                                <div class='col-12 text-center'><h6><a href='essai.html'>Essayer</a></h6></div>
+                            </div>
+                        </div>
+                        <div class='col-sm-12 col-md-12 col-lg-7'>
+                            <img src='$image' class='img-fluid'>
+                        </div>
+                    </div>
+                </div>";
+            }
+
+            mysqli_free_result($curseur);
+            mysqli_close($dbd);
         ?>
-    <div class="container voitures mt-5">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
-                <div class="row text-center">
-                    <div class="col-12 pt-3"><h4><u><?php echo $nommodele; ?></u></h4></div>
-                    <div class="col-12 text-center"><p>Année: <?php echo $annee; ?></p></div>
-                    <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
-                    <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
-                    <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
-            </div>
-        </div>
-    </div> 
-    <?php
-        }
-        mysqli_free_result($curseur);
-        mysqli_close($dbd);
-    ?>
     <div class="container">
             <div class="row">
                 <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-p"><h1>Moteurs électriques</h1></div>
@@ -132,7 +136,7 @@
         </div>
         <?php
             include ("../database/connexion.php");
-            $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 9 AND 10;";
+            $selection = "SELECT * FROM voitures JOIN modele ON voitures.IdModele = modele.IdModele WHERE modele.IdModele BETWEEN 9 AND 10;";
             $curseur = mysqli_query($dbd, $selection);
             while($row = mysqli_fetch_array($curseur)) {
                 $nommodele = $row["NomModele"];
@@ -176,7 +180,7 @@
         </div>
         <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 11 AND 12;";
+        $selection = "SELECT * FROM voitures JOIN modele ON voitures.IdModele = modele.IdModele WHERE modele.IdModele BETWEEN 11 AND 12;";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];

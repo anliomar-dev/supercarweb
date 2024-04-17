@@ -1,6 +1,6 @@
 <?php
-    include("fonctions.php");
-    verifierAuthentification("index.php", "session_expire.html");
+    include("../fonctions.php");
+    verifierAuthentification("../index.php", "../session_expire.html"); 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
             se_deconnecter();
@@ -11,7 +11,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>visualiser_voitures</title>
+        <title>Bootstrap demo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
         <!--lien font awsome-->
@@ -36,7 +36,7 @@
                             <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo $_SESSION['username']; ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php">Dashboard</a>
+                            <a class="nav-link" href="../index.php">Dashboard</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -53,12 +53,11 @@
         </nav>
         <div class="container mt-5">
             <div class="row">
-                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Modele</div>
-                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">couleur</div>
-                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Moteur</div>
-                <div class="col-12 col-lg-3 border p-3 text-bg-info text-black">Boite vitesse</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">théme</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Date du debut</div>
+                <div class="col-12 col-md-4 col-lg-4 text-bg-info border p-3">Locatins</div>
                 <?php
-                    visualier_voitures();
+                    visualiser_evenements();
                 ?>
             </div>
         </div>

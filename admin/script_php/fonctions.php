@@ -141,7 +141,7 @@
                     <div class='row'>
                         <div class='col-4 p-3'>
                             <div class='row' style='text-decoration: none;'>
-                                <div class='col-10'><a href='voir_voiture.php?IdVoiture=$IdVoiture'>$NomModele</a></div>
+                                <div class='col-10'><a href='../visualisation/voir_voiture.php?IdVoiture=$IdVoiture'>$NomModele</a></div>
                                 <div class='col-2'><a href='modele2.php?id=$Idmodele&modele_noms=$NomModele&prix_modele=$Prix_modele'>📝</a></div>
                             </div>
                         </div>       
@@ -156,7 +156,6 @@
     }
     function nouvelle_voiture(){
         global $dbd;
-        $chemin_image = "../../images/images";
         if(isset($_POST["ajouter_voitures"])){
             $couleur = mysqli_real_escape_string($dbd, $_POST["Couleur"]);
             $BoiteVitesse = mysqli_real_escape_string($dbd, $_POST["BoiteVitesse"]);
@@ -166,9 +165,8 @@
             $km = mysqli_real_escape_string($dbd, $_POST["Km"]);
             $IdMarque = mysqli_real_escape_string($dbd, $_POST["IdMarque"]);
             $IdModele = mysqli_real_escape_string($dbd, $_POST["IdModele"]);
-            $chemin_image .= $IdMarque. '/'.$image;
             $insertion = "INSERT INTO voitures (Couleur, TypeMoteur, Carburant, Km, BoiteVitesse, IdModele, IdMarque, image)
-                        VALUES('$couleur', '$TypeMoteur', '$Carburant', '$km', '$BoiteVitesse', '$IdModele', '$IdMarque', '$chemin_image')";
+                        VALUES('$couleur', '$TypeMoteur', '$Carburant', '$km', '$BoiteVitesse', '$IdModele', '$IdMarque', '$image')";
             if(mysqli_query($dbd, $insertion)) {
                 header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
                 exit(); // Terminer le script après la redirection
@@ -232,7 +230,7 @@
             echo "
                 <div class='col-12 border mt-3'>
                     <div class='row'>
-                        <div class='col-3 p-3'><a href='voir_inscrit.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
+                        <div class='col-3 p-3'><a href='../visualisation/voir_inscrit.php?id=$IdInscription' class='col-8' style='background-color: white; color: black; text-decoration: none;'>$prenom</a></div>
                         <div class='col-3 p-3'>$nom</div>
                         <div class='col-4 p-3'>$adresse</div>
                         <div class='col-2 p-3 border text-center'><input type='checkbox' class='form-check-input' name='IdInscription[]' value=$IdInscription></div>
@@ -284,7 +282,7 @@
             $Prenom = $row["Prenom"];
             $Nom = $row["Nom"];
             echo "
-                <a href='voir_essaie.php?Ref=$Ref_Essaie' class='col-12 border mt-3'>
+                <a href='../visualisation/voir_essaie.php?Ref=$Ref_Essaie' class='col-12 border mt-3'>
                     <div class='row'>
                         <div class='col-4 p-3'>$Prenom</div>
                         <div class='col-4 p-3'>$Nom</div>
@@ -388,7 +386,7 @@
                     <div class='row'>
                         <div class='col-4 p-3'>
                             <div class='row' style='text-decoration: none;'>
-                                <div class='col-10'><a href='voir_evenement.php?IdEvenement=$IdEvenement'>$theme</a></div>
+                                <div class='col-10'><a href='../visualisation/voir_evenement.php?IdEvenement=$IdEvenement'>$theme</a></div>
                                 <div class='col-2'><a href=''>📝</a></div>
                             </div>
                         </div>
@@ -409,13 +407,13 @@
             $theme = mysqli_real_escape_string($dbd, $_POST["théme"]);
             $DateDebut = mysqli_real_escape_string($dbd, $_POST["DateDebut"]);
             $DateFin = mysqli_real_escape_string($dbd, $_POST["DateFin"]);
-            $location= mysqli_real_escape_string($dbd, $_POST["location"]);
+            $Location= mysqli_real_escape_string($dbd, $_POST["location"]);
             $Description = mysqli_real_escape_string($dbd, $_POST["Description"]);
             $image = mysqli_real_escape_string($dbd, $_POST["image"]);
             $Prix = mysqli_real_escape_string($dbd, $_POST["Prix"]);
             $chemin_image .= $image;
-            $insertion = "INSERT INTO evenement (théme, DateDebut, DateFin, location, Description, image, Prix)
-                        VALUES('$theme', '$DateDebut', '$DateFin', '$location', '$Description', '$chemin_image', '$Prix')";
+            $insertion = "INSERT INTO evenement (théme, DateDebut, DateFin, Description, image, Prix, location)
+                        VALUES('$theme', '$DateDebut', '$DateFin', '$Description', '$image', '$Prix', '$Location')";
             if(mysqli_query($dbd, $insertion)) {
                 header("location: ".$_SERVER['PHP_SELF']); // Redirection après insertion réussie
                 exit(); // Terminer le script après la redirection
@@ -449,7 +447,7 @@
                 $couleur_ligne = "rgb(163, 163, 163);";
             }
             echo "
-                <a href='voir_evenement.php?IdEvenement=$IdEvenement' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
+                <a href='../visualisation/voir_evenement.php?IdEvenement=$IdEvenement' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
                     <div class='row'>
                         <div class='col-12 col-md-4 sm-text-center col-lg-4 p-3 border'>$theme</div>
                         <div class='col-12 col-md-4 col-lg-4 p-3 border'>$DateDebut</div>
@@ -476,7 +474,7 @@
             echo "
                 <div class='col-12 border mt-3'>
                     <div class='row'>
-                        <a href='voir_contact.php?id=$IdContact' class='col-10'>
+                        <a href='../visualisation/voir_contact.php?id=$IdContact' class='col-10'>
                             <div class='row'>
                                 <div class='col-5 p-3'>$Nom</div>
                                 <div class='col-7 p-3'>$email</div>
@@ -524,7 +522,7 @@
             session_unset();
             session_destroy();
             // Rediriger l'utilisateur vers la page de connection
-            header("Location: connection_admin.html");
+            header("Location: ../connection_admin.html");
             exit();
         }
     }

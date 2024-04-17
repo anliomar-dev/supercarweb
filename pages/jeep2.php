@@ -4,13 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Jeep</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="../stylesheet/marques.css">
-
         <!--lien font awsome-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
-        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
     </head>
     <body>
@@ -88,8 +87,8 @@
             </div>
         </div>
         <?php
-            include ("../database/connexion.php");
-            $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 13 AND 14;";
+            include ("connexion.php");
+            $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Thermique' AND voitures.IdMarque = '3';";
             $curseur = mysqli_query($dbd, $selection);
             while($row = mysqli_fetch_array($curseur)) {
                 $nommodele = $row["NomModele"];
@@ -101,9 +100,8 @@
                 $carburant = $row["Carburant"];
                 $km = $row["Km"];
                 $boitevitesse = $row["BoiteVitesse"];
-                $image = $row["Image"]
+                $image = $row["Image"];
         ?>
-
     <div class="container voitures mt-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
@@ -112,7 +110,7 @@
                     <div class="col-12 text-center"><p>Année: <?php echo $annee; ?></p></div>
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
-                    <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
+                    <div class="col-12 text-center"><p>Type moteur: <?php echo $typemoteur; ?></p></div>
                     <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
                 </div>
             </div>
@@ -120,7 +118,7 @@
                 <img src=<?php echo $image; ?> class="img-fluid">
             </div>
         </div>
-    </div> 
+    </div>
     <?php
         }
         mysqli_free_result($curseur);
@@ -132,52 +130,8 @@
             </div>
         </div>
         <?php
-            include ("../database/connexion.php");
-            $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 15 AND 16;";
-            $curseur = mysqli_query($dbd, $selection);
-            while($row = mysqli_fetch_array($curseur)) {
-                $nommodele = $row["NomModele"];
-                $annee= $row["Annee"];
-                $prix = $row["Prix"];
-                $idvoiture = $row["IdVoiture"];
-                $couleur = $row["Couleur"];
-                $typemoteur = $row["TypeMoteur"];
-                $carburant = $row["Carburant"];
-                $km = $row["Km"];
-                $boitevitesse = $row["BoiteVitesse"];
-                $image = $row["Image"]
-        ?>
-
-    <div class="container voitures mt-5">
-        <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
-                <div class="row text-center">
-                    <div class="col-12 pt-3"><h4><u><?php echo $nommodele; ?></u></h4></div>
-                    <div class="col-12 text-center"><p>Année: <?php echo $annee; ?></p></div>
-                    <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
-                    <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
-                    <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
-            </div>
-        </div>
-    </div> 
-    <?php
-        }
-        mysqli_free_result($curseur);
-        mysqli_close($dbd);
-    ?>
-    <div class="container">
-            <div class="row">
-                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-j"><h1>Moteurs hybrides</h1></div>
-            </div>
-        </div>
-        <?php
-        include ("server.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 17 AND 18;";
+        include ("connexion.php");
+        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Electrique' AND voitures.IdMarque = '3';";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
@@ -191,7 +145,6 @@
             $boitevitesse = $row["BoiteVitesse"];
             $image = $row["Image"]
     ?>
-
     <div class="container voitures mt-5">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
@@ -208,7 +161,50 @@
                 <img src=<?php echo $image; ?> class="img-fluid">
             </div>
         </div>
-    </div> 
+    </div>
+    <?php
+        }
+        mysqli_free_result($curseur);
+        mysqli_close($dbd);
+    ?>
+    <div class="container">
+            <div class="row">
+                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-j"><h1>Moteurs hybrides</h1></div>
+            </div>
+        </div>
+        <?php
+        include ("connexion.php");
+        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Hybride rechargeable' AND voitures.IdMarque = '3';";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)) {
+            $nommodele = $row["NomModele"];
+            $annee= $row["Annee"];
+            $prix = $row["Prix"];
+            $idvoiture = $row["IdVoiture"];
+            $couleur = $row["Couleur"];
+            $typemoteur = $row["TypeMoteur"];
+            $carburant = $row["Carburant"];
+            $km = $row["Km"];
+            $boitevitesse = $row["BoiteVitesse"];
+            $image = $row["Image"]
+    ?>
+    <div class="container voitures mt-5">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-5 d-flex justify-content-center align-items-center">
+                <div class="row text-center">
+                    <div class="col-12 pt-3"><h4><u><?php echo $nommodele; ?></u></h4></div>
+                    <div class="col-12 text-center"><p>Année: <?php echo $annee; ?></p></div>
+                    <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
+                    <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
+                    <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
+                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-7">
+                <img src=<?php echo $image; ?> class="img-fluid">
+            </div>
+        </div>
+    </div>
     <?php
         }
         mysqli_free_result($curseur);
@@ -219,11 +215,11 @@
                 <div class="col-12 mt-3"><a href=""><a href="">A PROPOS DE NOUS</a></a></div>
                 <div class="col-12 mt-3"><a href="">Arborescence</a></div>
                 <div class="col-12 mt-3"><a href="mentionslegales.html">Politique de confidentialité</a></div>
-                <div class="col-12 copy mt-3" style="border-bottom: solid 1px white; border-top: solid 1px white;;"><a href="">&copy;2024 SUPERCAR</a></div> 
+                <div class="col-12 copy mt-3" style="border-bottom: solid 1px white; border-top: solid 1px white;;"><a href="">&copy;2024 SUPERCAR</a></div>
             </div>
         </footer>
         <script src="../script/script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     </body>
 </html>
