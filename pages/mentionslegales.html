@@ -7,94 +7,80 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="../stylesheet/mentionslegales.css">
-
+        <link rel="stylesheet" href="../stylesheet/navbar.css">
         <!--lien font awsome-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <style>
-            @media screen and (max-width: 992px){
-                .navmenu{
-                display: block;
-            
-                }
-            }
-        </style>
     </head>
     <body>
-        <div class="container-fluid" id="haut" style="background-color: rgb(35, 35, 35);">
-            <div class="row">
-                <div class="col p-3">Supercar : ne experience unique</div>
-                <div class="col d-flex justify-content-end">
-                    <a href=""><i class="fa-brands fa-facebook-f p-3" id="facebook"></i></a>
-                    <a href=""><i class="fa-brands fa-instagram p-3"></i></a>
-                    <a href=""><i class="fa-brands fa-x-twitter p-3"></i></a>
-                    <a href=""><i class="fa-brands fa-linkedin-in p-3"></i></a>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
-            <div class="container-fluid">
-                <div class="navbar-brand">
-                    <img src="../images/logo.png" alt="">
-                </div>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="responsive">
+            <div class="container d-flex align-items-center justify-content-between">
+                <div></div>
+                <a class="navbar-brand" href="#">
+                    <img id="image" src="../images/logo.png">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="voitures.html">Voitures</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="DemandeEssaie.php">Demande d'essai</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="evenement.html">Évènements</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact1.html">Contactez-nous</a>
-                        </li>
+                        <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                            <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                            <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                            <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                            <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                            <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                        </div>
+                        <div class="container-{breakpoint}" id="buttons">
+                            <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                            <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                        </div>
                     </ul>
-                    <span class="navbar-text">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="signup.html">s'inscrire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html">se connecter</a>
-                            </li>
-                        </ul>
-                    </span>
                 </div>
             </div>
         </nav>
-        
-        <h2>Introduction</h2>
-        <p>
-            Supercar attache une grande importance à la protection de votre vie privée et s'engage à sécuriser vos données personnelles. Cette politique de confidentialité a pour objectif de vous informer sur le traitement de vos données personnelles lors de votre visite sur nos sites web, quel que soit votre lieu de connexion. Elle vous éclaire également sur vos droits en matière de confidentialité et sur les protections légales en place. </p>
-            <p>
-            Cette politique de confidentialité est présentée sous forme de couches pour que vous puissiez accéder aux domaines spécifiques mentionnés ci-dessous.</p>
-            <p>
-            Objectif de cette politique de confidentialité :
+        <nav class="navbar navbar-light shadow bg-white rounded" id="no_responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" >
+                </a>
+                <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                    <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                    <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                    <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                    <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                    <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                </div>
+                <div class="container-{breakpoint}" id="buttons">
+                    <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                    <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                </div>
+            </div>
+        </nav>
+        <main class="container">
+            <h2 class="p-5 text-center">Introduction</h2>
+            <p class="mt-3">
+                Supercar attache une grande importance à la protection de votre vie privée et s'engage à sécuriser vos données personnelles. Cette politique de confidentialité a pour objectif de vous informer sur le traitement de vos données personnelles lors de votre visite sur nos sites web, quel que soit votre lieu de connexion. Elle vous éclaire également sur vos droits en matière de confidentialité et sur les protections légales en place. </p>
+                <p>
+                Cette politique de confidentialité est présentée sous forme de couches pour que vous puissiez accéder aux domaines spécifiques mentionnés ci-dessous.</p>
+                <p>
+                Objectif de cette politique de confidentialité :
+                </p>
+                Cette politique de confidentialité a pour but de vous fournir des informations détaillées sur la collecte et le traitement de vos données personnelles par Supercar. Cela inclut les données que vous pourriez nous fournir via notre site web dans différentes situations telles que :
+                <ul>
+                    <li>Arrivez sur notre site web depuis un site de médias sociaux tel que Facebook, Instagram ou LinkedIn ;</li>
+                    <li>Remplissez un formulaire de rappel/demande de renseignements ;</li>
+                    <li>Vous inscrivez sur notre site pour postuler à un cours ou programme, à une formation d'entreprise/exécutive, à une formation professionnelle (en ligne, en apprentissage à distance ou sur le campus), que ce soit pour vous-même ou pour des employés ou d'autres membres de votre organisation qui pourraient être ou devenir nos clients ;</li>
+                    <li>Vous abonnez à des documents marketing ;</li>
+                    <li>Vous nous fournissez vos données personnelles par tout autre moyen.</li>
+                </ul>
+                <p>
+                Il est important de noter que ce site web n'est pas destiné aux enfants, et nous ne collectons délibérément aucune donnée concernant les enfants sur cette plateforme. Cependant, si Supercar traite des données personnelles d'enfants dans le cadre de ses activités commerciales, nous nous assurons d'obtenir les garanties et les consentements appropriés des parents ou des responsables, le cas échéant.
+                </p>
+                Il est recommandé de lire attentivement cette politique de confidentialité en parallèle avec d'autres avis de confidentialité spécifiques que nous pourrions fournir lors de certaines occasions où nous collectons ou traitons vos données personnelles. Ceci afin que vous ayez une compréhension complète de la manière dont nous utilisons vos données.
             </p>
-            Cette politique de confidentialité a pour but de vous fournir des informations détaillées sur la collecte et le traitement de vos données personnelles par Supercar. Cela inclut les données que vous pourriez nous fournir via notre site web dans différentes situations telles que :
-            <ul>
-                <li>Arrivez sur notre site web depuis un site de médias sociaux tel que Facebook, Instagram ou LinkedIn ;</li>
-                <li>Remplissez un formulaire de rappel/demande de renseignements ;</li>
-                <li>Vous inscrivez sur notre site pour postuler à un cours ou programme, à une formation d'entreprise/exécutive, à une formation professionnelle (en ligne, en apprentissage à distance ou sur le campus), que ce soit pour vous-même ou pour des employés ou d'autres membres de votre organisation qui pourraient être ou devenir nos clients ;</li>
-                <li>Vous abonnez à des documents marketing ;</li>
-                <li>Vous nous fournissez vos données personnelles par tout autre moyen.</li>
-            </ul>
-            <p>
-            Il est important de noter que ce site web n'est pas destiné aux enfants, et nous ne collectons délibérément aucune donnée concernant les enfants sur cette plateforme. Cependant, si Supercar traite des données personnelles d'enfants dans le cadre de ses activités commerciales, nous nous assurons d'obtenir les garanties et les consentements appropriés des parents ou des responsables, le cas échéant.
-            </p>
-            Il est recommandé de lire attentivement cette politique de confidentialité en parallèle avec d'autres avis de confidentialité spécifiques que nous pourrions fournir lors de certaines occasions où nous collectons ou traitons vos données personnelles. Ceci afin que vous ayez une compréhension complète de la manière dont nous utilisons vos données.
-        </p>
-
+        </main>
         <footer class="container-fluid footer mt-5 text-center p-3">
             <div class="row">
                 <div class="col-12 mt-3"><a href=""><a href="">A PROPOS DE NOUS</a></a></div>

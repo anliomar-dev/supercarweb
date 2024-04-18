@@ -133,7 +133,7 @@
             <p style="font-weight: 600; font-size: 17px;" id="propos">À PROPOS DE NOUS</p>
             <div class="container-{breakpoint} d-flex flex-column align-items-center justify-content-center">
                 <a class="mb-2" id="link_footer">Arborescence</a>
-                <a id="link_footer">Mentions légales</a>
+                <a id="link_footer" href="mentionslegales.html">Mentions légales</a>
             </div>
             <div class="container-fluid d-flex align-items-center justify-content-center mt-3" style="border-bottom: solid 1px white; border-top: solid 1px white; width: 90%;">
                 <p class="mt-3"><strong>© 2024 SUPERCAR</strong></p>

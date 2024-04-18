@@ -7,6 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="../stylesheet/voitures.css">
+        <link rel="stylesheet" href="../stylesheet/navbar.css">
         <style>
             @media screen and (max-width: 992px){
                 .navmenu{
@@ -29,42 +30,48 @@
                 </div>
             </div>
         </div>
-
         <!-- Navbar-->
-        <nav class="navbar navbar-expand-lg bg-light sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="../images/logo.png" alt=""></a>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div></div>
+                <a class="navbar-brand" href="#">
+                    <img id="image" src="../images/logo.png">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html" target="_blank">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="voitures.html" target="_blank" style="color: rgb(214, 155, 7); border-bottom: solid 2px rgb(214, 155, 7);">voiture</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="DemandeEssaie.php" target="_blank">Demande d'essai</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="evenement.php" target="_blank">Événement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact1.html" target="_blank">Contactez-nous</a>
-                        </li>
+                        <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                            <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                            <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                            <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                            <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                            <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                        </div>
+                        <div class="container-{breakpoint}" id="buttons">
+                            <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                            <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                        </div>
                     </ul>
-                    <span class="navbar-text">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="signup.html">S'inscrire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html" target="_top">Se connecter</a>
-                            </li>
-                        </ul>
-                    </span>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="no_responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" >
+                </a>
+                <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                    <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                    <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                    <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                    <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                    <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                </div>
+                <div class="container-{breakpoint}" id="buttons">
+                    <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                    <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
                 </div>
             </div>
         </nav>
@@ -91,11 +98,11 @@
                         </div>
                         <div class="col-6 col-sm-4 col-md-4 pt-3">
                             <h4 class="types-moteurs" style=" margin-right: 4%;">thermique</h4>
-                            <a href="ferrari.html#moteurs-thermique-f"><img src="../images/gas-pump.png" alt="station"class="mt-3 mb-3" id="moteurs" target="_blank"></a>
+                            <a href="ferrari1.php#moteurs-thermique-f"><img src="../images/gas-pump.png" alt="station"class="mt-3 mb-3" id="moteurs" target="_blank"></a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-4 pt-3">
                             <h4 class="types-moteurs">hybride</h4>
-                            <a href="ferrari.html#moteurs-hybride-f" target="_blank"><img src="../images/fuel.png" alt="voitures hybrides" class="mt-3 mb-3" id="moteurs"></a>
+                            <a href="ferrari1.php#moteurs-hybride-f" target="_blank"><img src="../images/fuel.png" alt="voitures hybrides" class="mt-3 mb-3" id="moteurs"></a>
                         </div>
                     </div>
                 </div>
@@ -120,20 +127,20 @@
                         </div>
                         <div class="col-6 col-sm-4 col-md-4 pt-3">
                             <h4 class="types-moteurs" style=" margin-right: 4%;">thermique</h4>
-                            <a href="porsche.html#moteurs-thermique-p"><img src="../images/gas-pump.png" alt="station"class="mt-3 mb-3" id="moteurs"></a>
+                            <a href="porsche.php#moteurs-thermique-p"><img src="../images/gas-pump.png" alt="station"class="mt-3 mb-3" id="moteurs"></a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-4 pt-3">
                             <h4 class="types-moteurs" style=" margin-left: 4%;">electrique</h4>
-                            <a href="porsche.html#moteurs-electrique-p"><img src="../images/charging-station.png" alt="satation electric" class="mt-3 mb-3" id="moteurs"></a>
+                            <a href="porsche.php#moteurs-electrique-p"><img src="../images/charging-station.png" alt="satation electric" class="mt-3 mb-3" id="moteurs"></a>
                         </div>
                         <div class="col-6 col-sm-4 col-md-4 pt-3">
                             <h4 class="types-moteurs">hybride</h4>
-                            <a href="porsche.html#moteurs-hybride-p"><img src="../images/fuel.png" alt="voitures hybrides" class="mt-3 mb-3" id="moteurs"></a>
+                            <a href="porsche.php#moteurs-hybride-p"><img src="../images/fuel.png" alt="voitures hybrides" class="mt-3 mb-3" id="moteurs"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 voir-marque">
-                    <h4 class="p-3"><a href="porsche3.php">Voir la marque</a></h4><!--lien vers la page dela marque-->
+                    <h4 class="p-3"><a href="porsche.php">Voir la marque</a></h4><!--lien vers la page dela marque-->
                 </div>
             </div>
         </div>
@@ -180,7 +187,7 @@
                         </div>
                         <div class="col-8 col-md-12">
                             <h5 class="text-center">Ferrari 812 Superfast</h5>
-                            <a href="ferrari.html#Ferrari-812-Superfast">voir plus</a>
+                            <a href="ferrari1.php#ferrari_812.webp">voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -191,7 +198,7 @@
                         </div>
                         <div class="col-8 col-md-12">
                             <h5>Grand Cherokee</h5>
-                            <a href="jeep.html#cherokee" class="text-center">voir plus</a>
+                            <a href="jeep.php#grandcherokee.avif" class="text-center">voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -202,7 +209,7 @@
                         </div>
                         <div class="col-8 col-md-12">
                             <h5>Porsche - Taycan Turbo S</h5>
-                            <a href="porsche1.php">voir plus</a>
+                            <a href="porsche1.php#taycanturbos.jpg">voir plus</a>
                         </div>
                     </div>
                 </div>
@@ -213,7 +220,7 @@
                         </div>
                         <div class="col-8 col-md-12">
                             <h5 class="text-center">Ferrari 488 GTB</h5>
-                            <a href="ferrari.html#Ferrari-488-GTB">voir plus</a>
+                            <a href="ferrari1.php#Ferrari-488-GTB.jpg">voir plus</a>
                         </div>
                     </div>
                 </div>

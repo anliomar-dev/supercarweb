@@ -66,7 +66,7 @@
 			<div class="row d-flex flex-column align-items-center justify-content-center mb-4">
 				<div class="w-50">
 					<label for="" style="font-size: 18px;"><strong><u>Image</u>:</strong></label>
-					<img src="<?php echo $image;?>" class="img-thumbnail mb-2" name="image">
+					<img src="../../images/evenements_images/<?php echo $image;?>" class="img-thumbnail mb-2" name="image">
 					<input class="form-control" type="file" name="nouveau_image">
 				</div>
 			</div>

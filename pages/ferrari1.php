@@ -7,7 +7,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="../stylesheet/marques.css">
-
+        <link rel="stylesheet" href="../stylesheet/navbar.css">
         <!--lien font awsome-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
@@ -25,42 +25,47 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
-            <div class="container-fluid">
-                <div class="navbar-brand">
-                    <img src="../images/logo.png" alt="">
-                </div>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div></div>
+                <a class="navbar-brand" href="#">
+                    <img id="image" src="../images/logo.png">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Acceuille</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="voitures.html">voitures</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="essai.html">demande essai</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="voitures.html">Evenement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact1.html">contactesz nous</a>
-                        </li>
+                        <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                            <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                            <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                            <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                            <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                            <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                        </div>
+                        <div class="container-{breakpoint}" id="buttons">
+                            <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                            <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                        </div>
                     </ul>
-                    <span class="navbar-text">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="signup.html" id="log-in-out">connexion</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="signup.html">s'inscrire</a>
-                            </li>
-                        </ul>
-                    </span>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="no_responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" >
+                </a>
+                <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                    <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                    <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                    <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                    <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                    <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                </div>
+                <div class="container-{breakpoint}" id="buttons">
+                    <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                    <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
                 </div>
             </div>
         </nav>
@@ -89,10 +94,12 @@
         </div>
     <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 1 AND 3;";
+        $selection = "SELECT *, marque.NomMarque FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele 
+        JOIN marque ON modele.IdMarque = marque.IdMarque WHERE modele.IdModele BETWEEN 1 AND 3;";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
             $annee= $row["Annee"];
             $prix = $row["Prix"];
             $idvoiture = $row["IdVoiture"];
@@ -113,11 +120,11 @@
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
                     <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                    <div class="col-12 text-center"><h6><a href="DemandeEssaie.php">Essayer</a></h6></div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-7" id=<?php echo $image;?>>
+                <img src=../images/<?php echo $NomMarque.'/'. $image; ?> class="img-fluid">
             </div>
         </div>
     </div> 
@@ -128,15 +135,17 @@
     ?>
             <div class="container">
             <div class="row">
-                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-f"><h1>Moteurs hybrides</h1></div>
+                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-f"><h1 id="moteurs-hybride-f">Moteurs hybrides</h1></div>
             </div>
         </div>
     <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE modele.IdModele BETWEEN 4 AND 6;";
+        $selection = "SELECT *, marque.NomMarque FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele 
+        JOIN marque ON modele.IdMarque = marque.IdMarque WHERE modele.IdModele BETWEEN 4 AND 6;";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
             $annee= $row["Annee"];
             $prix = $row["Prix"];
             $idvoiture = $row["IdVoiture"];
@@ -146,7 +155,6 @@
             $km = $row["Km"];
             $boitevitesse = $row["BoiteVitesse"];
             $image = $row["Image"]
-
     ?>
     <div class="container voitures mt-5">
         <div class="row">
@@ -157,11 +165,11 @@
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
                     <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                    <div class="col-12 text-center"><h6><a href="DemandeEssaie.php">Essayer</a></h6></div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-7" id=<?php echo $image;?>>
+                <img src=../images/<?php echo $NomMarque.'/'. $image; ?> class="img-fluid">
             </div>
         </div>
     </div> 

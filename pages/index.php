@@ -36,10 +36,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
                     <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
-                        <a class="navbar-item nav-link" id="links" href="accueil.php">Accueil</a>
+                        <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                         <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                         <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                        <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                        <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                         <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
                     </div>
                     <div class="container-{breakpoint}" id="buttons">
@@ -57,10 +57,10 @@
             <img src="../images/logo.png" >
             </a>
             <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
-                <a class="navbar-item nav-link" id="links" href="accueil.php">Accueil</a>
+                <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                 <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                 <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                 <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
             </div>
             <div class="container-{breakpoint}" id="buttons">

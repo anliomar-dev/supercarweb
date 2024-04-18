@@ -530,7 +530,7 @@
         }else{
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (isset($_POST['modifier_evenements'])) {
-                    $mise_a_jour = "UPDATE evenement SET Locations = '$nouveau_location', théme = '$nouveau_theme', Prix = '$nouveau_prix', DateDebut = '$nouveau_debut', DateFin = '$nouveau_fin', image = '$nouveau_image' WHERE IdEvenement = $IdEvenement";
+                    $mise_a_jour = "UPDATE evenement SET Location = '$nouveau_location', théme = '$nouveau_theme', Prix = '$nouveau_prix', DateDebut = '$nouveau_debut', DateFin = '$nouveau_fin', image = '$nouveau_image' WHERE IdEvenement = $IdEvenement";
                     mysqli_query($dbd, $mise_a_jour);
                     header("Location: ../visualisation/voir_evenement.php?IdEvenement=$IdEvenement");
                     exit();
@@ -605,7 +605,7 @@
 
     function verifierAuthentification($location1, $location2) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 1 * 60; // 30 minutes en secondes
+        $tempsExpiration = 5 * 60; // 30 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {

@@ -8,12 +8,15 @@
 	}
 	if(isset($_GET['id'])) {
 		$IdVoiture = $_GET['id'];
-		$selection = "SELECT * FROM voitures WHERE IdVoiture = $IdVoiture";
+		$selection = "SELECT voitures.*, NomMarque 
+		FROM voitures JOIN marque ON voitures.IdMarque = marque.IdMarque
+		WHERE IdVoiture = $IdVoiture";
 		$curseur = mysqli_query($dbd, $selection);
 		while($row = mysqli_fetch_array($curseur)){
 			$IdVoiture = $row["IdVoiture"];
 			$IdModele = $row["IdModele"];
 			$IdMarque = $row["IdMarque"];
+			$NomMarque = $row["NomMarque"];
 			$couleur = $row["Couleur"];
 			$typemoteur = $row["TypeMoteur"];
 			$carburant = $row["Carburant"];
@@ -100,7 +103,7 @@
 			<div class="row d-flex flex-column align-items-center justify-content-center mb-4">
 				<div class="w-50">
 					<label for="" style="font-size: 18px;"><strong><u>Image</u>:</strong></label>
-					<img src="<?php echo $image;?>" class="img-thumbnail mb-2">
+					<img src="../../../images/<?php echo $NomMarque.'/'. $image;?>" class="img-thumbnail mb-2">
 					<input class="form-control" type="file" name="nouveau_image">
 				</div>
 			</div>

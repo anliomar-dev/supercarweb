@@ -37,10 +37,10 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
                     <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
-                        <a class="navbar-item nav-link" id="links" href="accueil.php">Accueil</a>
+                        <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
                         <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                         <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                        <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                        <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                         <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
                     </div>
                     <div class="container-{breakpoint}" id="buttons">
@@ -58,10 +58,10 @@
             <img src="../images/logo.png" >
             </a>
             <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
-                <a class="navbar-item nav-link" id="links" href="accueil.php">Accueil</a>
+                <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
                 <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                 <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                 <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
             </div>
             <div class="container-{breakpoint}" id="buttons">
@@ -96,10 +96,12 @@
         </div>
         <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Thermique' AND voitures.IdMarque = '1';";
+        $selection = "SELECT *, marque.NomMarque FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele 
+        JOIN marque ON modele.IdMarque = marque.IdMarque WHERE voitures.TypeMoteur = 'Thermique' AND voitures.IdMarque = '1';";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
             $annee= $row["Annee"];
             $prix = $row["Prix"];
             $idvoiture = $row["IdVoiture"];
@@ -119,11 +121,11 @@
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
                     <div class="col-12 text-center"><p>Type moteur: <?php echo $typemoteur; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                    <div class="col-12 text-center"><h6><a href="DemandeEssaie.php">Essayer</a></h6></div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
+                <img src=../images/<?php echo $NomMarque.'/'. $image; ?> class="img-fluid">
             </div>
         </div>
     </div> 
@@ -134,15 +136,17 @@
     ?>
     <div class="container">
             <div class="row">
-                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-p"><h1>Moteurs électriques</h1></div>
+                <div class="col-12 p-5 d-flex justify-content-center"><h1 id="moteurs-electrique-p">Moteurs électriques</h1></div>
             </div>
         </div>
         <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Electrique' AND voitures.IdMarque = '1';";
+        $selection = "SELECT *, marque.NomMarque FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele 
+        JOIN marque ON modele.IdMarque = marque.IdMarque WHERE voitures.TypeMoteur = 'Electrique' AND voitures.IdMarque = '1';";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
             $annee= $row["Annee"];
             $prix = $row["Prix"];
             $idvoiture = $row["IdVoiture"];
@@ -162,11 +166,11 @@
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
                     <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                    <div class="col-12 text-center"><h6><a href="DemandeEssaie.php">Essayer</a></h6></div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=../images/<?php echo $nommodele. '/'. $image; ?> class="img-fluid">
+                <img src=../images/<?php echo $NomMarque. '/'. $image; ?> class="img-fluid">
             </div>
         </div>
     </div> 
@@ -177,15 +181,17 @@
     ?>
     <div class="container">
             <div class="row">
-                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-thermique-p"><h1>Moteurs hybrides</h1></div>
+                <div class="col-12 p-5 d-flex justify-content-center" id="moteurs-hybride-p"><h1>Moteurs hybrides</h1></div>
             </div>
         </div>
         <?php
         include ("../database/connexion.php");
-        $selection = "SELECT * FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele WHERE voitures.TypeMoteur = 'Hybride rechargeable' AND voitures.IdMarque = '1';";
+        $selection = "SELECT *, marque.NomMarque FROM modele JOIN voitures ON modele.IdModele = voitures.IdModele 
+        JOIN marque ON modele.IdMarque = marque.IdMarque WHERE voitures.TypeMoteur = 'Hybride rechargeable' AND voitures.IdMarque = '1';";
         $curseur = mysqli_query($dbd, $selection);
         while($row = mysqli_fetch_array($curseur)) {
             $nommodele = $row["NomModele"];
+            $NomMarque = $row["NomMarque"];
             $annee= $row["Annee"];
             $prix = $row["Prix"];
             $idvoiture = $row["IdVoiture"];
@@ -205,11 +211,11 @@
                     <div class="col-12 text-center"><p>Prix: <?php echo $prix; ?> €</p></div>
                     <div class="col-12 text-center"><p>KM: <?php echo $km; ?> km/h</p></div>
                     <div class="col-12 text-center"><p>Type moteur: <?php echo $boitevitesse; ?></p></div>
-                    <div class="col-12 text-center"><h6><a href="essai.html">Essayer</a></h6></div>
+                    <div class="col-12 text-center"><h6><a href="DemandeEssaie.php">Essayer</a></h6></div>
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-7">
-                <img src=<?php echo $image; ?> class="img-fluid">
+                <img src=../images/<?php echo $NomMarque. '/'. $image; ?> class="img-fluid">
             </div>
         </div>
     </div> 

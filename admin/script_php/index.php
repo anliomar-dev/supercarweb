@@ -23,6 +23,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/dashboard.css">
     </head>
+    <style>
+        a{
+            color: black;
+            text-decoration: none;
+        }
+    </style>
     <body>
         <div class="container-fluid text-center entete sticky-top">
             <div class="row">
@@ -37,7 +43,8 @@
                         <div class="col-12 col-lg-4 mb-3">
                             <div class="row right-links">
                             <div class="col-12 h4" style="background-color: #4A7696; color: white">voir le site</div>
-                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="../../pages/index.html" class="bg-primary" target="_blank">Voir le site</a></div>
+                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="../../pages/index.php
+                            " class="bg-primary" target="_blank">Voir le site</a></div>
                             <div class="col-12 h4" style="background-color: #4A7696; color: white;">Compte</div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><form action="" method="POST"><button class="btn btn-primary" name="deconnexion" type="submit">Se deconnecter</button></form></div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="" class="bg-primary" >modifier passe</a></div>

@@ -15,6 +15,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../stylesheet/ESSAI.CSS">
+        <link rel="stylesheet" href="../stylesheet/navbar.CSS">
     </head>
     <body>
         <div class="container-fluid" id="haut">
@@ -28,42 +29,47 @@
                 </div>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
-            <div class="container-fluid">
-                <div class="navbar-brand">
-                    <img src="../images/logo.png" alt="">
-                </div>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div></div>
+                <a class="navbar-brand" href="#">
+                    <img id="image" src="../images/logo.png">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.html">Acceuille</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="voitures.html">voitures</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="essaie.php">demande essai</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="evenemen.html">Evenement</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact1.html">contactesz nous</a>
-                        </li>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
+                        <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                            <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                            <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                            <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                            <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                            <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                        </div>
+                        <div class="container-{breakpoint}" id="buttons">
+                            <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                            <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                        </div>
                     </ul>
-                    <span class="navbar-text">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="signup.html">s'inscrire</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html">se connecter</a>
-                            </li>
-                        </ul>
-                    </span>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-light shadow bg-white rounded" id="no_responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" >
+                </a>
+                <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                    <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                    <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                    <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                    <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                    <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                </div>
+                <div class="container-{breakpoint}" id="buttons">
+                    <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                    <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
                 </div>
             </div>
         </nav>

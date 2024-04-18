@@ -5,88 +5,126 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Formulaire de contact</title> 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+        <!--lien plugin indicateurs telephonique-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/css/intlTelInput.css">
         <link rel="stylesheet" href="../stylesheet/cntct.css">
+        <link rel="stylesheet" href="../stylesheet/navbar.css">
       </head>
       <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="header">
-          <div class="container-fluid">
-              <div class="navbar-brand">
-                  <img src="../images/logo.png" alt="">
-              </div>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                          <a class="nav-link" href="index.html">Acceuille</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="voitures.html">voitures</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="essaie.php">demande essai</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="evenement.html">Evenement</a>
-                      </li>
-                      <li class="nav-item">
-                          <a class="nav-link" href="contact1.html">contactesz nous</a>
-                      </li>
-                  </ul>
-                  <span class="navbar-text">
-                      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                          <li class="nav-item">
-                              <a class="nav-link active" aria-current="page" href="signup.html" style="color: rgb(214, 155, 7); border-bottom: solid 2px rgb(214, 155, 7);">s'inscrire</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" href="login.html">se connecter</a>
-                          </li>
-                      </ul>
-                  </span>
+          <nav class="navbar navbar-light shadow bg-white rounded" id="responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <div></div>
+                <a class="navbar-brand" href="#">
+                    <img id="image" src="../images/logo.png">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center navmenu">
+                        <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                            <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                            <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                            <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                            <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                            <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                        </div>
+                        <div class="container-{breakpoint}" id="buttons">
+                            <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                            <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+          </nav>
+          <nav class="navbar navbar-light shadow bg-white rounded" id="no_responsive">
+            <div class="container-fluid d-flex align-items-center justify-content-between">
+                <a class="navbar-brand" href="#">
+                <img src="../images/logo.png" >
+                </a>
+                <div class="container-{breakpoint} d-flex justify-content-center" id="navbar">
+                    <a class="navbar-item nav-link" id="links" href="index.php">Accueil</a>
+                    <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
+                    <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
+                    <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                    <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
+                </div>
+                <div class="container-{breakpoint}" id="buttons">
+                    <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                    <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
+                </div>
+            </div>
+          </nav>
+            <div class="container-fluid border p-5">
+              <div class="row">
+                  <div class="col-12 col-sm-12 col-md-6 col-mg-6 border text-bg-info formulaire-gauche">
+                      <div class="row">
+                          <form action="../database/contact.php" method="POST" class="col-12 p-3 mt-5 mb-5">
+                              <div class="row p-3">
+                                  <div class="col-6 mt-3">
+                                      <label for="Nom">Nom</label>
+                                      <input class="form-control col-12" type="text" name="nom" required>
+                                  </div>
+                                  <div class="col-6 mt-3">
+                                      <label for="Prenom">Prenom</label>
+                                      <input class="form-control col-12" type="text" name="prenom" required>
+                                  </div>
+                                  <div class="col-6 mt-3">
+                                      <label for="telephone" class="col-12">telephone</label>
+                                      <input class="form-control" type="telephone" name="telephone" id="phone" value="+1"  required>
+                                  </div>
+                                  <div class="col-6 mt-3">
+                                      <label for="email">email</label>
+                                      <input class="form-control col-12" type="text" name="email" required>
+                                  </div>
+                                  <div class="col-12 pt-3">
+                                    <label for="sujet">Sujet</label>
+                                    <select class="form-control" id="sujet">
+                                      <option value="">Choisissez un sujet</option>
+                                      <option value="information">Demande d'information</option>
+                                      <option value="support">Support technique</option>
+                                      <option value="autre">Autre</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-12 pt-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="3" required></textarea>
+                                  </div>
+                                  <div class="col-6 mt-3">
+                                      <input type="submit" name="ajouter_contacts" value="envoyer" class="btn btn-primary">
+                                  </div>
+                                  <div class="col-6 mt-3">
+                                      <input type="reset" class="btn btn-secondary" value="reset">
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+                  <div class="col-12 col-sm-12 col-md-6 col-mg-6 border">
+                      <div class="row">
+                        <div class="col-12 p-3 text-center">
+                          <h3>Nous contacter</h3>
+                        </div>
+                        <div class="col-12 col-md-4 col-lg-4 p-3">Email:</div>
+                        <div class="col-12 col-md-8 col-lg-8 p-3"><strong>supercar_infos@gmail.com</strong></div>
+                        <div class="col-12 col-md-4 col-lg-4 p-3">telephone:</div>
+                        <div class="col-12 col-md-8 col-lg-8 p-3"><strong>+230 5429 7857</strong></div>
+                        <div class="col-12 p-3 text-center">
+                          <h3>Où nous trouver</h3>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-4 p-3">Adresse:</div>
+                        <div class="col-12 col-md-8 col-lg-8 p-3"><strong>MEF-MCCI Building, Ebène CyberCity, Ebène, Quatre Bornes</strong></div>
+                        <div class="col-12 col-md-12 col-lg-12 p-3 text-center"><img class="img-fluid" src="../images/localisation.png" alt=""></div>
+                      </div>
+                  </div>
               </div>
           </div>
-      </nav>
-        <div class="container d-flex justify-content-center align-items-center">
-          <form action="../database/contact.php" method="POST" class="form p-3" style="border: solid 2px black; border-radius: 8px;">
-            <div class="row">
-              <h1 class="col-12">Contactez nous</h1>
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="nom">Nom</label>
-                  <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre nom">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="prenom">Prénom</label>
-                  <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre prénom">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="telephone">Téléphone</label>
-                  <input type="tel" class="form-control" id="telephone" name="telephone" placeholder="Votre numéro de téléphone">
-                </div>
-                <div class="form-group mt-3">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Votre adresse email">
-                </div>
-              <div class="col-md-12">
-                <div class="form-group mt-3">
-                  <label for="sujet">Sujet</label>
-                  <select class="form-control" id="sujet">
-                    <option value="">Choisissez un sujet</option>
-                    <option value="information">Demande d'information</option>
-                    <option value="support">Support technique</option>
-                    <option value="autre">Autre</option>
-                  </select>
-                </div>
-                <div class="form-group mt-3">
-                  <label for="message">Message</label>
-                  <textarea class="form-control" id="message" rows="5"></textarea>
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Envoyer</button>
-                </div>
-              </div>
-            </div>
-          </form>
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+          <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/intlTelInput.min.js"></script>
+          <script>
+              const input = document.querySelector("#phone");
+                  window.intlTelInput(input, {
+                      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.2.14/build/js/utils.js",
+                  });
+          </script>
       </body>
 </html>
