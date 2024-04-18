@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#image{
+    margin-left: 50px;
+}
+
+#header h6{
+    margin-top: 10px;
+}
+
+#header i{
+    font-size: 20px;
+}
+
+#navbar a{
+    margin-right: 40px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    font-weight: 600;
+}
+
+#links::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+#links:hover::after{
+    width: 100%;
+}
+
+#buttons{
+    width: 222px;
+    transition: all 0.3s ease;
+}
+
+#button{
+    width: 100px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+#button:hover{
+    padding: 12px;
+    width: 115px;
+}
+
+#responsive{
+    display: none;
+}
+
+@media(max-width:1070px){
+    #navbar a{
+        margin-right: 15px;
+    }
+    #button:hover{
+        padding: 8px;
+        width: 110px;
+    }
+}
+
+@media(max-width:940px){
+    #no_responsive{
+        display: none;
+    }
+    #responsive{
+        display: block;
+    }
+    .navmenu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    #buttons{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+#video{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+#titre{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#discover{
+    background: transparent;
+    padding: 15px 10px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#outils i{
+    font-size: 75px;
+}
+
+#outils button{
+    margin-top: 20px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    width: 190px;
+    font-size: 15px;
+    height: 50px;
+    border-style: none;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+    color: #fff;
+    border: 1px solid;
+    transition: all 0.3s ease;
+}
+
+#outils button:hover{
+    background-color: rgba(0, 0, 0,0.3);
+    border: 1px solid;
+    border-color: #fff;
+    color: #fff;
+}
+
+#title{
+    position: absolute;
+    color: #fff;
+    margin: 50px 50px 0 0;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0,0.5);
+    padding: 25px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#imghover{
+    transition: all 0.6s ease;
+}
+
+#imghover:hover{
+    transform: scale(1.1);
+}
+
+#description{
+    text-decoration: none;
+}
+
+#propos::before{
+    content: "";
+    position: absolute;
+    width: 75px;
+    bottom: -40px;
+    border-bottom: 3px solid #fff;
+}
+
+#link_footer{
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+#link_footer::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+#link_footer:hover::after{
+    width: 100%;
+}
+
+@media(max-width:1500px){
+    #actualite{
+        flex-direction: column;
+    }
+    #imghover{
+        margin-top: 50px;
+    }
+}
+
+@media(max-width: 1000px){
+    #title{
+        margin: 10px 0 0 10px;
+    }
+
+    #title button{
+        margin-top: 10px;
+        display: block;
+    }
+}
+
+@media(max-width: 770px){
+    #title h4{
+        display: none;
+    }
+    #outils{
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 650px){
+    #title h3{
+        font-size: 16px;
+    }
+    #title button{
+        padding: 0 5px;
+        font-size: 10px;
+        height: 20px;
+    }
+}

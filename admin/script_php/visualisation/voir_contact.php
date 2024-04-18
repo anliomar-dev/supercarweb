@@ -3,7 +3,7 @@
     verifierAuthentification("../index.php", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
-            se_deconnecter();
+            se_deconnecter("../connection_admin.html");
         }
     }
     if(isset($_GET["id"])){
@@ -55,7 +55,7 @@
                             <a class="nav-link" href="../index.php">Dashboard</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contacts_admin.php">Tous les contacts</a>
+                            <a class="nav-link" href="../crud/contacts_admin.php">Tous les contacts</a>
                         </li>
                     </ul>
                     <span class="navbar-text">

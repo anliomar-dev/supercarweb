@@ -3,7 +3,7 @@
     verifierAuthentification("../index.php", "../session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
-            se_deconnecter();
+            se_deconnecter("../connection_admin.html");
         }
     }
 ?>

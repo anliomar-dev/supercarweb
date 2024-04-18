@@ -105,8 +105,8 @@
                     <div class='row'>
                         <div class='col-4 border p-3'>
                             <div class='row' style='text-decoration: none;'>
-                                <div class='col-10'><a href=''>($IdModele)_$NomModele</a></div>
-                                <div class='col-2'><a href=''>📝</a></div>
+                                <div class='col-10'><a href='../visualisation/voir_modele.php?IdModele=$IdModele'>($IdModele)_$NomModele</a></div>
+                                <div class='col-2'><a href='modelemodify.php?id=$IdModele'>📝</a></div>
                             </div>
                         </div> 
                         <div class='col-6 p-3 border'>€ $prix</div>
@@ -116,6 +116,56 @@
                 ";
         }
         mysqli_free_result($curseur);
+    }
+
+    function visualiser_modeles(){
+        global $dbd;
+        $couleur_ligne = "";
+        $infos_voitures = "";
+        $selection = "SELECT modele.*, NomMarque
+        FROM modele
+        INNER JOIN marque ON modele.IdMarque = marque.IdMarque
+        ORDER BY NomModele";
+        $curseur = mysqli_query($dbd, $selection);
+        while($row = mysqli_fetch_array($curseur)){
+            $IdModele = $row["IdModele"];
+            $NomModele = $row["NomModele"];
+            $Prix = $row["Prix"];
+            $Annee = $row["Annee"];
+            $NomMarque = $row["NomMarque"];
+            // Alternez les couleurs de fond entre rouge et bleu
+            if ($couleur_ligne == "rgb(163, 163, 163);") {
+                $couleur_ligne = "rgb(253, 239, 220);";
+            } else {
+                $couleur_ligne = "rgb(163, 163, 163);";
+            }
+            echo "
+                <a href='voir_modele.php?IdModele=$IdModele' class='col-12 border mt-3' style=\"background-color: $couleur_ligne\">
+                    <div class='row'>
+                        <div class='col-12 col-lg-3 p-3'>$NomMarque</div>
+                        <div class='col-12 col-lg-3 p-3'>$NomModele</div>
+                        <div class='col-12 col-lg-3 p-3'>$Prix</div>
+                        <div class='col-12 col-lg-3 p-3'>$Annee</div>
+                    </div>
+                </a>";
+        }
+        mysqli_free_result($curseur);
+    }
+
+    function modifier_modele(){
+        global $dbd;
+        $IdModele = $_GET["id"];
+        $nouveau_nom = $_POST["nouveau_nom"];
+        $nouveau_prix = $_POST["nouveau_prix"];
+        $nouveau_annee = $_POST["nouveau_annee"];
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST['modifier_modele'])) {
+                $mise_a_jour = "UPDATE modele SET NomModele = '$nouveau_nom', Prix = '$nouveau_prix', Annee = '$nouveau_annee' WHERE IdModele = $IdModele";
+                mysqli_query($dbd, $mise_a_jour);
+                header("Location: ../visualisation/voir_modele.php?IdModele=$IdModele");
+                exit();
+            }
+        }
     }
 
 //ici debute les fonctions qui traitent les données des voitures
@@ -142,7 +192,7 @@
                         <div class='col-4 p-3'>
                             <div class='row' style='text-decoration: none;'>
                                 <div class='col-10'><a href='../visualisation/voir_voiture.php?IdVoiture=$IdVoiture'>$NomModele</a></div>
-                                <div class='col-2'><a href='modele2.php?id=$Idmodele&modele_noms=$NomModele&prix_modele=$Prix_modele'>📝</a></div>
+                                <div class='col-2'><a href='voituremodify.php?id=$IdVoiture'>📝</a></div>
                             </div>
                         </div>       
                         <div class='col-3 p-3'>$typemoteur</div>
@@ -211,6 +261,38 @@
                 </a>";
         }
         mysqli_free_result($curseur);
+    }
+
+    //fonction pour modifier les données d'une voiture
+    function modifier_voitures(){
+        global $dbd;
+        $IdVoiture = $_GET["id"];
+        $IdMarque = $_GET ['id'];
+        $nouveau_couleur = $_POST["nouveau_couleur"];
+        $nouveau_km = $_POST["nouveau_km"];
+        $nouveau_BV = $_POST["nouveau_BV"];
+        $nouveau_carburant = $_POST["nouveau_carburant"];
+        $nouveau_image = $_POST["nouveau_image"];
+        $nouveau_TP = $_POST["nouveau_TP"];
+        if ($nouveau_image == ''){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_voitures'])) {
+                    $mise_a_jour = "UPDATE voitures SET Couleur = '$nouveau_couleur', Km = '$nouveau_km', BoiteVitesse = '$nouveau_BV', Carburant ='$nouveau_carburant', TypeMoteur = '$nouveau_TP' WHERE IdVoiture = $IdVoiture";
+                    mysqli_query($dbd, $mise_a_jour);
+                    header("Location: ../visualisation/voir_voiture.php?IdVoiture=$IdVoiture");
+                    exit();
+                }
+            }
+        }else{
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_voitures'])) {
+                        $mise_a_jour = "UPDATE voitures SET Couleur = '$nouveau_couleur', Km = '$nouveau_km', BoiteVitesse = '$nouveau_BV', Carburant ='$nouveau_carburant', TypeMoteur = '$nouveau_TP', Image ='$nouveau_image'  WHERE IdVoiture = $IdVoiture";
+                        mysqli_query($dbd, $mise_a_jour);
+                        header("Location: ../visualisation/voir_voiture.php?IdVoiture=$IdVoiture");
+                        exit();
+                }
+            }
+        }
     }
 // ici se termine les fonctions qui traitent les données des voitures
 
@@ -387,7 +469,7 @@
                         <div class='col-4 p-3'>
                             <div class='row' style='text-decoration: none;'>
                                 <div class='col-10'><a href='../visualisation/voir_evenement.php?IdEvenement=$IdEvenement'>$theme</a></div>
-                                <div class='col-2'><a href=''>📝</a></div>
+                                <div class='col-2'><a href='eventmodify.php?id=$IdEvenement'>📝</a></div>
                             </div>
                         </div>
                         <div class='col-3 p-3'>$debut</div>
@@ -421,6 +503,39 @@
                 echo "<p>Erreur lors de l'insertion des données : " . mysqli_error($dbd) . "</p>";
             }
             mysqli_close($dbd);
+        }
+    }
+
+
+    function modifier_evenements(){
+        global $dbd;
+        $IdEvenement = $_GET["id"];
+        $nouveau_location = $_POST["nouveau_location"];
+        $nouveau_theme = $_POST["nouveau_theme"];
+        $nouveau_prix = $_POST["nouveau_prix"];
+        $nouveau_debut = $_POST["nouveau_debut"];
+        $nouveau_fin = $_POST["nouveau_fin"];
+        $nouveau_image = $_POST["nouveau_image"];
+        $path = '\\supercar\\images\\images\\';
+        $path_escaped = mysqli_real_escape_string($dbd, $path);
+        if ($nouveau_image == '') {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_evenements'])) {
+                    $mise_a_jour = "UPDATE evenement SET Location = '$nouveau_location', théme = '$nouveau_theme', Prix = '$nouveau_prix', DateDebut = '$nouveau_debut', DateFin = '$nouveau_fin' WHERE IdEvenement = $IdEvenement";
+                    mysqli_query($dbd, $mise_a_jour);
+                    header("Location: ../visualisation/voir_evenement.php?IdEvenement=$IdEvenement");
+                    exit();
+                }
+            }
+        }else{
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_evenements'])) {
+                    $mise_a_jour = "UPDATE evenement SET Locations = '$nouveau_location', théme = '$nouveau_theme', Prix = '$nouveau_prix', DateDebut = '$nouveau_debut', DateFin = '$nouveau_fin', image = '$nouveau_image' WHERE IdEvenement = $IdEvenement";
+                    mysqli_query($dbd, $mise_a_jour);
+                    header("Location: ../visualisation/voir_evenement.php?IdEvenement=$IdEvenement");
+                    exit();
+                }
+            }
         }
     }
 
@@ -517,12 +632,12 @@
         $_SESSION['last_activity'] = time();
     }
 
-    function se_deconnecter(){
+    function se_deconnecter($location){
         if (isset($_POST["deconnexion"])){
             session_unset();
             session_destroy();
             // Rediriger l'utilisateur vers la page de connection
-            header("Location: ../connection_admin.html");
+            header("Location: $location");
             exit();
         }
     }

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+#image{
+    margin-left: 50px;
+}
+
+#header h6{
+    margin-top: 10px;
+}
+
+#header i{
+    font-size: 20px;
+}
+
+#navbar a{
+    margin-right: 40px;
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    font-weight: 600;
+}
+
+#links::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: all 0.3s ease;
+}
+
+#links:hover::after{
+    width: 100%;
+}
+
+#buttons{
+    width: 222px;
+    transition: all 0.3s ease;
+}
+
+#button{
+    width: 100px;
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+#button:hover{
+    padding: 12px;
+    width: 115px;
+}
+
+#responsive{
+    display: none;
+}
+
+@media(max-width:1070px){
+    #navbar a{
+        margin-right: 15px;
+    }
+    #button:hover{
+        padding: 8px;
+        width: 110px;
+    }
+}
+
+@media(max-width:940px){
+    #no_responsive{
+        display: none;
+    }
+    #responsive{
+        display: block;
+    }
+    .navmenu{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #navbar{
+        display: flex;
+        flex-direction: column;
+    }
+    #buttons{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+#propos::before{
+    content: "";
+    position: absolute;
+    width: 75px;
+    bottom: -40px;
+    border-bottom: 3px solid #fff;
+}
+
+#link_footer{
+    position: relative;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+#link_footer::after{
+    content: '';
+    position: absolute;
+    top: auto;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+#link_footer:hover::after{
+    width: 100%;
+}

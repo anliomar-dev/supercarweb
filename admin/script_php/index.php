@@ -3,7 +3,7 @@
     verifierAuthentification("connection_admin.html", "session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
-            se_deconnecter();
+            se_deconnecter("connection_admin.html");
         }
     }
 ?>
@@ -49,7 +49,7 @@
                             <div class="col-12 border h4" style="background-color: #4A7696; color: white;">Visualisation</div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_essaie.php">demandes d'essais</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualier_evenement.php">voir les evenements</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">voir les modèles</a></div>
+                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_modeles.php">voir les modèles</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_voitures.php">voir les voitures</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
