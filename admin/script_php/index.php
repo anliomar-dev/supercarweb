@@ -30,42 +30,82 @@
         }
     </style>
     <body>
-        <div class="container-fluid text-center entete sticky-top">
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid text-center">
+                <a class="navbar-brand" href="#">
+                    <h3>Bienvenue
+                        <strong style="color: green;">
+                            <?php echo 'Admin( '. $_SESSION['username']. ')';  ?>
+                            <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span>
+                        </strong>
+                    </h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Supercar</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    
+                    <li class="nav-item">
+                        <a href="../../pages/index.php" class="" target="_blank">Voir le site</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Compte
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="" href="#"></a></li>
+                            <li>
+                                <a href="donnees_admin.php?IdAdmin=<?php echo $_SESSION['idIAdmin'];?>" class="dropdown-item" >mes données</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="donnees_admin.php?IdAdmin=<?php echo $_SESSION['idIAdmin'];?>">modifier passe</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form class="d-flex mt-3 dropdown-item" action="" method="POST">
+                                    <button class="btn btn-primary" name="deconnexion" type="submit">Se deconnecter</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    </ul>
+                    
+                </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid text-center mt-5 pt-5 entete">
             <div class="row">
-                <div class="col"><p>Supercar administration</p></div>
+                <div class="col-12 pt-"2><p>Supercar administration</p></div>
             </div>
         </div>
-        <div class="container-fluid border">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-8 text-center right">
                     <div class="row">
-                        <div class="col-12 border mb-3 bienvenue"><h3>Bienvenue <strong style="color: green;"><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></h3></div>
-                        <div class="col-12 col-lg-4 mb-3">
-                            <div class="row right-links">
-                            <div class="col-12 h4" style="background-color: #4A7696; color: white">voir le site</div>
-                            <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="../../pages/index.php
-                            " class="bg-primary" target="_blank">Voir le site</a></div>
-                            <div class="col-12 h4" style="background-color: #4A7696; color: white;">Compte</div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><form action="" method="POST"><button class="btn btn-primary" name="deconnexion" type="submit">Se deconnecter</button></form></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="" class="bg-primary" >modifier passe</a></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="donnees_admin.php?IdAdmin=<?php echo $_SESSION['idIAdmin'];?>" class="bg-primary" >mes données</a></div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-lg-8 border">
+                        <div class="col-12 border px-5">
                             <div class="row">
-                            <div class="col-12 border h4" style="background-color: #4A7696; color: white;">Visualisation</div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_essaie.php">demandes d'essais</a></div>
+                            <div class="col-12 h4 p-3" style="background-color: #4A7696; color: white;">Visualisation</div>
+                                <div class="col-12 p-3 mt-3 border text-bg-info"><a href="visualisation/visualiser_essaie.php">demandes d'essais</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualier_evenement.php">voir les evenements</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_modeles.php">voir les modèles</a></div>
                                 <div class="col-12 p-3 mt-5 border text-bg-info"><a href="visualisation/visualiser_voitures.php">voir les voitures</a></div>
-                                <div class="col-12 p-3 mt-5 border text-bg-info"><a href="">Statistiques</a></div>
+                                <div class="col-12 p-3 mt-5 mb-5 border text-bg-info"><a href="">Statistiques</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-12 col-lg-4 border pt-3 px-5 left" style="height: 100vh">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-4 px-5 left" style="height: 100vh">
                     <div class="row">
-                        <div class="col-12 p-3">
+                        <div class="col-12">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="row">

@@ -39,7 +39,7 @@
                         <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                         <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                         <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                        <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                        <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                         <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
                     </div>
                     <div class="container-{breakpoint}" id="buttons">
@@ -60,7 +60,7 @@
                 <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                 <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                 <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
+                <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
                 <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
             </div>
             <div class="container-{breakpoint}" id="buttons">
@@ -107,7 +107,7 @@
             </div>
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <i class="ri-steering-fill"></i>
-                <a href="essaie.php" target="_blank"><button>Réservez un essai</button></a>
+                <a href="DemandeEssaie.php" target="_blank"><button>Réservez un essai</button></a>
             </div>
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <i class="ri-contacts-book-line"></i>
@@ -148,7 +148,6 @@
             ?>
         </div>
     </div>
-
     <h2 class="text-center"><u>Actualités</u></h2>
     <div class="container-fluid d-flex align-items-center justify-content-around mt-4 mb-5" id="actualite">
         <?php
@@ -172,7 +171,6 @@
             mysqli_close($dbd);
         ?>
     </div>
-
     <footer class="d-flex align-items-center justify-content-center text-white mt-5" style="background-color: black; padding: 20px;">
         <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
             <p style="font-weight: 600; font-size: 17px;" id="propos">À PROPOS DE NOUS</p>
@@ -185,6 +183,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>

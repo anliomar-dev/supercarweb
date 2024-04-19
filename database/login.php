@@ -34,14 +34,14 @@
                 if (mysqli_num_rows($resultat) > 0) {
                     $row = mysqli_fetch_assoc($resultat);
                     $hash = $row['MotDePasse'];
-                    $idInscription = $row['IdInscription'];
+                    $IdInscription = $row['IdInscription'];
                     // Vérifier si le mot de passe correspond au hash stocké
                     if (password_verify($mot_de_passe, $hash)) {
                         echo "<p>Connexion réussie.</p>";
                         //demarrer une session
                         session_start();
-                        $_SESSION['idInscription'] = $idInscription;
-                        $_SESSION['username'] = $identifiant;
+                        $_SESSION['idInscription'] = $IdInscription;
+                        $_SESSION['user'] = $identifiant;
                         // Vous pouvez rediriger l'utilisateur vers la page de demande d'essaie
                         header("Location: ../pages/DemandeEssaie.php");
                         exit();

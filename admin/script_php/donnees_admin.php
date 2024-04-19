@@ -117,13 +117,13 @@
                     <form class="row" action="" method="POST">
                         <h5 class="col-12 text-center p-3">changez votre mot de passe</h5>
                         <div class="col-12 p-3">
-                            <input type="email" class="form-control" name="email" placeholder="veuillez saisir votre email">
+                            <input type="email" class="form-control" name="email" placeholder="veuillez saisir votre email" required>
                         </div>
                         <div class="col-12 p-3">
-                            <input type="password" class="form-control" name="mot_de_passe" placeholder="nouveau mot de passe">
+                            <input type="password" class="form-control" name="mot_de_passe" placeholder="nouveau mot de passe" required>
                         </div>
                         <div class="col-12 p-3">
-                            <input type="password" class="form-control" name="confirmer_passe" placeholder="confirmez le mot de passe">
+                            <input type="password" class="form-control" name="confirmer_passe" placeholder="confirmez le mot de passe" required>
                         </div>
                         <div class="col-12 mx-3">
                             <input type="submit" class="btn btn-primary" name="modifier_passe" value="modifier">
