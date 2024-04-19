@@ -39,7 +39,7 @@
                         <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                         <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                         <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                        <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                        <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
                         <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
                     </div>
                     <div class="container-{breakpoint}" id="buttons">
@@ -60,11 +60,11 @@
                 <a class="navbar-item nav-link" id="links" href="">Accueil</a>
                 <a class="navbar-item nav-link" id="links" href="voitures.html">Voitures</a>
                 <a class="navbar-item nav-link" id="links" href="evenement.php">Évènements</a>
-                <a class="navbar-item nav-link" id="links" href="DemandeEssaie.php">Demande d'essai</a>
+                <a class="navbar-item nav-link" id="links" href="DemandeEssai.php">Demande d'essai</a>
                 <a class="navbar-item nav-link" id="links" href="contact1.html">Contactez-nous</a>
             </div>
             <div class="container-{breakpoint}" id="buttons">
-                <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary mb-2">S'inscrire</button></a>
+                <a href="signup.html"><button type="button" id="button" class="btn btn-outline-primary">S'inscrire</button></a>
                 <a href="login.html"><button type="button" id="button" class="btn btn-outline-primary">Connexion</button></a>
             </div>
         </div>
@@ -72,12 +72,12 @@
 
     <?php
         include("../database/connexion.php");
-        $selection = "SELECT TitreVideo, Video FROM acceuil;";
+        $selection = "SELECT TitreVideo, Video, Lien FROM acceuil WHERE ID = 1;";
         $curseur = mysqli_query($dbd, $selection);
-        $row = mysqli_fetch_array($curseur);
-        if ($row) {
+		while($row = mysqli_fetch_array($curseur)) {	
             $video = $row["Video"];
             $titre = $row["TitreVideo"];
+            $lien = $row["Lien"];
     ?>
 
     <div id="video">
@@ -86,7 +86,7 @@
         </video>
         <div class="text-white" id="titre">
             <h1><?php echo $titre ?></h1>
-            <a href="#"><button id="discover">Découvrir dés maintenant</button></a>
+            <a href="<?php echo $lien ?>"><button id="discover">Découvrir dés maintenant</button></a>
         </div>
     </div>
 
@@ -124,31 +124,25 @@
         <div class="row">
             <?php
                 include("../database/connexion.php");
-                $selection = "SELECT CadreModele, CadreImg, CadrePollution, CadrePrix FROM acceuil;";
+                $selection = "SELECT CadreModele, CadreImg, CadrePollution, CadrePrix, CadreLien FROM acceuil WHERE ID BETWEEN 2 AND 3;";
                 $curseur = mysqli_query($dbd, $selection);
-                if ($curseur && mysqli_num_rows($curseur) > 0) {
-                    while ($row = mysqli_fetch_array($curseur)) {
-                        $cadremodele = $row["CadreModele"];
-                        $cadreimg = $row["CadreImg"];
-                        $cadrepollution = $row["CadrePollution"];
-                        $cadreprix = $row["CadrePrix"];
-                        if (!empty($cadremodele) && !empty($cadreimg) && !empty($cadrepollution) && !empty($cadreprix)) {
+                while ($row = mysqli_fetch_array($curseur)) {
+                    $cadremodele = $row["CadreModele"];
+                    $cadreimg = $row["CadreImg"];
+                    $cadrepollution = $row["CadrePollution"];
+                    $cadreprix = $row["CadrePrix"];
+                    $cadrelien = $row["CadreLien"];
             ?>
             <div class="col-12 m-0 p-0 mb-5 position-relative" id="card">
                 <img style="width:100%" src="<?php echo $cadreimg ?>">
                 <div id="title" >
                     <h3 class="mb-3"><?php echo $cadremodele ?></h3>
                     <h4 class="mb-4"><?php echo $cadreprix ?> € </h4>
-                    <a href="#"><button id="discover">Découvrir dés maintenant</button></a>
+                    <a href="<?php echo $cadrelien ?>"><button id="discover">Découvrir dés maintenant</button></a>
                 </div>
-                <img class="card-img-overlay position-absolute h-25" src="<?php echo $cadrepollution?>">
+                <img class="card-img-overlay position-absolute h-25" id="co2" src="<?php echo $cadrepollution?>">
             </div>
             <?php
-                    }
-                }
-                    mysqli_free_result($curseur);
-                } else {
-                    echo "Aucune donnée disponible.";
                 }
                 mysqli_close($dbd);
             ?>
@@ -159,14 +153,12 @@
     <div class="container-fluid d-flex align-items-center justify-content-around mt-4 mb-5" id="actualite">
         <?php
             include("../database/connexion.php");
-            $selection = "SELECT ActualiteImg, ActualiteDescription, ActualiteLink FROM acceuil;";
+            $selection = "SELECT ActualiteImg, ActualiteDescription, ActualiteLink FROM acceuil WHERE ID BETWEEN 4 AND 6;";
             $curseur = mysqli_query($dbd, $selection);
-            if ($curseur && mysqli_num_rows($curseur) > 0) {
-                while ($row = mysqli_fetch_array($curseur)) {
-                    $actualiteimg = $row["ActualiteImg"];
-                    $description = $row["ActualiteDescription"];
-                    $link = $row["ActualiteLink"];
-                    if (!empty($actualiteimg) && !empty($description) && !empty($link)) {
+            while ($row = mysqli_fetch_array($curseur)) {
+                $actualiteimg = $row["ActualiteImg"];
+                $description = $row["ActualiteDescription"];
+                $link = $row["ActualiteLink"];
         ?>
         <div class="card rounded-sm border border-info" id="imghover" style="width: 30rem;">
             <a href="<?php echo $link?>" class="text-decoration-none">
@@ -176,17 +168,12 @@
             </div></a>
         </div>
         <?php
-                    }
-                }
-                    mysqli_free_result($curseur);
-                } else {
-                    echo "Aucune donnée disponible.";
-                }
-                mysqli_close($dbd);
-            ?>
+            }
+            mysqli_close($dbd);
+        ?>
     </div>
 
-    <footer class="d-flex align-items-center justify-content-center text-white mt-5"     style="background-color: black; padding: 20px;">
+    <footer class="d-flex align-items-center justify-content-center text-white mt-5" style="background-color: black; padding: 20px;">
         <div class="container-fluid d-flex flex-column align-items-center justify-content-center">
             <p style="font-weight: 600; font-size: 17px;" id="propos">À PROPOS DE NOUS</p>
             <div class="container-{breakpoint} d-flex flex-column align-items-center justify-content-center">

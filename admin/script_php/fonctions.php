@@ -602,10 +602,11 @@
         mysqli_free_result($curseur);
     }
 
+    
 
     function verifierAuthentification($location1, $location2) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 5 * 60; // 30 minutes en secondes
+        $tempsExpiration = 1 * 60; // 30 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
@@ -638,6 +639,107 @@
             session_destroy();
             // Rediriger l'utilisateur vers la page de connection
             header("Location: $location");
+            exit();
+        }
+    }
+
+    function modifier_accueil(){
+        global $dbd;
+        $video = $_POST["nouveau_video"];
+        $titre = $_POST["nouveau_titre"];
+        $lien = $_POST["nouveau_lien"];
+        $path = '\\supercar\\images\\images\\';
+        $path_escaped = mysqli_real_escape_string($dbd, $path);
+        if($video == '') {
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_accueil'])) {
+                    $mise_a_jour = "UPDATE acceuil SET TitreVideo = '$titre',  Lien = '$lien' WHERE ID = 1;";
+                    mysqli_query($dbd, $mise_a_jour);
+                    header("location: ".$_SERVER['PHP_SELF']);
+                    exit();
+                }
+            }
+        }else{
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                if (isset($_POST['modifier_accueil'])) {
+                    $mise_a_jour = "UPDATE acceuil SET Video = '$path_escaped$video', TitreVideo = '$titre', Lien = '$lien' WHERE ID = 1;";
+                    mysqli_query($dbd, $mise_a_jour);
+                    header("location: ".$_SERVER['PHP_SELF']);
+                    exit();
+                }
+            }
+        }
+    }
+    function modifier_accueil2(){
+        global $dbd;
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier_accueil2'])) {
+            $cadremodele = $_POST["nouveau_modele"];
+            $cadreprix = $_POST["nouveau_prix"];
+            $cadrelien = $_POST["nouveau_lien"];
+            $cadreimg = $_POST["nouveau_img"];
+            $cadrepollution = $_POST["nouveau_polluimg"];
+            $cadremodele2 = $_POST["nouveau_modele2"];
+            $cadreprix2 = $_POST["nouveau_prix2"];
+            $cadrelien2 = $_POST["nouveau_lien2"];
+            $cadreimg2 = $_POST["nouveau_img2"];
+            $cadrepollution2 = $_POST["nouveau_polluimg2"];
+            $path = '\\supercar\\images\\images\\';
+            $path_escaped = mysqli_real_escape_string($dbd, $path);
+            $mise_a_jour = "UPDATE acceuil SET CadreModele = '$cadremodele', CadrePrix = '$cadreprix', CadreLien = '$cadrelien'";
+            if ($cadreimg !== '') {
+                $mise_a_jour .= ", CadreImg = '$path_escaped$cadreimg'";
+            }
+            if ($cadrepollution !== '') {
+                $mise_a_jour .= ", CadrePollution = '$path_escaped$cadrepollution'";
+            }
+            $mise_a_jour .= " WHERE ID = 2";
+            mysqli_query($dbd, $mise_a_jour);
+            $mise_a_jour2 = "UPDATE acceuil SET CadreModele = '$cadremodele2', CadrePrix = '$cadreprix2', CadreLien = '$cadrelien2'";
+            if ($cadreimg2 !== '') {
+                $mise_a_jour2 .= ", CadreImg = '$path_escaped$cadreimg2'";
+            }
+            if ($cadrepollution2 !== '') {
+                $mise_a_jour2 .= ", CadrePollution = '$path_escaped$cadrepollution2'";
+            }
+            $mise_a_jour2 .= " WHERE ID = 3";
+            mysqli_query($dbd, $mise_a_jour2);
+            header("location: ".$_SERVER['PHP_SELF']);
+            exit();
+        }
+    }
+    function modifier_accueil3(){
+        global $dbd;
+        if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['modifier_accueil3'])) {
+            $actualiteimg = $_POST["nouveau_actimg"];
+            $description = $_POST["nouveau_description"];
+            $link = $_POST["nouveau_link"];
+            $actualiteimg2 = $_POST["nouveau_actimg2"];
+            $description2 = $_POST["nouveau_description2"];
+            $link2 = $_POST["nouveau_link2"];
+            $actualiteimg3 = $_POST["nouveau_actimg3"];
+            $description3 = $_POST["nouveau_description3"];
+            $link3 = $_POST["nouveau_link3"];
+            $path = '\\supercar\\images\\images\\';
+            $path_escaped = mysqli_real_escape_string($dbd, $path);
+            $mise_a_jour = "UPDATE acceuil SET ActualiteDescription = '$description', ActualiteLink= '$link'" ;
+            if ($actualiteimg !== '') {
+                $mise_a_jour .= ",ActualiteImg = '$path_escaped$actualiteimg'";
+            }
+            $mise_a_jour .= " WHERE ID = 4;";
+            mysqli_query($dbd, $mise_a_jour);
+            $mise_a_jour2 = "UPDATE acceuil SET ActualiteDescription = '$description2', ActualiteLink= '$link2'" ;
+            if ($actualiteimg2 !== '') {
+                $mise_a_jour2 .= ",ActualiteImg = '$path_escaped$actualiteimg2'";
+            }
+            $mise_a_jour2 .= " WHERE ID = 5;";
+            mysqli_query($dbd, $mise_a_jour2);
+            $mise_a_jour3 = "UPDATE acceuil SET ActualiteDescription = '$description3', ActualiteLink= '$link3'" ;
+            if ($actualiteimg3 !== '') {
+                $mise_a_jour3 .= ",ActualiteImg = '$path_escaped$actualiteimg3'";
+            }
+            $mise_a_jour3 .= " WHERE ID = 6;";
+            mysqli_query($dbd, $mise_a_jour3);
+            header("location: ".$_SERVER['PHP_SELF']);
             exit();
         }
     }

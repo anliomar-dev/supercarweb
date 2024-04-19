@@ -48,7 +48,7 @@
                             <div class="col-12 h4" style="background-color: #4A7696; color: white;">Compte</div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><form action="" method="POST"><button class="btn btn-primary" name="deconnexion" type="submit">Se deconnecter</button></form></div>
                                 <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="" class="bg-primary" >modifier passe</a></div>
-                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="" class="bg-primary" >mes données</a></div>
+                                <div class="col-12 col-sm-4 col-md-4 col-lg-12 mt-5 mb-5"><a href="donnees_admin.php?IdAdmin=<?php echo $_SESSION['idIAdmin'];?>" class="bg-primary" >mes données</a></div>
                             </div>
                         </div>
                         <div class="col-12 col-lg-8 border">
@@ -82,6 +82,10 @@
                                     <div class="row">
                                         <div class="col-12 titre-h4">
                                             <h4>Tables</h4>
+                                        </div>
+                                        <div class="col-12 pt-3 border d-flex justify-content-between px-3">
+                                            <p class="table">Acceui</p>
+                                            <a href="crud/acceuil_admin.php">📝</a>
                                         </div>
                                         <div class="col-12 pt-3 border d-flex justify-content-between px-3">
                                             <p class="table">voitures</p>

@@ -5,7 +5,7 @@ include("server.php");
     // Fonction pour vérifier l'authentification de l'utilisateur
     function Authentification($dbd, $identifiant, $mot_de_passe) {
         // Requête préparée pour récupérer le mot de passe associé à l'identifiant
-        $requete = "SELECT MotDePasse, IdAdmin FROM admin WHERE Identifiant = ?";
+        $requete = "SELECT MotDePasse, IdAdmin, email FROM admin WHERE Identifiant = ?";
         $statement = mysqli_prepare($dbd, $requete);
         mysqli_stmt_bind_param($statement, "s", $identifiant);
         mysqli_stmt_execute($statement);
@@ -16,12 +16,14 @@ include("server.php");
                 $row = mysqli_fetch_assoc($resultat);
                 $hash = $row['MotDePasse'];
                 $idAdmin = $row['IdAdmin'];
+                $email = $row['email'];
                 // Vérifie si le mot de passe correspond au hash stocké
                 if (password_verify($mot_de_passe, $hash)) {
                     // Démarrer une session
                     session_start();
                     $_SESSION['idIAdmin'] = $idAdmin;
                     $_SESSION['username'] = $identifiant;
+                    $_SESSION['email'] = $email;
                     return true; // Authentification réussie
                 } else {
                     return false; // Mot de passe incorrect

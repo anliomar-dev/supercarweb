@@ -1,26 +1,55 @@
 <?php
-    include("../fonctions.php");
-    verifierAuthentification("../index.php", "../session_expire.html");
+    include("fonctions.php");
+    verifierAuthentification("index.php", "session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
-            se_deconnecter("../connection_admin.html");
+            se_deconnecter("connection_admin.html");
         }
     }
-    if(isset($_GET["id"])){
-        $IdContact = $_GET["id"];
+    if(isset($_GET["IdAdmin"])){
+        $IdAdmin = $_GET["IdAdmin"];
         //affichage de tous les demandes d'essais en faisant une jointure entre la table demandeessai et la table inscription
         global $dbd;
-        $selection = "SELECT * FROM contacts WHERE IdContact = $IdContact;";
+        $selection = "SELECT * FROM admin WHERE IdAdmin = $IdAdmin;";
         $curseur = mysqli_query($dbd, $selection);
         if($row = mysqli_fetch_array($curseur)){
-            $IdContact = $row["IdContact"];
             $Nom = $row["Nom"];
             $Prenom = $row["Prenom"];
-            $NumTel = $row["NumTel"];
             $email = $row["email"];
+            $Telephone = $row["Telephone"];
+            $Identifiant = $row["Identifiant"];
         }
         mysqli_free_result($curseur);
     }
+    if (isset($_POST["modifier_passe"])) {
+        $mot_de_passe = mysqli_real_escape_string($dbd, $_POST["mot_de_passe"]);
+        $confirmer_passe = mysqli_real_escape_string($dbd, $_POST["confirmer_passe"]);
+        $Email = mysqli_real_escape_string($dbd, $_POST['email']);
+        
+        if ($Email == $email) {
+            if ($mot_de_passe == $confirmer_passe) {
+                $hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
+                
+                // Update query with WHERE clause to update specific row
+                $modifier = "UPDATE admin SET MotDePasse = '$hash' WHERE Email = '$Email'";
+                mysqli_query($dbd, $modifier);
+                
+                if(mysqli_affected_rows($dbd) > 0) {
+                    echo "<p>Vos données ont été mises à jour avec succès.</p>";
+                } else {
+                    echo "<p>Erreur lors de la mise à jour du mot de passe.</p>";
+                }
+            } else {
+                echo "<script>alert('Les deux mots de passe doivent être identiques.');</script>";
+            }
+        } else {
+            echo "<script>alert('Email invalide.');</script>";
+        }
+    }
+    
+    // Fermeture de la connexion
+    mysqli_close($dbd);
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +64,7 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" 
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="../style/dashboard.css">
-        <title><?php echo"Contact n°$IdContact";?></title>
+        <title><?php echo 'Données Admin('. $_SESSION['username'].')';?></title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top" id="header">
@@ -52,10 +81,7 @@
                             <div class="nav-link" href="visualiser_essaie.php">Connecté en tant que: <strong><?php echo 'Admin( '. $_SESSION['username']. ')';  ?>  <span><i class="fa-solid fa-circle" style="color: #23e00b;"></i></span></strong></div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="../index.php">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../crud/contacts_admin.php">Tous les contacts</a>
+                            <a class="nav-link" href="index.php">Dashboard</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
@@ -70,20 +96,40 @@
                 </div>
             </div>
         </nav>
-        <div class="container" style="max-width: 80vh">
-            <div class="row border">
-                <div class="col-12 mt-3 p-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6 mt-5 p-5 border mx-3" style="border-radius: 10px;">
                     <div class="row">
-                        <div class=" mb-5 text-center"><h3><u>informations sur le contact</u></h3></div>
+                        <div class=" mb-5 text-center"><h3><u>Mes donées</u></h3></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Prenom:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Prenom;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Nom:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Nom;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Téléphone:</div>
-                        <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $NumTel;?></strong></div>
+                        <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Telephone;?></strong></div>
                         <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Email:</div>
                         <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $email;?></strong></div>
+                        <div class=" col-sm-4 com-md-4 col-lg-4 py-3">Identifiant:</div>
+                        <div class=" col-sm-8 com-md-8 col-lg-8 py-3"><strong><?php echo $Identifiant;?></strong></div>
                     </div>
+                </div>
+                <div class="col-12 col-lg-5 mt-5 mx-3 border p-5 text-bg-info" style="border-radius: 10px;">
+                    <form class="row" action="" method="POST">
+                        <h5 class="col-12 text-center p-3">changez votre mot de passe</h5>
+                        <div class="col-12 p-3">
+                            <input type="email" class="form-control" name="email" placeholder="veuillez saisir votre email">
+                        </div>
+                        <div class="col-12 p-3">
+                            <input type="password" class="form-control" name="mot_de_passe" placeholder="nouveau mot de passe">
+                        </div>
+                        <div class="col-12 p-3">
+                            <input type="password" class="form-control" name="confirmer_passe" placeholder="confirmez le mot de passe">
+                        </div>
+                        <div class="col-12 mx-3">
+                            <input type="submit" class="btn btn-primary" name="modifier_passe" value="modifier">
+                            <input type="reset" class="btn btn-secondary">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
