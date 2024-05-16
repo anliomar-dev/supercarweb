@@ -606,7 +606,7 @@
 
     function verifierAuthentification($location1, $location2) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 5 * 60; // 30 minutes en secondes
+        $tempsExpiration = 1 * 60; // 5 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {
