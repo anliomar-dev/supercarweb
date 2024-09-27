@@ -45,7 +45,7 @@ if (isset($_POST["submit"])) {
 
     if (Authentification($dbd, $identifiant, $mot_de_passe)) {
         session_start();
-        header("Location: index.php");
+        header("Location: index");
         exit();
     } else {
         echo "<p>Identifiant ou mot de passe incorrect.</p>";

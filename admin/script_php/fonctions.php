@@ -168,7 +168,7 @@
         }
     }
 
-//ici debute les fonctions qui traitent les données des voitures
+    //ici debute les fonctions qui traitent les données des voitures
     function afficher_infos_voitures(){
         //affichage de tous les voitures
         global $dbd;
@@ -606,7 +606,7 @@
 
     function verifierAuthentification($location1, $location2) {
         // Définir le temps d'expiration de session à 30 minutes (ou la valeur appropriée)
-        $tempsExpiration = 1 * 60; // 5 minutes en secondes
+        $tempsExpiration = 3 * 60; // 5 minutes en secondes
 
         // Commencer la session si ce n'est pas déjà fait
         if (session_status() == PHP_SESSION_NONE) {

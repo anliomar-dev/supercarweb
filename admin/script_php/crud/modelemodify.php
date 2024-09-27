@@ -40,7 +40,7 @@
             <div class="row d-flex align-items-center justify-content-center">
 				<div class="w-50 mb-1">
 					<label for="" style="font-size: 18px;"><strong><u>Prix</u>:</strong></label>
-					<input type="number" name="nouveau_prix" class="form-control" value="<?php echo $prix;?>"></div>
+					<input title="le prix doit au minimum <?php echo $prix;?> et ne peut pas être augmenter de plus de 25% (<?php echo $prix * 1.25;?>) en une seul fois" type="number" name="nouveau_prix" class="form-control" value="<?php echo $prix;?>" min="<?php echo $prix;?>" max="<?php echo $prix * 1.25;?>"></div>
 			</div>
 			<div class="row d-flex align-items-center justify-content-center mb-4">
 				<div class="w-50 mb-1">

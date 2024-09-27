@@ -1,6 +1,6 @@
 <?php
     include("fonctions.php");
-    verifierAuthentification("connection_admin.html", "session_expire.html");
+    verifierAuthentification("/supercar/admin/script_php/connection_admin.html", "/supercar/admin/script_php/session_expire.html");
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['deconnexion'])) {
             se_deconnecter("connection_admin.html");
