@@ -27,7 +27,7 @@
                     <li><a href="#" class="text-light">Politiques de confidentialité</a></li>
                     <li><a href="#" class="text-light">Mentions légales</a></li>
                     <li><a href="#" class="text-light">RGPD</a></li>
-                    <li><a href="/super-car/supercar/contact" class="text-light">Contactez nous</a></li>
+                    <li><a href="supercar/contact" class="text-light">Contactez nous</a></li>
                 </ul>
             </div>
             <div class="col-md-4">

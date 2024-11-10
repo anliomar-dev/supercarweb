@@ -1,7 +1,7 @@
 <?php
     include_once('../php/utils.php');
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $login_url = "/super-car/supercar/signin";
+        $login_url = "/supercar/signin";
         if(isset($_POST['logout'])) {
             logout($login_url);
         }
@@ -19,19 +19,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/super-car/">Accueil</a>
+                    <a class="nav-link" href="/">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/super-car/supercar/marques">Marques</a>
+                    <a class="nav-link" href="/supercar/marques">Marques</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/super-car/supercar/essai">Essai</a>
+                    <a class="nav-link" href="/supercar/essai">Essai</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/super-car/supercar/evennements">Événements</a>
+                    <a class="nav-link" href="/supercar/evennements">Événements</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/super-car/supercar/contact">Contact</a>
+                    <a class="nav-link" href="/supercar/contact">Contact</a>
                 </li>
             </ul>
             <div class="d-flex">
@@ -40,8 +40,8 @@
                         include_once('dropdown_accountSettings.php');
                     }else{
                         echo"
-                            <a class='btn btn-login me-2' href='/super-car/supercar/signin'>Login</a>
-                            <a class='btn btn-signup' href='/super-car/supercar/signup'>Sign up</a>
+                            <a class='btn btn-login me-2' href='/supercar/signin'>Login</a>
+                            <a class='btn btn-signup' href='/supercar/signup'>Sign up</a>
                         ";
                     }
                 ?>
