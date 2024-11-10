@@ -6,6 +6,7 @@ $url = isset($_GET['url']) ? rtrim($_GET['url'], '/') : '/';
 switch ($url) {
     case '':
     case '/':
+    case '/supercar':
         require 'supercar/home.php';
         break;
     case 'signin':
@@ -36,8 +37,8 @@ switch ($url) {
             echo "Modèle invalide ou non spécifié.";
         }
         break;
-    case 'index_wamp':
-        require 'index_wamp.php';
+    case 'wampindex':
+        require 'wampindex.php';
         break;
     default:
         // Page 404 si l'URL n'existe pas
