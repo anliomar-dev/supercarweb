@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         alertDanger.querySelector('p').textContent = messageResponse;
         alertDanger.classList.add('alert-show');
       }else{
-        window.location.href = `http://localhost/super-car/supercar/essai`;
+        window.location.href = `/supercar/essai`;
       }
     }catch(e){
       console.error(e);

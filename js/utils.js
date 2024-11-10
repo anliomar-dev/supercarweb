@@ -42,7 +42,7 @@ export function hidePassword(icon) {
  */
 export async function fetchModelsByBrand(brandId, page=1){
   try{
-    const response = await fetch(`http://localhost/Super-car/api/modeles?brand_id=${brandId}&page=${page}`)
+    const response = await fetch(`/api/modeles?brand_id=${brandId}&page=${page}`)
     if(!response.ok){
       const data = response.json()
       return data
@@ -81,7 +81,7 @@ export async function createUser(...data){
     action
   };
   try {
-    const response = await fetch('http://localhost/super-car/api/user', {
+    const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export async function login(email, password, action='login'){
     action
   }
   try {
-    const response = await fetch('/super-car/api/user', {
+    const response = await fetch('/api/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -146,7 +146,7 @@ export async function requestTest(...data){
   const [date, heure, idMarque, idModele, user_id, csrfToken] = data
   const essaiData = {date, heure, idMarque, idModele, user_id, csrfToken}
   try {
-    const response = await fetch('http://localhost/super-car/api/essai/request', {
+    const response = await fetch('/api/essai/request', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

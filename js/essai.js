@@ -50,7 +50,7 @@ async function filterModels(
 async function fetchAvailableHoures(date) {
   try {
     const response = await fetch(
-      `http://localhost/super-car/api/horaires.php`,
+      `/api/horaires.php`,
       {
         method: "POST",
         headers: {
