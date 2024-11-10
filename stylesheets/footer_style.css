@@ -1,0 +1,20 @@
+.footer{
+  background-color: #263238;
+}
+
+.logo-footer{
+  transform: translateX(-20px);
+}
+
+a{
+  text-decoration: none;
+}
+.list-unstyled li{
+  margin-block: 5px;
+  transition: transform 0.3s;
+}
+
+
+.list-unstyled li:hover{
+  transform: translateX(-5px);
+}

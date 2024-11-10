@@ -1,0 +1,118 @@
+.sidebar{
+  width: 240px;
+  height: calc(100vh - 35px);
+  margin-top: 10px;
+  position: fixed;
+  top: 10px;
+  background-color: #000D50;
+  padding-top: 20px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+@media screen and (max-width: 1200px){
+  .sidebar{
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+}
+
+.sidebaropen{
+  transform: initial;
+  opacity: 1;
+  transition: transform 0.5s, opacity 0.3s;
+}
+.sidebarclose{
+  transform: translateX(-110%);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.3s;
+}
+
+.sidebar a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  transition: background-color 0.5s;
+}
+.sidebar a:not(.navbar-brand):hover {
+  background-color: #28a745;
+}
+
+.sidebar span:hover{
+  color: #ffffff;
+}
+
+.close-sidebar{
+  display: none;
+}
+
+.x-mark-sidebar{
+  fill: white;
+}
+.navbar-brand{
+  transform: translateX(-12px);
+}
+
+.sidebar svg:not(.x-mark-sidebar){
+  width: 18px;
+  height: 18px;
+  transform: translateY(1.5px);
+}
+
+.x-mark-sidebar{
+  width: 25px;
+  height: 25px;
+}
+
+@media screen and (min-width: 1200px){
+  .x-mark-sidebar{
+    display: none;
+  }
+}
+
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}
+
+.logout-btn {
+  background-color: #fb330647;
+  color: white;
+}
+.logout-btn:hover{
+  background-color: #ff0000a7!important;
+  color: white;
+}
+
+.home-btn{
+  padding-bottom: 0!important;
+}
+
+
+/* right side for delete, register new line on talbes */
+
+
+table svg{
+    width: 20px;
+    height: 20px
+}
+.btn-enregistrer {
+    background-color: #28a745;
+    color: white;
+}
+.btn-supprimer {
+    color: white;
+}
+.btn-historique {
+    background-color: #6c757d;
+    color: white;
+}
+.tab-content {
+    margin-top: 20px;
+}

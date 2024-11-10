@@ -1,0 +1,46 @@
+thead span:hover{
+  cursor: pointer;
+  color: #28a745;
+}
+
+.hover{
+  background-color: #28a745;
+  cursor: pointer;
+}
+
+.icon-backward{
+  height: 30px;
+  width: 30px;
+}
+.btn-retour{
+  background-color: aliceblue;
+}
+.btn-retour:hover{
+  background-color: rgb(205, 216, 225);
+}
+
+.delete-rows-btn svg{
+  width: 20px;
+  height: 20px;
+}
+
+.add-btn svg{
+  width: 18px;
+  height: 18px;
+}
+
+/*marques.php*/
+.btn-list svg{
+  width: 18px;
+  height: 18px;
+}
+.btn-colonne svg{
+  width: 18px;
+  height: 18px;
+}
+
+.confirmation-box{
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -20%);
+}

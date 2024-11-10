@@ -1,0 +1,46 @@
+.contact-card {
+    border-radius: 10px;
+    padding: 20px;
+}
+.form-card {
+    background-color: #f7f5fc;
+    padding: 30px;
+    border-radius: 10px;
+}
+.btn-send {
+    background-color: #b01373;
+    border: none;
+}
+.btn-send:hover {
+    background-color: #8c0d5a;
+}
+.icon {
+    font-size: 1.5rem;
+}
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}
+.contact-card svg{
+  width: 30px;
+  height: 30px;
+}
+
+.contact-title{
+  color: #000D50;
+}
+
+
+.social-medias a svg{
+  fill: #28a745;
+  transition: fill 0.3s, transform 0.5s;
+}
+
+.social-medias a svg:hover{
+  fill: #218739;
+  transform: translateY(-5px) scale(1.1);
+}

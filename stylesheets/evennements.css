@@ -1,0 +1,8 @@
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}

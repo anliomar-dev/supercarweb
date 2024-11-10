@@ -1,0 +1,562 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import 'general';
+
+h1{
+    font-size: 5rem;
+    color: rgb(27, 255, 92);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h3{
+    color: $title-color;
+}
+h2{
+    font-size: 2.3rem;
+    color: $primary;
+}
+h3{
+    font-size: 1.7rem;
+}
+p{
+    color: $text-color;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-align: center;
+}
+.btn.btn-primary{
+    background-color: $primary;
+    color: #fff;
+    transition: 0.3s all ease-in-out;
+}
+
+.btn.btn-primary:hover{
+    background-color: $primary-hover;
+}
+.btn.btn-secondary {
+    background-color: transparent;
+    color: $primary;
+}
+.btn-filter{
+    background-color: transparent;
+    backdrop-filter: blur(60px);
+    -webkit-backdrop-filter: blur(60px);
+}
+
+/* style entete */
+.entete{
+    background-image: url('../medias/images/logos&icones/header-backgroud.webp');
+    height: auto;
+    padding-bottom: 60px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    .container{
+        @include flexCenter(space-between);
+        @media screen and (max-width: 992px){
+            height: 80vh;
+            .buttons, h2{
+                display: flex;
+                justify-content: center;
+            }
+            .image{
+                transform: translateY(-125px);
+                z-index: 1;
+                opacity: 0.5;
+            }
+            .text{
+                transform: translateY(125px);
+            }
+        }
+        .buttons{
+            display: flex;
+            gap: 20px;
+        }
+    }
+    
+    .image{
+        margin-top: 10px;
+        z-index: 10;
+        img{
+            width: 750px;
+            transform: translateX(50%) scale(0.5) rotateZ(-5deg);
+            opacity: 0;
+            animation: image-entete 1s ease-out 0.5s forwards;
+        }
+    }
+    .filter{
+        background-color: rgba(0, 0, 0, 0.504);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+    }
+    .text{
+        z-index: 10;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        h1, h2, p, div{
+            margin: 10px 0;
+        }
+
+        @for $i from 1 through 5{
+            .animation#{$i}{
+                transform: translateY(80px) scale(0.6);
+                opacity: 0;
+                animation: entete-text 0.8s ease-in-out 1s forwards;
+            }
+        }
+    }
+
+}
+
+// animation for the image in entete section
+@keyframes image-entete {
+    to{
+        transform: translatex(0) scale(1) rotateZ(0deg);
+        opacity: 1;
+    }
+}
+
+// animation for the elements in div text in entete section
+@keyframes entete-text {
+    to{
+        transform: initial;
+        opacity: 1;
+    }
+}
+.overlay-open{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000092;
+    z-index: 1000;
+}
+/* end style entete */
+
+/* types */
+.types{
+    .browse{
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        padding: 40px 0;
+        background-color:#4caf4f;
+        border-radius: 0 0 50% 50%;
+        .browse-type{
+            width: 70px;
+            height: 50px;
+        }
+    }
+}
+/* end style type */
+
+
+/*section marques*/
+.marques-section{
+    .marques{
+        padding: 0 0;
+    } 
+}
+.marque, .browse-type{
+    background-color: #E9F2FF;
+    border: solid 0.5px rgba(0, 0, 0, 0.149);
+    box-shadow: 1px 1px 15px #ccccccaa;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    img{
+        width: 100%;
+        height: 100px;
+    }
+    p{
+        font-size: 10px;
+    }
+}
+.marque{
+    width: 130px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.nos-evennements{
+    width: 400px;
+    height: 300px;
+    flex-shrink: 0;
+    img{
+        width: 100%;
+        height: 100%;
+        border-radius: 30px 0 30px 0;
+    }
+}
+// end style section marque
+
+
+/* start style infinite scroll animation*/
+.scroller {
+    max-width: 700px;
+}
+.scroller[data-animated="true"]{
+    overflow: hidden;
+    -webkit-mask: linear-gradient(
+        90deg, transparent, white 20%, white 80%, transparent
+    );
+    mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+.scroller_inner {
+    display: flex;
+    gap: 2rem;
+    padding-block: 1rem;
+    flex-wrap: wrap;
+}
+.scroller[data-animated="true"] .scroller_inner{
+    flex-wrap: nowrap;
+    animation: scroll 
+    var(--_animation-duration, 20s) 
+    var(--_animation-direction, forwards)
+    linear infinite;
+    width: max-content;
+}
+.scroller[data-direction='right']{
+    --_animation-direction: forwards;
+}
+.scroller[data-direction='left']{
+    --_animation-direction: reverse;
+}
+
+@keyframes scroll {
+    to{
+        transform: translate(calc(-50% - 1rem));
+    }
+}
+/* end style infinite scroll animation*/
+/* end style section marques*/
+
+
+/* looking-for */
+.looking-for{
+    .container .cards_content{
+        @include flexCenter(center);
+        padding-block: 50px;
+        padding-inline: 20px;
+        gap: 30px;
+    }
+
+
+    &_row{
+        border: solid 1px rgba(0, 0, 0, 0.073);
+        border-radius: 10px;
+        padding: 35px;
+        max-width: 550px;
+    }
+    .row-login{
+        background-color: $pink;
+    }
+    .row-essai{
+        background-color: $pink;
+    }
+    .card_buttons{
+        @include flexCenter(space-between);
+        svg{
+            width: 40px;
+            height: 40px;
+        }
+    }
+}
+
+/* most requested*/
+.most-requested{
+    padding: 55px 0;
+    background-color: #FFE9F3;
+    .container{
+        margin-bottom: 75px;
+        padding-bottom: 50px;
+    }
+    h2{
+        margin-bottom: 30px;
+    }
+    .row{
+        @include flexCenter(center);
+        
+    }
+    .card-1{
+        background-image: url('../medias/images/panamera.webp');
+    }
+    .card-2{
+        background-image: url('../medias/images/ferrari_812.webp');
+    }
+    .card-3{
+        background-image: url('../medias/images/avengerlongitude.webp');
+    }
+    .card{
+        width: 310px;
+        height: 210px;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        margin: 0 25px;
+        transition: transform 0.5s;
+        &:hover{
+            transform: scale(1.05);
+        }
+        &_body{
+            background-color: white;
+            width: 85%;
+            height: auto;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 25px;
+            box-sizing: border-box;
+            position: absolute;
+            bottom: -85px;
+            left: 24px;
+            box-shadow: 0 6px 18px #abbed1d3;
+            .body_buttons{
+                @include flexCenter(space-between);
+                .essai{
+                    color: $primary;
+                    transition: color 0.5s;
+                }
+                .essai:hover{
+                    color: $primary-hover;
+                }
+                :first-child{
+                    color: $title-color;   
+                }
+                svg{
+                    width: 20px;
+                    height: 15px;
+                    transform: rotateZ(-17deg);
+                    fill: $primary;
+                }
+            }
+            .body-text{
+                @include flexCenter(space-between);
+            }
+            .svgs {
+                @include flexCenter(space-between);
+                i, svg{
+                    width: 20px;
+                    height: 20px;
+                    color: $primary;
+                    fill: #000000;
+                }
+            }
+            .hr-1{
+                width: 95%;
+                height: 0.5px;
+                background-color: #18191f22;
+                margin-bottom: 10px;
+            }
+            .hr-2{
+                @extend .hr-1;
+            }
+        }
+    }
+}
+/* end style for most-requested section */
+
+
+// section about
+.about{
+    .about_content{
+        gap: 35px;
+    }
+    .about_body{
+        h5{
+            color: $primary;
+        }
+        background-color: $pink;
+        border-radius: 10px;
+        padding: 30px 50px;
+        a{
+            color: $primary;
+            &:hover{
+                color: $primary-hover;
+            }
+        }
+    }
+    .about_image{
+        background-color: $gray;
+        border-radius: 15px;
+        height: auto;
+        img{
+            transition: transform 0.5s, opacity 0.5s;
+            object-fit: cover;
+            &:hover{
+            transform: scale(1.1);
+            }
+        }
+    }
+}
+// end section about
+
+
+// section gallery
+.gallery{
+    .container{
+        .grid-gallery{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 10px;
+            width: 80%;
+        }
+    }
+    @for $n from 1 through 9{
+        .image#{$n}{
+            
+            img{
+                width: 100%;
+                height: 100%;
+                border-radius: 10px;
+                transition: transform 0.5s, box-shadow 0.3s;
+                &:hover{
+                    transform: scale(0.96);
+                    box-shadow: 2px 2px 15px $primary;
+                }
+            }
+        }
+    }
+    .image1{
+        grid-column: 1 / span 2;
+        grid-row: 1;
+    }
+    .image3{
+        grid-column: 3/ span 2;
+        grid-row: 1/ span 2;
+        object-fit: cover;
+    }
+    
+}
+// end section gallery
+
+//section expérience
+.experiences{
+    .statistiques{
+        background-color: $pink;
+        @include flexCenter(center);
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 90px 0;
+        border-radius: 0 0 30% 30%;
+    }
+    .experience{
+        background-color: transparent;
+        max-width: 200px;
+        height: auto;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: dashed 0.3px rgba(0, 0, 0, 0.158);
+        border-radius: 20px;
+        box-shadow: 5px 5px 15px rgba(255, 255, 255, 0.158);
+        .icon{
+            width: 110px;
+            height: 100px;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        strong{
+            font-size: 30px;
+        }
+    }
+}
+// end style section experience
+
+// reponsive section(entete)
+@media screen and (max-width: 992px){
+    .entete{
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .image{
+            margin-top: 0;
+        }
+        .text{
+            position: relative;
+            margin-bottom: 0;
+            display: block;
+        }
+    }
+}
+// end reponsive section(entete)
+
+//responsive for gallery section
+@media screen and (max-width: 1200px){
+    .gallery{
+        .container{
+            .grid-gallery{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr;
+                gap: 10px;
+                width: 100%;
+            }
+        }
+        @for $n from 1 through 9{
+            .image#{$n}{
+                
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+    }
+}
+// end responsive for gallery section
+
+
+// responsive for gallery section and looking-for section
+@media screen and (max-width: 769px){
+    .gallery{
+        .container{
+            .grid-gallery{
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr;
+                gap: 10px;
+                width: 90%;
+            }
+        }
+        @for $n from 1 through 9{
+            .image#{$n}{
+                
+                grid-column: span 3;
+                grid-row: span 3;
+            }
+        }
+    }
+    .looking-for{
+        .container .cards_content{
+            display: flex;
+            flex-direction: column;
+            padding-block: 50px;
+            padding-inline: 20px;
+            gap: 30px;
+        }
+    }
+}
+// end responsive for gallery section and looking-for section

@@ -1,0 +1,148 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.essai-form {
+  width: 600px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+.authData{
+  width: 600px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}
+
+.clock-svg{
+  width: 20px;
+  height: 20px;
+}
+.close-horaires{
+  width: 23px;
+  height: 23px;
+}
+.close-horaires:hover{
+  cursor: pointer;
+  fill: #28a745;
+}
+#Heure, #modele{
+  border-radius: 0 7px 7px 0!important;
+}
+
+.model-name{
+  color: #000D50;
+}
+.model-name:hover{
+  cursor: pointer;
+  color:#28a745;
+}
+
+@keyframes available-hours-modale-anim {
+  to{
+    opacity: 1;
+    transform: initial;
+  }
+}
+.available-hours-modale-open{
+  opacity: 0;
+}
+.available-hours-modale-open{
+  animation: available-hours-modale-anim 0.5s ease-out forwards;
+}
+
+.hour-container{
+  border-radius: 6px;
+  
+  padding-inline: 5px;
+  transition: background-color 0.5s, color 0.3s;
+}
+.hour-container:hover{
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+}
+
+@keyframes alert-anim {
+  from{
+    opacity: 0;
+    transform: translateY(-60px);
+  }to{
+    opacity: 1;
+    transform: initial;
+  }
+}
+.close-alert-success, .close-alert-danger{
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+
+.close-alert-success:hover, .close-alert-danger:hover{
+  cursor: pointer;
+}
+
+.alert-danger{
+  position: relative;
+  width: auto; 
+  left: 50%; 
+  transform: translateX(-50%) translateY(-60px);
+  opacity: 0;
+}
+
+.alert-success{
+  position: relative;
+  width: auto;  
+  transform: translateY(-60px);
+  opacity: 0;
+}
+
+.alert-show{
+  animation: alert-anim 0.5s ease-in-out 0.3s forwards;
+}
+
+.alert-show::after{
+  animation: alert-after-anim 6s linear 0.8s forwards;
+}
+
+@keyframes alert-after-anim {
+  from{
+    width: 100%;
+  }to{
+    width: 0;
+  }
+}
+
+.alert-danger::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(166, 2, 2);
+  border-radius: 0 0 5px 5px;
+}
+
+.alert-success::after{
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: rgb(13, 159, 2);
+  border-radius: 0 0 5px 5px;
+}

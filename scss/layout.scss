@@ -1,0 +1,258 @@
+@import 'general';
+/*header*/
+.header{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 20px;
+    background-color: #18191f;
+    width: 100%;
+    &_links-buttons{
+        @include flexCenter(space-between);
+        align-items: center;
+        width: calc(1248px);
+    }
+    &_menu {
+        li {
+            margin: 0 25px;
+        }
+        ul{
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0;
+        }
+    }
+    &_container{
+        @include flexCenter(space-between);
+        align-items: center;
+        .logo{
+            height: 75px;
+        }
+    }
+    a:not(.btn-primary):hover{
+        color: $primary;
+    }
+    a:not(.btn-primary){
+        color: white;
+        transition:ease-in-out all 0.3s;
+    }
+    &_buttons {
+        display: flex;
+        a:first-of-type{
+        margin-right: 10px;
+        }
+        button{
+            background-color: transparent;
+            border: none;
+            svg{
+                width: 30px;
+                height: 30px;
+                fill: $primary;
+            }
+        }
+        &.secondary-onScroll{
+            color: black;
+            &:hover{
+                color: green;
+            }
+        }
+    }
+    &_link-hover{
+        position: relative;
+    }
+    &_link-hover::after{
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: $primary-hover;
+        transition: width 0.4s;
+    }
+    &_link-hover:hover::after{
+        width: 100%;
+        left: 0;
+    }
+    .toggle-button{
+        display: none;
+        padding: 0;
+        margin: 0;
+        svg{
+            width: 30px;
+            height: 30px;
+            fill: $primary;
+            
+        }
+    }
+    &.header-onScroll{
+        padding: 10px;
+        background-color: #FFE9F3;
+        position: fixed;
+        top: 0;
+    }
+}
+
+/* responsive */
+@media screen and (max-width: 1045px){
+    .header{
+        padding: 10px 20px;
+        &_links-buttons{
+            flex-direction: column;
+            justify-content: start;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 220px;
+            height: 100vh;
+            background-color: #FFE9F3;
+            display: none;
+            &-open{
+                display: flex;
+                animation: TransformMenu 300ms ease-in-out forwards;
+            }
+            .menu-close-button{
+                svg{
+                    fill: $primary;
+                    width: 40px;
+                    height: 40px;
+                    position: absolute;
+                    right: 0;
+                    padding-top: 10px;
+                }
+            }
+        }
+        &_menu{
+            ul{
+                flex-direction: column;
+                align-items: start;
+                margin-left: 10px;
+                margin-top: 50px;
+                li{
+                    margin: 10px 0;
+
+                }
+            }
+        }
+        &_buttons{
+            flex-direction: column;
+            margin-left: 0;
+            margin-top: 20px;
+            a{
+                margin: 5px 0;
+            }
+        }
+        &_container{
+            .logo{
+                height: 60px;
+            }
+        }
+        .toggle-button{
+            display: block;
+            padding: 0;
+            margin: 0;
+            svg{
+                width: 30px;
+                height: 30px;
+                fill: $primary;
+            }
+        }
+    }
+    @keyframes TransformMenu {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(initial)
+        }
+    }
+}
+/* end style header */
+
+
+/* style for footer */
+.footer{
+    background-color: $footer-bg;
+    color: white;
+    padding: 40px 0;
+    .container{
+        @include flexCenter(space-between);
+        flex-wrap: wrap;
+    }
+    .column{
+        padding: 0 20px;
+        margin-top: 25px;
+        ul{
+            padding-left: 0;
+            line-height: 30px;
+            margin-top: 18px;
+        }
+    }
+
+    &_button{
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        transform: translate(-130%, 42%);
+    }
+
+    &_title strong{
+        font-weight: 400;
+        color: white;
+    }
+
+    &_logo{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0 20px;
+        .reseaux{
+            margin-bottom: 20px;
+            svg{
+                width: 25px;
+                height: 25px;
+                fill: white;
+            }
+            a{
+                margin-right: 20px;
+                padding: 0;
+                :hover{
+                    fill: $primary-hover;
+                    transform: translateY(-5deg)
+                }
+            }
+        }
+        .logo {
+            img{
+                height: 75px;
+                transform: translate(-25px, -20px);
+                
+            }
+        }
+    }
+    a, p{
+        color: white;
+        font-weight: 200;
+    }
+}
+form{
+    position: relative;
+    #email{
+        padding: 10px 10px;
+        border-radius: 8px;
+        width: 230px;
+        border: none;
+        background-color: #d9dbe136;
+        color: white;
+        :focus{
+            outline: none;
+        }
+        ::placeholder{
+            color: rgb(204, 203, 203);
+            font-size: 15px;
+            font-weight: 100;
+        }
+    }
+}
+/* end style for footer */

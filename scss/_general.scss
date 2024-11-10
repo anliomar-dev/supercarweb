@@ -1,0 +1,28 @@
+$primary: #4caf4f;
+$primary-hover: #1B5E1F;
+$gray: #f5f7fa;
+$title-color: #4d4d4d;
+$text-color: #717171;
+$footer-bg: #263238;
+$link-color-header: #18191f;
+$pink: #FFE9F3;
+$background-body: #1d2031;
+body{
+    padding: 0;
+    margin: 0;
+    font-family: "Inter", sans-serif; 
+    font-family: "Inter", sans-serif;
+    background-color: #1d2031;
+}
+
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+
+@mixin flexCenter($justify-content){
+    display: flex;
+    justify-content: $justify-content;
+}

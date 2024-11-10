@@ -1,0 +1,12 @@
+# Ignorer les variables d'environnement
+.env
+
+# Répertoires et fichiers spécifiques à WAMP
+wamplangues/
+wampthemes/
+
+# Fichiers de test et autres fichiers temporaires
+add_host.php
+favicon.ico
+testmysql.php
+test_sockets.php

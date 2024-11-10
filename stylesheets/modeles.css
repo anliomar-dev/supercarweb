@@ -1,0 +1,121 @@
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}
+.close-side-bar svg{
+  width: 25px;
+  height: 25px;
+  fill: white;
+  color: white;
+}
+.close-side-bar svg:hover{
+  cursor: pointer;
+  color: #28a745;
+  fill: #28a745;
+}
+.toggle-side-bar{
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 30px;
+  height: 30px;
+  color: #000D50;
+  z-index: 900;
+}
+
+.toggle-side-bar:hover{
+  cursor: pointer;
+  color: #28a745;
+}
+
+.pop-over{
+  display: none;
+}
+
+.toggle-container:hover .pop-over{
+  display: inline;
+}
+
+.sidbar{
+  overflow-y: hidden;
+  height: 0;
+  opacity: 0;
+}
+
+
+.sidebar-opened{
+  animation: sidebar-animate 1S ease-in-out normal forwards;
+}
+
+@keyframes sidebar-animate {
+  0%{
+    opacity: 0;
+    height: 0;
+    overflow-y: hidden;
+  }100%{
+    height: auto;
+    opacity: 1;
+  }
+}
+
+.search-form{
+  background-color: #000D50;
+}
+
+.card{
+  background-image: linear-gradient(#DADADA, #959494);
+  transition: box-shadow 0.5s, transform 0.5s;
+}
+.card:hover{
+  box-shadow: 5px 5px 15px #000d50b4;
+  transform: translateY(-10px);
+}
+.card-details-items{
+  background-color: #D9D9D9;
+}
+.primary-custom-btn {
+  background-color: #28a745;
+  color: white;
+}
+.primary-custom-btn:hover{
+  background-color: #218739;
+  color: white;
+}
+
+.close-search-bar{
+  color: white;
+  width: 25px;
+  height: 25px;
+}
+
+.serachIcon{
+  width: 25px;
+  height: 25px;
+  fill: #ffffff;
+}
+
+.serachIcon:hover{
+  cursor: pointer;
+}
+
+.searchButton{
+  border-color: transparent;
+  border-radius: 0 10px 10px 0;
+}
+
+.filter-price-field{
+  border-radius: 10px 0 0 10px;
+}
+
+#image-model{
+  transition: transform 0.3s;
+  transition-timing-function: ease-out;
+}
+
+#image-model:hover{
+  transform: scaleX(1.05) scaleY(1.05);
+  object-fit: cover;
+}

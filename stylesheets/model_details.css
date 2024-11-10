@@ -1,0 +1,35 @@
+body {
+  background-color: #f8f9fa;
+}
+.car-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+.thumbnail {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+.btn-custom {
+  background-color: #1d3557;
+  color: white;
+}
+.btn-custom:hover {
+  background-color: #457b9d;
+}
+.details-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+.color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+  cursor: pointer;
+}
