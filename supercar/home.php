@@ -47,11 +47,11 @@
                     </div>
                     <nav class="header_menu">
                         <ul>
-                            <li><a href="/super-car/" class="header_link">Acceuil</a></li>
-                            <li><a href="/super-car/supercar/marques" class="header_link">Marques</a></li>
-                            <li><a href="/super-car/supercar/essai" class="header_link">Essai</a></li>
-                            <li><a href="/super-car/supercar/evennements" class="header_link">Evénnements</a></li>
-                            <li><a href="/super-car/supercar/contact" class="header_link">contact</a></li>
+                            <li><a href="/" class="header_link">Acceuil</a></li>
+                            <li><a href="/supercar/marques" class="header_link">Marques</a></li>
+                            <li><a href="/supercar/essai" class="header_link">Essai</a></li>
+                            <li><a href="/supercar/evennements" class="header_link">Evénnements</a></li>
+                            <li><a href="/supercar/contact" class="header_link">contact</a></li>
                         </ul>
                     </nav>
                     <!--end navbar-->
@@ -61,8 +61,8 @@
                                 include_once('components/dropdown_accountSettings.php');
                             }else{
                                 echo"
-                                    <a href='/super-car/supercar/signin' class='btn btn-secondary header_secondary'>Login</a>
-                                    <a href='/super-car/supercar/signup' class='btn btn-primary ms-3'>Sign up</a>
+                                    <a href='/supercar/signin' class='btn btn-secondary header_secondary'>Login</a>
+                                    <a href='/supercar/signup' class='btn btn-primary ms-3'>Sign up</a>
                                 ";
                             }
                         ?>
@@ -78,8 +78,8 @@
                     <h2 class="animation2">find your dream car with us</h2>
                     <p class="text-white animation3">depuis 2009 nous vous accompagnons pour vous aider a trouvez votre voiture de reve</p>
                     <div class="buttons text-center col-12">
-                        <a href="/super-car/supercar/contact" class="btn btn-primary animation4">contactez nous</a>
-                        <a href="/super-car/supercar/signup" class="btn btn-secondary animation5">inscrivez vous</a>
+                        <a href="/supercar/contact" class="btn btn-primary animation4">contactez nous</a>
+                        <a href="/supercar/signup" class="btn btn-secondary animation5">inscrivez vous</a>
                     </div>
                 </div>
                 <div class="image">
@@ -135,12 +135,12 @@
                                 <div class="col-12">
                                     <div class="col-12 about_list">
                                         <p>faites un essai en 3 étapes</p>
-                                        <h6>1- <a href="/super-car/supercar/signup">inscrivez vous</a></h6>
-                                        <h6>2- <a href="/super-car/supercar/contact">connectez vous</a></h6>
-                                        <h6>3- <a href="/super-car/supercar/essai">demander l'essai en ligne</a></h6>
+                                        <h6>1- <a href="/supercar/signup">inscrivez vous</a></h6>
+                                        <h6>2- <a href="/supercar/contact">connectez vous</a></h6>
+                                        <h6>3- <a href="/supercar/essai">demander l'essai en ligne</a></h6>
                                     </div>
                                     <div class="col-12 py-3">
-                                        <a href="/super-car/supercar/signup" class="btn btn-primary" style="color: white;">je m'inscris</a>
+                                        <a href="/supercar/signup" class="btn btn-primary" style="color: white;">je m'inscris</a>
                                     </div>
                                 </div>
                             </div>
@@ -158,7 +158,7 @@
                                     <p class="my-3">Contactez nous par email ou par téléphone pour en savoir plus sur nos services.</p>
                                 </div>
                                 <div class="col-12 card_buttons">
-                                    <a class="btn btn-primary" href="/super-car/supercar/contact">contactez nous</a>
+                                    <a class="btn btn-primary" href="/supercar/contact">contactez nous</a>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                                     </svg>
@@ -172,7 +172,7 @@
                                     <p class="my-3">Nous nous engageons à fournir à nos clients un service exceptionnel.</p>
                                 </div>
                                 <div class="col-12 card_buttons">
-                                    <a class="btn btn-primary" href="/super-car/supercar/essai">Demander un essai</a>
+                                    <a class="btn btn-primary" href="/supercar/essai">Demander un essai</a>
                                     <svg width="110" height="111" viewBox="0 0 110 111" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_5_901)">
                                             <g clip-path="url(#clip1_5_901)">
@@ -416,7 +416,7 @@
                         <li><a href="">politiques de confidentialité</a></li>
                         <li><a href="">mentions legales</a></li>
                         <li><a href="">RGPD</a></li>
-                        <li><a href="/super-car/supercar/contact">contactez nous</a></li>
+                        <li><a href="/supercar/contact">contactez nous</a></li>
                     </ul>
                 </div>
                 <div class="column">

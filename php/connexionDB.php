@@ -1,20 +1,23 @@
 <?php
-    // Informations de connexion
-    $HOST = "localhost";
-    $LOGIN = "root";
-    $PASS = "Omaranli56Multisys";
-    $DBNAME = "supercarDB";
+    // lod env variables from .env file
 
-    // Établir la connexion
-    $DB = mysqli_connect($HOST, $LOGIN, $PASS, $DBNAME);
+    require_once 'vendor/autoload.php'; 
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
-    // Vérifier la connexion
+    $HOST = $_ENV['HOST_DB'];
+    $DBNAME = $_ENV['DATABASENAME'];
+    $USER = $_ENV['USER_DB'];
+    $PASSWORD = $_ENV['PASSWORD_DB'];
+
+    // connect
+    $DB = mysqli_connect($HOST, $USER, $PASSWORD, $DBNAME);
+
+    // check conection
     if (!$DB) {
         die("La connexion à la base de données a échoué: " . mysqli_connect_error());
     }
 
-    // Définir le jeu de caractères
+    // encoding
     mysqli_set_charset($DB, "utf8");
-
-    // Connexion réussie (aucun message affiché)
 ?>
