@@ -109,7 +109,7 @@
             <div class="col-12 mt-2">
               <div class="row py-2">
                 <a href="" class="test btn col-6 mx-auto primary-custom-btn essaiBtn">Essayer</a>
-                <a href="/super-car/supercar/modele?modele=" class="more-details btn col-6 mx-auto" style="color:#000D50;"><strong>Voir plus</strong></a>
+                <a href="/supercar/modele?modele=" class="more-details btn col-6 mx-auto" style="color:#000D50;"><strong>Voir plus</strong></a>
               </div>
             </div>
           </div>

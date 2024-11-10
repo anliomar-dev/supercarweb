@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', async()=>{
         }
     })
     const idModel = getModelIdFromUrl()
-    const data = await  fetchData(`/super-car/api/model-images?modele=${idModel}`)
+    const data = await  fetchData(`/api/model-images?modele=${idModel}`)
     const images = data.images;
-    const imagesBaseUrl = `/super-car/medias/images/${brandName}/`;
+    const imagesBaseUrl = `/medias/images/${brandName}/`;
 
     let imagesToDisplay = []; // Array to hold images to display
     let currentColor = "" // the color of images we want display in carousel

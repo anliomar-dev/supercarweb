@@ -44,11 +44,11 @@
                $colors = explode(',', $row["colors"]);
            }
         }else{
-            header("Location: /super-car/404.php"); // Redirection vers la page 404
+            header("Location: /404.php"); // Redirection vers la page 404
             exit();
         }
     } else {
-        header("Location: /super-car/404.php"); // Redirection vers la page 404
+        header("Location: /404.php"); // Redirection vers la page 404
         exit();
     }
 ?>
