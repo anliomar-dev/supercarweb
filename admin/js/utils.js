@@ -6,7 +6,7 @@
  */
 export async function fetchUsers(page=1){
   try{
-    const response = await fetch(`http://localhost/Super-car/admin/api/utilisateurs?user=all&page=${page}`)
+    const response = await fetch(`http://localhost/admin/api/utilisateurs?user=all&page=${page}`)
     if(!response.ok){
       throw new Error(response.statusText)
     }
@@ -66,7 +66,7 @@ export function sortData(data, sortBy, order) {
  */
 export async function getUser(userId){
   try{
-    const response = await fetch(`http://localhost/Super-car/admin/api/utilisateurs?user=${userId}`)
+    const response = await fetch(`http://localhost/admin/api/utilisateurs?user=${userId}`)
     if(!response.ok){
       throw new Error(response.statusText)
     }
@@ -304,7 +304,7 @@ export async function login_admin(email, password){
     password,
   }
   try {
-    const response = await fetch('http://localhost/super-car/admin/api/login', {
+    const response = await fetch('http://localhost/admin/api/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -315,7 +315,8 @@ export async function login_admin(email, password){
       throw new Error(response.statusText);
     }
   
-    const message = await response.json();
+    const message = await response.text();
+    console.log(message)
     return message;
   }catch(e){
     console.error('Internal server error: ' + e.message);
@@ -430,7 +431,7 @@ export async function createOrUpdate(
       break;
       case "403":
         window.location.href =
-        "http://localhost/super-car/admin/permission_denied";
+        "/admin/permission_denied";
         break;
       default:
       console.log(responseStatus);

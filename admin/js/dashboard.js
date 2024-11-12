@@ -3,7 +3,7 @@ async function FetchAllEssaiWithoutPagination() {
   try {
     // Send a request to the API endpoint
     const response = await fetch(
-      "http://localhost/super-car/admin/api/all_essais"
+      "/admin/api/all_essais"
     );
     // Check if the response is okay (status code 200-299)
     if (!response.ok) {

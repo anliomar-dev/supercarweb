@@ -1,7 +1,7 @@
 <?php
   include_once('../php/utils.php');
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $login_url = "/super-car/admin/login";
+    $login_url = "/admin/login";
     if(isset($_POST['logout'])) {
         logout($login_url);
     }
