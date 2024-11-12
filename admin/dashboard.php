@@ -1,3 +1,10 @@
+<?php
+    // start new session if there is not a session
+    include_once('../php/utils.php');
+    $LOGIN_URL = "/admin/login";
+    $SESSION_EXPIRED_URL = "/admin/session_expired";
+    is_user_authenticated(5, $LOGIN_URL, $SESSION_EXPIRED_URL);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

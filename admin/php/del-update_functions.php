@@ -1,6 +1,6 @@
 <?php
   // Database connection
-  include_once('../../php/connexionDB.php');
+  include_once('connexionDB.php');
   include_once('../php/utils.php');
 
   function delete_rows(string $table_name, string $name_row_id, array $ids): bool {

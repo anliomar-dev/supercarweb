@@ -1,16 +1,19 @@
+import { host } from './utils.js';
+console.log(host)
 // Function to fetch all "essai" data without pagination from the server
 async function FetchAllEssaiWithoutPagination() {
   try {
     // Send a request to the API endpoint
     const response = await fetch(
-      "/admin/api/all_essais"
+      `${host}/admin/api/all_essais`
     );
     // Check if the response is okay (status code 200-299)
     if (!response.ok) {
       throw new Error(response.statusText);
     }
     // Parse the JSON data from the response
-    const data = await response.json();
+    const data = await response.text();
+    console.log(data)
     return data; // Return the fetched data
   } catch (error) {
     // Log any errors that occur during the fetch process

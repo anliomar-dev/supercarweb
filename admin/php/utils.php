@@ -1,6 +1,6 @@
 <?php
 // Database connection
-include_once('../../php/connexionDB.php');
+include_once('connexionDB.php');
 include_once('../php/utils.php');
 
 /**

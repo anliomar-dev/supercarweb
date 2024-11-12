@@ -1,3 +1,5 @@
+export const host = "http://localhost";
+
 /**
  * Fetches all users from the API with pagination.
  *
@@ -315,8 +317,7 @@ export async function login_admin(email, password){
       throw new Error(response.statusText);
     }
   
-    const message = await response.text();
-    console.log(message)
+    const message = await response.json();
     return message;
   }catch(e){
     console.error('Internal server error: ' + e.message);

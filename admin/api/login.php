@@ -1,6 +1,6 @@
 <?php
     // Database connection
-    include_once('../../php/connexionDB.php');
+    include_once('../php/connexionDB.php');
     include_once('../php/utils.php');
     // Set the content type as JSON
     header('Content-Type: application/json; charset=utf-8');

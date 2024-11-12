@@ -1,5 +1,5 @@
 <?php
-  include('../php/connexionDB.php');
+  include('connexionDB.php');
 
   /**
    * display all brand

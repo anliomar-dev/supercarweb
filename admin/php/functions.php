@@ -1,5 +1,5 @@
 <?php
-  include_once('../php/connexionDB.php');
+  include_once('connexionDB.php');
   // Database connection
     /**
    * Check if a row exists in the database.
