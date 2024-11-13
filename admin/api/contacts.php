@@ -4,8 +4,8 @@
   include_once('../php/utils.php');
   include_once('../../php/utils.php');
   include_once('../php/functions_get_data.php');
-  $LOGIN_URL = "/super-car/admin/login";
-  $SESSION_EXPIRED_URL = "/super-car/admin/session_expired";
+  $LOGIN_URL = "/admin/login";
+  $SESSION_EXPIRED_URL = "/admin/session_expired";
   is_user_authenticated(2, $LOGIN_URL, $SESSION_EXPIRED_URL);
   // Set the content type as JSON
   header('Content-Type: application/json; charset=utf-8');
@@ -100,8 +100,8 @@
                   ];
               }else{
                   $response = [
-                      'status' => 'error',
-                      'message' => 'erreur lors de l\'ajout du nouveau contact',
+                    'status' => 'error',
+                    'message' => 'erreur lors de l\'ajout du nouveau contact',
                   ];
               }
             }

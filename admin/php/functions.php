@@ -49,4 +49,37 @@
     }
   }
   
+  
+  /**
+ * Check if the user is authenticated and redirect to the login page if they are not authenticated
+ * or redirect to the session expired page if the authentication session is expired
+ */
+function is_user_authenticated($times, $login_url, $session_expired) {
+  // Session expiration timestamp
+  $tempsExpiration = $times * 60; // 5 minutes
+  // Start a new session if there is no session
+  if (session_status() == PHP_SESSION_NONE) {
+      session_start();
+  }
+
+  // Check if the session is active
+  if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $tempsExpiration)) {
+      // Logout user if the authentication session is expired
+      session_unset();
+      session_destroy();
+      // Redirect to session expired page
+      header("Location: $session_expired");
+      exit();
+  }
+
+  // Check if the user is authenticated
+  if (!isset($_SESSION['email'])) {
+      // If the user is not authenticated, redirect to the signin page
+      header("Location: $login_url");
+      exit();
+  }
+
+  // Update the timestamp of the last activity
+  $_SESSION['last_activity'] = time();
+}
 ?>

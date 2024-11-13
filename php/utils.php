@@ -184,7 +184,7 @@ function is_user_not_admin_redirect($is_admin){
     // Check if the user is an admin.
     if(!$is_admin){
         // If the user is not an admin, redirect them to the login page.
-        header('Location: /super-car/admin/access_denied.html');
+        header('Location: /admin/access_denied.html');
     }
 }
 ?>
