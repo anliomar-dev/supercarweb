@@ -7,8 +7,8 @@
   include_once('../php/del-update_functions.php');
   session_start();
   // start new session if there is not a session
-  $LOGIN_URL = "/super-car/admin/login";
-  $SESSION_EXPIRED_URL = "/super-car/admin/session_expired";
+  $LOGIN_URL = "/admin/login";
+  $SESSION_EXPIRED_URL = "/admin/session_expired";
   //is_user_authenticated(2, $LOGIN_URL, $SESSION_EXPIRED_URL);
   // Set the content type as JSON
   header('Content-Type: application/json; charset=utf-8');

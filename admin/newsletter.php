@@ -17,10 +17,10 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Bootstrap CSS -->
     <link href="../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/super-car/admin/styles/dashboard.css" rel="stylesheet">
+    <link href="/admin/styles/dashboard.css" rel="stylesheet">
     <script src="js/dashboard.js" type="module" defer></script>
     <script src="js/sidebar_navbar.js" type="module" defer></script>
-    <link href="/super-car/admin/components/sidebar.css" rel="stylesheet">
+    <link href="/admin/components/sidebar.css" rel="stylesheet">
     <style>
         .close-sidebar{
             display: none;
