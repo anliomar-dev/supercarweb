@@ -1,34 +1,10 @@
 <?php
   include_once('connexionDB.php');
   // Database connection
-    /**
-   * Check if a row exists in the database.
-   *
-   * @param int $id The ID to check.
-   * @param string $table_name The name of the table.
-   * @param string $row_id The name of the column representing the ID.
-   * @return bool True if the row exists, false otherwise.
-   */
-  function is_row_exist($id, $table_name, $row_id) {
-    global $DB; 
-
-    $query = "SELECT 1 FROM $table_name WHERE $row_id = ? LIMIT 1";
-    $stmt = mysqli_prepare($DB, $query);
-
-    if ($stmt === false) {
-        die('Erreur lors de la préparation de la requête : ' . mysqli_error($DB));
-    }
-    mysqli_stmt_bind_param($stmt, 'i', $id);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $exists = mysqli_num_rows($result) > 0;
-    mysqli_stmt_close($stmt);
-
-    return $exists;
-  }
+  
 
   function is_ressource_exists($db, $param, $table, $row_id_name){
-    $page_404 = "/super-car/404.php";
+    $page_404 = "/404.php";
     if ($_SERVER['REQUEST_METHOD'] == 'GET') {
       if (isset($_GET[$param])) {
         $param_value = $_GET[$param];
@@ -49,37 +25,36 @@
     }
   }
   
-  
-  /**
- * Check if the user is authenticated and redirect to the login page if they are not authenticated
- * or redirect to the session expired page if the authentication session is expired
- */
-function is_user_authenticated($times, $login_url, $session_expired) {
-  // Session expiration timestamp
-  $tempsExpiration = $times * 60; // 5 minutes
-  // Start a new session if there is no session
-  if (session_status() == PHP_SESSION_NONE) {
-      session_start();
-  }
 
-  // Check if the session is active
-  if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity'] > $tempsExpiration)) {
-      // Logout user if the authentication session is expired
-      session_unset();
-      session_destroy();
-      // Redirect to session expired page
-      header("Location: $session_expired");
-      exit();
-  }
 
-  // Check if the user is authenticated
-  if (!isset($_SESSION['email'])) {
-      // If the user is not authenticated, redirect to the signin page
-      header("Location: $login_url");
-      exit();
-  }
 
-  // Update the timestamp of the last activity
-  $_SESSION['last_activity'] = time();
+
+function logout($login_url){
+if (isset($_POST["logout"])){
+  session_unset();
+  session_destroy();
+  // redirect user to the signin page
+  header("Location: $login_url");
+  exit();
+}
+}
+
+
+/**
+* check is a user is an admin( the account can be use in admin panel)
+*  @param int $user_id
+* @return  bool
+*/
+function is_user_admin($is_admin){
+// Check if the user is an admin.
+return $is_admin;
+}
+
+function is_user_not_admin_redirect($is_admin){
+// Check if the user is an admin.
+if(!$is_admin){
+  // If the user is not an admin, redirect them to the login page.
+  header('Location: /admin/access_denied.html');
+}
 }
 ?>

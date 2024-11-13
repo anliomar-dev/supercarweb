@@ -317,7 +317,8 @@ export async function login_admin(email, password){
       throw new Error(response.statusText);
     }
   
-    const message = await response.json();
+    const message = await response.text();
+    console.log(message)
     return message;
   }catch(e){
     console.error('Internal server error: ' + e.message);

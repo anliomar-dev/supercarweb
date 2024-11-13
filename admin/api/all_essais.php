@@ -2,7 +2,7 @@
 // retrieve all essai in json without pagination to display on the calender
 // Database connection
 include_once('../php/connexionDB.php');
-include_once('../../php/utils.php');
+include_once('../php/utils.php');
 $LOGIN_URL = "/admin/login";
 $SESSION_EXPIRED_URL = "/admin/session_expired";
 is_user_authenticated(2, $LOGIN_URL, $SESSION_EXPIRED_URL);

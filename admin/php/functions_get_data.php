@@ -1,7 +1,7 @@
 <?php
   // Database connection
   include_once('connexionDB.php');
-  include_once('../php/utils.php');
+  include_once('utils.php');
 
     /**
    * Returns all users in JSON format.

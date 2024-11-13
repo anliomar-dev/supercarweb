@@ -1,6 +1,6 @@
 <?php
     // Charger les variables d'environnement depuis le fichier .env
-    require_once '../../vendor/autoload.php'; 
+    require_once 'C:\wamp64\www\vendor\autoload.php'; 
 
     // Charger le fichier .env
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
